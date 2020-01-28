@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/PersonalData"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/PersonalData_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="信息登入"
+            android:textColor="#ff333333"
+            android:textSize="21sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F5F5F5"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="30dp"
+            android:text="输入昵称"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#ffffff" >
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:gravity="center_vertical|left"
+                android:text="昵称"
+                android:textColor="#000"
+                android:textSize="12sp" />
+            <EditText
+                android:id="@+id/PersonalData_inputName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:gravity="center_vertical"
+                android:hint="请输入属于您的名字"
+                android:textColorHint="#999999"
+                android:textColor="#000"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="30dp"
+            android:text="消息通知"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#ffffff" >
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:gravity="center_vertical|left"
+                android:text="邮箱"
+                android:textColor="#000"
+                android:textSize="12sp" />
+            <EditText
+                android:id="@+id/PersonalData_inputMail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:gravity="center_vertical"
+                android:hint="请输入邮箱"
+                android:textColorHint="#999999"
+                android:textColor="#000"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="30dp"
+            android:text="输入年龄"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#ffffff" >
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:gravity="center_vertical|left"
+                android:text="年龄"
+                android:textColor="#000"
+                android:textSize="12sp" />
+            <EditText
+                android:id="@+id/PersonalData_inputAge"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:gravity="center_vertical"
+                android:hint="请输入您的年龄"
+                android:textColorHint="#999999"
+                android:textColor="#000"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+        <Button
+            android:id="@+id/PersonalData_commitButton"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#108EE9"
+            android:layout_marginTop="47dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:text="进入i-Mart"
+            android:textColor="#ffffff"
+            />
+    </LinearLayout>
+</LinearLayout>
