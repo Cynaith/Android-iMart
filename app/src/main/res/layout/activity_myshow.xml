@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/activity_myshow_title"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#ffffff">
+
+
+        <TextView
+            android:id="@+id/fourth_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="我的"
+            android:textColor="#ff333333"
+            android:textSize="15sp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fourth_mine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <com.ly.imart.util.CircleImageView
+            android:id="@+id/activity_myshow_userimg"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/classify_new"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="25dp"/>
+    <Button
+        android:id="@+id/activity_myshow_isfollow"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_toRightOf="@id/activity_myshow_userimg"
+        android:layout_marginTop="46dp"
+        android:layout_marginLeft="80dp"
+        android:background="#92e1f9"
+        />
+        <Button
+        android:id="@+id/activity_myshow_message"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_toRightOf="@id/activity_myshow_isfollow"
+        android:layout_marginTop="46dp"
+        android:layout_marginLeft="14dp"
+        android:background="#f5f5f5"
+        android:text="私信"
+        />
+        <TextView
+            android:id="@+id/activity_myshow_username"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:text="Jack Jordan"
+            android:textColor="#ff262628"
+            android:textSize="20sp"
+            android:layout_below="@id/activity_myshow_userimg"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="15dp"
+            />
+        <TextView
+            android:id="@+id/activity_myshow_userinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:text="A Designer From The U.S"
+            android:textColor="#ff606266"
+            android:textSize="9sp"
+            android:layout_below="@id/activity_myshow_username"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="3dp"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/activity_myshow_followtext"
+            android:layout_width="60dp"
+            android:layout_height="13dp"
+            android:text="Following"
+            android:textColor="#ff606266"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_marginTop="27dp"
+            android:layout_marginLeft="65dp"/>
+        <TextView
+            android:id="@+id/activity_myshow_followedtext"
+            android:layout_width="60dp"
+            android:layout_height="13dp"
+            android:text="Followed"
+            android:textColor="#ff606266"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_marginTop="27dp"
+            android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@id/activity_myshow_followtext"/>
+        <TextView
+            android:id="@+id/activity_myshow_articletext"
+            android:layout_width="60dp"
+            android:layout_height="13dp"
+            android:text="Article"
+            android:textColor="#ff606266"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_marginTop="27dp"
+            android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@id/activity_myshow_followedtext"/>
+        <TextView
+            android:id="@+id/activity_myshow_follow"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:text="2318"
+            android:textColor="#ff262628"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="65dp"
+            android:layout_below="@id/activity_myshow_followtext"/>
+        <TextView
+            android:id="@+id/activity_myshow_followed"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:text="2318"
+            android:textColor="#ff262628"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginTop="55dp"
+            android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@id/activity_myshow_follow"
+            />
+        <TextView
+            android:id="@+id/activity_myshow_article"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:text="2318"
+            android:textColor="#ff262628"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginTop="55dp"
+            android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@id/activity_myshow_followed"/>
+
+    </RelativeLayout>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/activity_myshow_tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="#fff"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/activity_myshow_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

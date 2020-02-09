@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:id="@+id/TopBar1"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        app:qmui_topbar_bg_color="#67B5D8"
+        app:qmui_topbar_title_color="@color/qmui_config_color_75_pure_black"
+        app:qmui_topbar_title_text_size="25dp">
+
+    </com.qmuiteam.qmui.widget.QMUITopBar>
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <ListView
+        android:id="@+id/lvNews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+
+</LinearLayout>

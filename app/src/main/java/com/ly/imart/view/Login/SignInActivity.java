@@ -7,14 +7,13 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ly.imart.MainActivity;
+import com.ly.imart.view.MainActivity;
 import com.ly.imart.R;
-import com.ly.imart.bean.Login.SignInBean;
 import com.ly.imart.presenter.Login.SignInPresenter;
 
-import butterknife.BindFloat;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -32,6 +31,9 @@ public class SignInActivity extends Activity implements ISignInView, View.OnClic
 
     @BindView(R.id.SignIn_signInButton)
     Button button_signIn;
+
+    @BindView(R.id.SignIn_title)
+    TextView textView_signTitle;
 
     SignInPresenter signInPresenter;
 

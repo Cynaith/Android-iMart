@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:background="#e7e7e7"
+    >
+
+    <ImageButton
+        android:id="@+id/button1"
+        android:layout_width="195dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/classify_new"
+        />
+    <ImageButton
+        android:id="@+id/button2"
+        android:layout_width="195dp"
+        android:layout_height="230dp"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/button1"
+        android:background="@drawable/classify1"/>
+    <ImageButton
+        android:id="@+id/button3"
+        android:layout_width="195dp"
+        android:layout_height="235dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/button1"
+        android:background="@drawable/classify2"/>
+    <ImageButton
+        android:id="@+id/button4"
+        android:layout_width="195dp"
+        android:layout_height="230dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/button2"
+        android:layout_toRightOf="@id/button3"
+        android:background="@drawable/classify3"/>
+    <ImageButton
+        android:id="@+id/button5"
+        android:layout_width="195dp"
+        android:layout_height="235dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/button3"
+        android:background="@color/colorPrimary"/>
+    <ImageButton
+        android:id="@+id/button6"
+        android:layout_width="195dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/button5"
+        android:layout_below="@id/button4"
+        android:background="@color/colorPrimary"/>
+
+</RelativeLayout>

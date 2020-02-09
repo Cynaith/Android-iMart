@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.ly.imart.MainActivity;
+import com.ly.imart.view.MainActivity;
 import com.ly.imart.R;
 import com.ly.imart.presenter.Login.PersonalDataPresenter;
 

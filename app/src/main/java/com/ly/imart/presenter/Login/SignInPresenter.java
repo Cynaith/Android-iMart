@@ -31,7 +31,7 @@ public class SignInPresenter {
     }
 
     public boolean checkSignIn(){
-        if(signInBean.getVerificationCode()==123213){
+        if(signInBean.getVerificationCode()==123){
             Log.d("账号验证","通过");
             iSignInView.signIn();
             return true;
