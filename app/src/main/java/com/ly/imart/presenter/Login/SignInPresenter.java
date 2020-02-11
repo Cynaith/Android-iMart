@@ -30,15 +30,19 @@ public class SignInPresenter {
         return true;
     }
 
-    public boolean checkSignIn(){
-        if(signInBean.getVerificationCode()==123){
+    public boolean checkSignIn() throws Exception{
+        String responseCode = iSignInModel.checkSignIn(signInBean.getPhone(),signInBean.getVerificationCode());
+        if(responseCode.equals("0")){
             Log.d("账号验证","通过");
             iSignInView.signIn();
             return true;
         }
-        else {
-            Log.d("账号验证","未通过");
+        else if (responseCode.equals("0001")){
+            Log.d("账号验证","通过未注册");
             iSignInView.register();
+            return false;
+        }
+        else{
             return false;
         }
     }

@@ -69,7 +69,7 @@ public class DemoActivity extends AppCompatActivity {
                 }
         );
 
-//        mOneRecyclerView.setSpanCount(3);
+        mOneRecyclerView.setSpanCount(3);
 
 //        View header = View.inflate(this, R.layout.layout_header, null);
 //        mOneRecyclerView.addHeader(header);

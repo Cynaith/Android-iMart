@@ -90,7 +90,7 @@ public class SignInActivity extends Activity implements ISignInView, View.OnClic
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View view){
         switch (view.getId()) {
             case R.id.SignIn_getCodeButton:
                 signInPresenter.sendCode(getPhone());
@@ -99,7 +99,12 @@ public class SignInActivity extends Activity implements ISignInView, View.OnClic
             case R.id.SignIn_signInButton:
                 System.out.println(getPhone()+"  "+getVerificationCode());
                 signInPresenter.setSignInBean(getPhone(),getVerificationCode());
-                signInPresenter.checkSignIn();
+                try{
+                    signInPresenter.checkSignIn();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
                 Toast.makeText(getApplicationContext(),"点击了",Toast.LENGTH_SHORT).show();
                 break;
         }

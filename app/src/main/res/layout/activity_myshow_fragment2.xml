@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <com.ly.imart.onerecycler.OneRecyclerView
+        android:id="@+id/myshow2_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="fragment1"/>
+        >
+
+    </com.ly.imart.onerecycler.OneRecyclerView>
 
 </LinearLayout>

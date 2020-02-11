@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="6dp"
+    android:layout_marginLeft="10dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/second_fragment_viewPager4_list_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="7dp"
+        android:gravity="center_vertical"
+        android:src="@color/btn_filled_blue_bg_normal"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/second_fragment_viewPager4_list_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textColor="#ff333333"
+        android:textSize="10sp"
+        />
+    <TextView
+        android:id="@+id/second_fragment_viewPager4_list_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ffff3b30"
+        android:textSize="12sp"
+        android:layout_marginTop="3dp"/>
+    <TextView
+        android:id="@+id/second_fragment_viewPager4_list_fire"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ff999999"
+        android:textSize="10sp"
+        android:layout_marginTop="3dp"
+        />
+</LinearLayout>
