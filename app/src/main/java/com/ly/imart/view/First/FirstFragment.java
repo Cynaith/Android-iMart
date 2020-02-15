@@ -36,6 +36,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/**
+ * Banner图 https://www.zcool.com.cn/search/content?&word=banner
+ */
 public class FirstFragment extends Fragment implements OnBannerListener, AdapterView.OnItemClickListener {
     private Banner mBanner;
     private MyImageLoader mMyImageLoader;
@@ -82,8 +85,8 @@ public class FirstFragment extends Fragment implements OnBannerListener, Adapter
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         QMUITopBar topBar = (QMUITopBar) this.getActivity().findViewById(R.id.TopBar1);
-        topBar.setTitle("首 页");
-        topBar.setBackgroundColor(Color.parseColor("#7dc5eb"));
+        topBar.setTitle("新闻资讯");
+        topBar.setBackgroundColor(Color.parseColor("#ffffff"));
         initData();
         initView();
         lvNews = (ListView) this.getActivity().findViewById(R.id.lvNews);
@@ -97,12 +100,22 @@ public class FirstFragment extends Fragment implements OnBannerListener, Adapter
     private void initData() {
         imagePath = new ArrayList<>();
         imageTitle = new ArrayList<>();
-        imagePath.add(R.drawable.classify3);
-        imagePath.add(R.drawable.classify3);
-        imagePath.add(R.drawable.classify3);
-        imageTitle.add("我是海鸟一号");
-        imageTitle.add("我是海鸟二号");
-        imageTitle.add("我是海鸟三号");
+        imagePath.add(R.drawable.banner6);
+        imagePath.add(R.drawable.banner1);
+        imagePath.add(R.drawable.banner2);
+        imagePath.add(R.drawable.banner3);
+        imagePath.add(R.drawable.banner4);
+        imagePath.add(R.drawable.banner5);
+
+
+        imageTitle.add("武汉加油");
+        imageTitle.add("iMart宣传图");
+        imageTitle.add("iMart宣传图");
+        imageTitle.add("iMart宣传图");
+        imageTitle.add("iMart宣传图");
+        imageTitle.add("iMart宣传图");
+
+
     }
 
     private void initView() {

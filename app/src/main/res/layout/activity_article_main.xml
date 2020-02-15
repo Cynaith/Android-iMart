@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_article_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#ffffff"
+        android:layout_marginBottom="2dp">
+
+        <TextView
+            android:text="文章标题"
+            android:id="@+id/activity_article_main_title"
+            android:textSize="16sp"
+            android:textColor="#ff333333"
+            android:gravity="center"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#717070"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.ly.imart.util.CircleImageView
+            android:id="@+id/activity_article_main_userimg"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/classify_new"/>
+        <TextView
+            android:id="@+id/activity_article_main_username"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="Jack Jordan"
+            android:textColor="#ff262628"
+            android:textSize="18sp"
+            android:layout_toRightOf="@id/activity_article_main_userimg"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            />
+        <TextView
+            android:id="@+id/activity_article_main_userinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="12dp"
+            android:text="2 hours ago"
+            android:textColor="#ff768196"
+            android:textSize="10sp"
+            android:layout_toRightOf="@id/activity_article_main_userimg"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="42dp"
+            />
+    </RelativeLayout>
+    <WebView
+        android:id="@+id/activity_article_main_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>

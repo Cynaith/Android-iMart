@@ -9,9 +9,9 @@
         android:id="@+id/TopBar1"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        app:qmui_topbar_bg_color="#67B5D8"
-        app:qmui_topbar_title_color="@color/qmui_config_color_75_pure_black"
-        app:qmui_topbar_title_text_size="25dp">
+        app:qmui_topbar_bg_color="#ffffff"
+        app:qmui_topbar_title_color="#ff333333"
+        app:qmui_topbar_title_text_size="15sp">
 
     </com.qmuiteam.qmui.widget.QMUITopBar>
     <com.youth.banner.Banner

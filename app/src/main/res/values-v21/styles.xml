@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomActionBarStyle" parent="@android:style/Widget.DeviceDefault.Light.ActionBar">
+        <item name="android:contentInsetEnd">0dp</item><!--右边距为0-->
+        <item name="android:contentInsetStart">0dp</item><!--左边距为0-->
+    </style>
+</resources>

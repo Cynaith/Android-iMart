@@ -1,5 +1,6 @@
 package com.ly.imart.view.Second;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -92,6 +93,7 @@ public class SecondFragmentViewpage1 extends Fragment {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    startActivity(new Intent(view.getContext(),ArticleMainActivity.class));
                     Toast.makeText(view.getContext(),""+secondFragmentBean.getName(),Toast.LENGTH_SHORT).show();
                 }
             });

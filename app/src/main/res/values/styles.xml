@@ -6,6 +6,23 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+    <!-- 自定义的ActionBar Style-->
+    <style name="CustomActionBarStyle" parent="@android:style/Widget.DeviceDefault.Light.ActionBar">
+        <item name="contentInsetEnd">0dp</item><!--右边距为0-->
+        <item name="contentInsetStart">0dp</item><!--左边距为0-->
+    </style>
+    　　<!-- 自定义的Theme-->
+    <style name="CustomTheme" parent="@android:style/Theme.DeviceDefault.Light">
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">#000000</item>
+        <item name="actionBarSize">70dp</item><!--设置ActionBar的高度-->
+        <item name="actionBarStyle">@style/CustomActionBarStyle</item>
+        <!--<item name="statusBarColor">@color/customBackgroung</item>&lt;!&ndash;效果和colorPrimary一样&ndash;&gt;-->
+        <!--<item name="windowLightStatusBar">true</item>&lt;!&ndash;设置StatusBar上Icon高亮&ndash;&gt;-->
+        <!--<item name="windowTranslucentNavigation">false</item>-->
     </style>
 
     <style name="Theme.MyApp" parent="Theme.MaterialComponents.Light">
@@ -39,6 +56,9 @@
         <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Button</item>
         <item name="textAppearanceOverline">@style/TextAppearance.MaterialComponents.Overline</item>
 
+    </style>
+    <style name="ToolbarCustomStyle" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">#ffffff</item>
     </style>
 
 </resources>

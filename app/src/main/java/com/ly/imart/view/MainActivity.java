@@ -1,6 +1,7 @@
 package com.ly.imart.view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import com.ly.imart.R;
 import com.ly.imart.view.First.FirstFragment;
 import com.ly.imart.view.Fourth.FourthFragment;
+import com.ly.imart.view.Others.AddArticleActivity;
 import com.ly.imart.view.Second.SecondFragment;
 import com.ly.imart.view.Third.ThirdFragment;
 import com.next.easynavigation.constant.Anim;
@@ -97,7 +99,9 @@ public class MainActivity extends AppCompatActivity {
                                     .setOnItemClickListener(new PopMenuItemListener() {
                                         @Override
                                         public void onItemClick(PopMenu popMenu, int position) {
-
+                                            if(position==0){
+                                                gotoAddArticleActivity();
+                                            }
 
                                             Toast.makeText(MainActivity.this, "你点击了第" + position + "个位置", Toast.LENGTH_SHORT).show();
 
@@ -121,5 +125,8 @@ public class MainActivity extends AppCompatActivity {
 
     public EasyNavigationBar getNavigationBar() {
         return navigationBar;
+    }
+    private void gotoAddArticleActivity(){
+        startActivity(new Intent(this,AddArticleActivity.class));
     }
 }

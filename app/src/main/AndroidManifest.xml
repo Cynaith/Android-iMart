@@ -31,19 +31,41 @@
 
         </activity>
         <activity android:name=".demo.TabLayout.TabLayoutActivity">
-
+            <!--标签页-->
         </activity>
 
         <activity android:name=".demo.Douyin.ViewPagerLayoutManagerActivity">
-
+            <!--抖音-->
         </activity>
+        <activity
+            android:name=".view.Others.AddArticleActivity"
+            android:theme="@style/CustomTheme">
+
+            <!--添加文章-->
+        </activity>
+
+        <activity android:name=".view.Second.ArticleMainActivity"></activity>
+
 
     </application>
     <!-- if you want to load images from the internet -->
-    <uses-permission android:name="android.permission.INTERNET" />
+    <!--<uses-permission android:name="android.permission.INTERNET" />-->
 
 
     <!-- if you want to load images from a file OR from the internet -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
 
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_SYNC_STATS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.NFC" />
 </manifest>
