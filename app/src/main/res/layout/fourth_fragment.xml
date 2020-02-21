@@ -184,7 +184,7 @@
             android:layout_height="50dp"
             android:scaleType="centerCrop"
             android:layout_below="@id/fourth_moreTitle"
-            android:src="@drawable/classify_new"
+            android:src="@drawable/fourth_function"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="25dp"/>
         <com.ly.imart.util.CircleImageView
@@ -194,7 +194,7 @@
             android:scaleType="centerCrop"
             android:layout_below="@id/fourth_moreTitle"
             android:layout_toRightOf="@id/fourth_more_mycollection"
-            android:src="@drawable/classify_new"
+            android:src="@drawable/fourth_function"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="25dp"/>
         <com.ly.imart.util.CircleImageView
@@ -204,7 +204,7 @@
             android:scaleType="centerCrop"
             android:layout_below="@id/fourth_moreTitle"
             android:layout_toRightOf="@id/fourth_more_mygoods"
-            android:src="@drawable/classify_new"
+            android:src="@drawable/fourth_function"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="25dp"/>
         <com.ly.imart.util.CircleImageView
@@ -214,7 +214,7 @@
             android:scaleType="centerCrop"
             android:layout_below="@id/fourth_moreTitle"
             android:layout_toRightOf="@id/fourth_more_mycart"
-            android:src="@drawable/classify_new"
+            android:src="@drawable/fourth_function"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="25dp"/>
         <com.ly.imart.util.CircleImageView
@@ -224,7 +224,7 @@
             android:scaleType="centerCrop"
             android:layout_below="@id/fourth_moreTitle"
             android:layout_toRightOf="@id/fourth_more_diy"
-            android:src="@drawable/classify_new"
+            android:src="@drawable/fourth_function"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="25dp"/>
     </RelativeLayout>

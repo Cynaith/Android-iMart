@@ -10,16 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.Login.LunchActivity">
-
-        </activity>
-        <activity android:name=".view.Login.SignInActivity"></activity>
-        <activity android:name=".view.Login.PersonalDataActivity"></activity>
-        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".view.Login.SignInActivity"></activity>
+        <activity android:name=".view.Login.PersonalDataActivity"></activity>
+        <activity android:name=".view.MainActivity">
+
         </activity>
         <activity android:name=".view.First.BrowseNewsActivity"></activity>
         <activity android:name=".view.Fourth.FourthHelpActivity"></activity>
