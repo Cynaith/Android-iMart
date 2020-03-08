@@ -1,5 +1,7 @@
 package com.ly.imart.view.Login;
 
+import android.app.Activity;
+
 public interface IPersonalDataView {
 
     String getName();

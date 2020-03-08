@@ -21,7 +21,6 @@ import android.widget.VideoView;
 import com.ly.imart.R;
 import com.ly.imart.demo.Douyin.OnViewPagerListener;
 import com.ly.imart.demo.Douyin.ViewPagerLayoutManager;
-import com.ly.imart.demo.Douyin.ViewPagerLayoutManagerActivity;
 
 public class ThirdFragment extends Fragment {
 

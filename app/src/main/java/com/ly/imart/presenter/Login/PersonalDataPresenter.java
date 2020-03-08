@@ -20,7 +20,8 @@ public class PersonalDataPresenter {
     public boolean commit(){
         iPersonalDataModel.savePersonalData(iPersonalDataView.getName(),iPersonalDataView.getMail(),iPersonalDataView.getAge());
         if(true){
-            iPersonalDataView.goHome();
+//            iPersonalDataView.goHome();
+//            提交数据至后台
         }
         else{
             //可以设置弹框验证格式，并set属性为空

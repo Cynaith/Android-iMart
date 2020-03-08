@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ly.imart.maxim.login.view.LoginActivity;
 import com.ly.imart.view.MainActivity;
 import com.ly.imart.R;
 import com.ly.imart.presenter.Login.PersonalDataPresenter;
@@ -32,6 +33,11 @@ public class PersonalDataActivity extends Activity implements View.OnClickListen
 
     PersonalDataPresenter personalDataPresenter;
 
+    String userName;
+    String userPwd;
+    boolean isLoginById;
+    String mAppId;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +45,7 @@ public class PersonalDataActivity extends Activity implements View.OnClickListen
         personalDataPresenter = new PersonalDataPresenter(this);
         ButterKnife.bind(this);
         button_commit.setOnClickListener(this);
+        getData();
     }
 
     @Override
@@ -47,10 +54,19 @@ public class PersonalDataActivity extends Activity implements View.OnClickListen
             case R.id.PersonalData_commitButton:
                 Toast.makeText(getApplicationContext(),"点击了进入i-Mart",Toast.LENGTH_SHORT).show();
                 personalDataPresenter.commit();
+                goHome();
                 break;
         }
     }
 
+    void getData(){
+        Intent intent = getIntent();
+        userName = intent.getStringExtra("userName");
+        userPwd = intent.getStringExtra("userPwd");
+        isLoginById = intent.getBooleanExtra("isLoginById",false);
+        mAppId = intent.getStringExtra("AppId");
+
+    }
 
     @Override
     public String getName() {
@@ -85,7 +101,9 @@ public class PersonalDataActivity extends Activity implements View.OnClickListen
 
     @Override
     public void goHome() {
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
+//        startActivity(new Intent(this, MainActivity.class));
+//        LoginActivity.login(this,userName,userPwd,isLoginById,mAppId);
+        LoginActivity.login(this, userName, userPwd, false, mAppId);
+//        finish();
     }
 }

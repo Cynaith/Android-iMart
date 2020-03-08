@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -18,6 +19,7 @@ import com.ly.imart.maxim.common.base.BaseTitleActivity;
 import com.ly.imart.maxim.common.utils.ToastUtil;
 import com.ly.imart.maxim.common.view.Header;
 import com.ly.imart.maxim.net.HttpResponseCallback;
+import com.ly.imart.view.Login.PersonalDataActivity;
 
 /**
  * Description : 注册后绑定手机 Created by Mango on 2018/11/21.
@@ -183,6 +185,7 @@ public class RegisterBindMobileActivity extends BaseTitleActivity {
 
                 @Override
                 public void onFailure(int errorCode, String errorMsg, Throwable t) {
+                    Log.d("Bind Mobile error msg:",errorMsg);
                     ToastUtil.showTextViewPrompt("获取验证码失败");
                     mSendVerify.setEnabled(true);
                     mSendVerify.setVisibility(View.VISIBLE);
@@ -252,6 +255,13 @@ public class RegisterBindMobileActivity extends BaseTitleActivity {
     }
 
     private void login() {
-        LoginActivity.login(this, userName, userPwd, false, mAppId);
+        Intent intent = new Intent(this,PersonalDataActivity.class);
+        intent.putExtra("userName",userName);
+        intent.putExtra("userPwd",userPwd);
+        intent.putExtra("isLoginById",false);
+        intent.putExtra("AppId",mAppId);
+        this.startActivity(intent);
+        this.finish();
+//        LoginActivity.login(this, userName, userPwd, false, mAppId);
     }
 }
