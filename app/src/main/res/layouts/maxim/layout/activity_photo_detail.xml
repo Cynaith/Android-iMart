@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c4">
+
+
+    <com.ly.imart.maxim.common.view.ViewPagerFixed
+        android:id="@+id/photo_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.ly.imart.maxim.common.view.ViewPagerFixed>
+
+    <TextView
+        android:id="@+id/tv_photo_index"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_56"
+        android:layout_gravity="bottom"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textColor="@color/c3"
+        android:visibility="gone"
+        android:textSize="@dimen/dimen_17" />
+
+</FrameLayout>

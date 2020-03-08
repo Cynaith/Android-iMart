@@ -12,8 +12,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ly.imart.R;
+import com.ly.imart.maxim.MaximMainActivity;
 import com.ly.imart.presenter.Fourth.FourthPresenter;
 import com.ly.imart.util.CircleImageView;
+import com.ly.imart.view.MainActivity;
 
 public class FourthFragment extends Fragment implements View.OnClickListener,IFourthView {
 
@@ -21,31 +23,22 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
 
     private FourthPresenter fourthPresenter;
 
-//    @BindView(R.id.fourth_more_mycollection)
     CircleImageView circleImageView_mycollection;
 
-//    @BindView(R.id.fourth_more_mygoods)
     CircleImageView circleImageView_mygoods;
 
-//    @BindView(R.id.fourth_more_mycart)
     CircleImageView circleImageView_mycart;
 
-//    @BindView(R.id.fourth_more_diy)
     CircleImageView circleImageView_diy;
 
-//    @BindView(R.id.fourth_more_myfriends)
     CircleImageView circleImageView_myfriends;
 
-//    @BindView(R.id.fourth_myfollow)
     TextView textView_fourth_myfollow;
 
-//    @BindView(R.id.fourth_myfollowed)
     TextView textView_fourth_myfollowed;
 
-//    @BindView(R.id.fourth_myarticle)
     TextView textView_myarticle;
 
-//    @BindView(R.id.fourth_myfriend)
     TextView textView_myfriend;
 
     RelativeLayout relativeLayout;
@@ -60,6 +53,7 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
         textView_fourth_myfollowed = view.findViewById(R.id.fourth_myfollowed);
         textView_myarticle = view.findViewById(R.id.fourth_myarticle);
         textView_myfriend = view.findViewById(R.id.fourth_myfriend);
+        (circleImageView_myfriends = view.findViewById(R.id.fourth_more_myfriends)).setOnClickListener(this);
         relativeLayout = view.findViewById(R.id.fourth_mine);
 
         textView_fourth_myfollow.setClickable(true);
@@ -70,11 +64,13 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
         textView_fourth_myfollow.setOnClickListener(this);
         textView_fourth_myfollowed.setOnClickListener(this);
         textView_myarticle.setOnClickListener(this);
-        textView_myfriend.setOnClickListener(this);
+        textView_myfriend.setOnClickListener(this); //集成maxim
+
         relativeLayout.setOnClickListener(this);
 //
         return view;
     }
+
 
     @Override
     public void onClick(View view) {
@@ -96,6 +92,11 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
                 break;
             case R.id.fourth_mine:
                 fourthPresenter.gotoMyshowPage();
+                break;
+            case R.id.fourth_more_myfriends:
+//                MaximMainActivity.openMain(this.getContext());
+                Intent intent = new Intent(this.getContext(),MaximMainActivity.class);
+                this.startActivity(intent);
                 break;
         }
     }

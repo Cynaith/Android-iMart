@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_readed"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_48"
+                android:gravity="center"
+                android:text="@string/readed_list"
+                android:textColor="@drawable/text_selector" />
+
+            <View
+                android:id="@+id/tv_readed_selected"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_2"
+                android:background="@color/color_0079F4" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_unRead"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_48"
+                android:gravity="center"
+                android:text="@string/unRead_list"
+                android:textColor="@drawable/text_selector" />
+
+            <View
+                android:id="@+id/tv_unRead_selected"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_2"
+                android:background="@color/color_0079F4"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcv_read_ack"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:scrollbars="none">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

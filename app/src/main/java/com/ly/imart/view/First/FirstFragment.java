@@ -79,6 +79,8 @@ public class FirstFragment extends Fragment implements OnBannerListener, Adapter
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //超过每日可允许请求次数,注释掉下面
+        //sendRequestWithOKHttp();
     }
 
     @Override
@@ -94,7 +96,8 @@ public class FirstFragment extends Fragment implements OnBannerListener, Adapter
         adapter = new NewsAdapter(this.getContext(), dataList);
         lvNews.setAdapter(adapter);
         lvNews.setOnItemClickListener(this);
-        sendRequestWithOKHttp();
+        //超过每日可允许请求次数,注释掉下面
+        //sendRequestWithOKHttp();
     }
 
     private void initData() {
@@ -141,6 +144,8 @@ public class FirstFragment extends Fragment implements OnBannerListener, Adapter
                 .setOnBannerListener(this)
                 //开始调用的方法，启动轮播图。
                 .start();
+        //超过每日可允许请求次数,注释掉下面
+//        sendRequestWithOKHttp();
 
     }
 

@@ -10,17 +10,87 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [
+                "HUAWEI_APPID"   : "100565061",
+                "XIAOMI_APPID"   : "2882303761517923338",
+                "XIAOMI_APP_KEY" : "5221792385338",
+                "MEIZU_APPID"    : "117965",
+                "MEIZU_APP_KEY"  : "ba1881e1356d4c9ea622772c64873c41",
+
+                "WEIXIN_APPID"   : "wxf0f8e197ecfb0925",
+
+                "BUGLY_APPID"    : "ae2c13667e"
+        ]
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+        multiDexEnabled true
+    }
+    signingConfigs {
+        release {
+            storeFile file('maxim-android.jks')
+            storePassword 'Z3vnmxQ2FG'
+            keyAlias 'maxim-android'
+            keyPassword 'FLTB6q8xQb'
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'   // aar目录
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    sourceSets{
+        main{
+            res.srcDirs =
+                    /**
+                     * 设置res/layout文件夹下分层
+                     */
+                    [
+                            'src/main/res/layouts/maxim',
+                            'src/main/res/layouts/first' ,
+                            'src/main/res/layouts/second',
+                            'src/main/res/layouts/third',
+                            'src/main/res/layouts/fourth',
+                            'src/main/res/layouts/others',
+                            'src/main/res/layouts/onerecycle',
+                            'src/main/res/layouts/tablayout',
+                            'src/main/res/layouts/douyin',
+                            'src/main/res/layouts',
+                            'src/main/res/drawables/first',
+                            'src/main/res/drawables/second',
+                            'src/main/res/drawables/third',
+                            'src/main/res/drawables/fourth',
+                            'src/main/res/drawables/others',
+                            'src/main/res/drawables/temp',
+                            'src/main/res/drawables/maxim',
+                            'src/main/res/drawables',
+                            'src/main/res',
+                    ]
         }
     }
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+//    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:support-v4:28.0.0'
@@ -43,4 +113,26 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //maxim
+    implementation 'com.squareup.okio:okio:1.12.0'
+    implementation 'com.aliyun.dpa:oss-android-sdk:+'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.gavin.view.flexible:library:1.0.2'
+    //RxJava
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'io.reactivex:rxjava:1.3.0'
+    //UIL
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation(name: 'floo-android_2.1.2.20200115', ext: 'aar')
+    //华为push
+    implementation 'com.huawei.android.hms:push:2.6.3.301'
+    //魅族push
+    implementation 'com.meizu.flyme.internet:push-ups:1.1.+'
+    //微信
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    //bugly
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+    implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+    implementation files('libs/MiPush_SDK_Client_3_5_1.jar')
+    implementation files('libs/zxing-3.3.2.jar')
 }

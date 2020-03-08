@@ -1,20 +1,20 @@
 package com.ly.imart.view;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.ly.imart.R;
+import com.ly.imart.maxim.MaximMainActivity;
 import com.ly.imart.view.First.FirstFragment;
 import com.ly.imart.view.Fourth.FourthFragment;
 import com.ly.imart.view.Others.AddArticleActivity;
@@ -128,5 +128,11 @@ public class MainActivity extends AppCompatActivity {
     }
     private void gotoAddArticleActivity(){
         startActivity(new Intent(this,AddArticleActivity.class));
+    }
+    public static void openIMart(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+        ((Activity)context).finish();
     }
 }
