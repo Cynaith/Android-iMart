@@ -1,8 +1,12 @@
 package com.ly.imart.presenter.Fourth;
 
+import com.ly.imart.bean.Fourth.FourthBean;
+import com.ly.imart.maxim.common.utils.SharePreferenceUtils;
 import com.ly.imart.model.Fourth.FourthModelImpl;
 import com.ly.imart.model.Fourth.IFourthModel;
 import com.ly.imart.view.Fourth.IFourthView;
+
+import java.util.concurrent.ExecutionException;
 
 public class FourthPresenter {
 
@@ -33,6 +37,10 @@ public class FourthPresenter {
 
     public void gotoMyshowPage(){
         iFourthView.gotoMyshowPage();
+    }
+
+    public FourthBean getInfo() throws ExecutionException, InterruptedException {
+        return iFourthModel.getInfo(SharePreferenceUtils.getInstance().getUserName());
     }
 
 }

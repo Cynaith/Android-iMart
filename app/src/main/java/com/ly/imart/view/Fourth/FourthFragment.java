@@ -2,26 +2,35 @@ package com.ly.imart.view.Fourth;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ly.imart.R;
+import com.ly.imart.bean.Fourth.FourthBean;
 import com.ly.imart.maxim.MaximMainActivity;
+import com.ly.imart.maxim.common.utils.SharePreferenceUtils;
 import com.ly.imart.presenter.Fourth.FourthPresenter;
 import com.ly.imart.util.CircleImageView;
-import com.ly.imart.view.MainActivity;
+import com.ly.imart.util.MyImageView;
+
+import java.net.URL;
+import java.util.concurrent.ExecutionException;
 
 public class FourthFragment extends Fragment implements View.OnClickListener,IFourthView {
 
     private View view;
 
     private FourthPresenter fourthPresenter;
+
 
     CircleImageView circleImageView_mycollection;
 
@@ -68,9 +77,30 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
 
         relativeLayout.setOnClickListener(this);
 //
+        initData();
+
         return view;
     }
 
+
+    void initData(){
+        try {
+            FourthBean fourthBean = fourthPresenter.getInfo();
+            textView_fourth_myfollow.setText(""+fourthBean.getFollowNum());
+            textView_fourth_myfollowed.setText(""+fourthBean.getFollowedNum());
+            textView_myarticle.setText(""+fourthBean.getArticleNum());
+// https://blog.csdn.net/augfun/article/details/86615750
+            MyImageView userimage ;
+            userimage = view.findViewById(R.id.fourth_userimage);
+            System.out.println(fourthBean.getImgUrl());
+            userimage.setImageURL(fourthBean.getImgUrl());
+//            textView_myfriend.setText(SharePreferenceUtils.getInstance());
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void onClick(View view) {
@@ -109,12 +139,16 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
 
     @Override
     public void gotoFollowPage() {
-        startActivity(new Intent(this.getActivity(),FourthFollowlistActivity.class));
+        Intent intent = new Intent(this.getActivity(),FourthFollowlistActivity.class);
+        intent.putExtra("kind",1);
+        startActivity(intent);
     }
 
     @Override
     public void gotoFollowedPage() {
-        startActivity(new Intent(this.getActivity(),FourthFollowlistActivity.class));
+        Intent intent = new Intent(this.getActivity(),FourthFollowlistActivity.class);
+        intent.putExtra("kind",2);
+        startActivity(intent);
     }
 
     @Override

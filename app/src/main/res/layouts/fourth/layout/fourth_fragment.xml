@@ -27,14 +27,29 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         >
-        <ImageView
+<!--        <ImageView-->
+<!--            android:id="@+id/fourth_userimage"-->
+<!--            android:layout_width="70dp"-->
+<!--            android:layout_height="70dp"-->
+<!--&lt;!&ndash;            android:background="#000"&ndash;&gt;-->
+<!--            android:layout_marginTop="25dp"-->
+<!--            android:layout_marginLeft="25dp"/>-->
+        <com.ly.imart.util.MyImageView
             android:id="@+id/fourth_userimage"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:background="#000"
             android:layout_marginTop="25dp"
             android:layout_marginLeft="25dp"/>
+<!--        <com.ly.imart.util.CircleImageView-->
+<!--                    android:id="@+id/fourth_userimage"-->
+<!--                    android:layout_width="70dp"-->
+<!--                    android:layout_height="70dp"-->
+<!--                    android:layout_marginTop="25dp"-->
+<!--                    android:layout_marginLeft="25dp"-->
+<!--            android:background="@drawable/imart"-->
+<!--            />-->
         <TextView
+
             android:id="@+id/fourth_username"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
