@@ -50,6 +50,10 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
 
     TextView textView_myfriend;
 
+    TextView textView_username;
+
+    TextView textView_usershow;
+
     RelativeLayout relativeLayout;
     @Nullable
     @Override
@@ -64,7 +68,8 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
         textView_myfriend = view.findViewById(R.id.fourth_myfriend);
         (circleImageView_myfriends = view.findViewById(R.id.fourth_more_myfriends)).setOnClickListener(this);
         relativeLayout = view.findViewById(R.id.fourth_mine);
-
+        textView_username = view.findViewById(R.id.fourth_username);
+        textView_usershow = view.findViewById(R.id.fourth_usershow);
         textView_fourth_myfollow.setClickable(true);
         textView_fourth_myfollowed.setClickable(true);
         textView_myfriend.setClickable(true);
@@ -89,6 +94,8 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
             textView_fourth_myfollow.setText(""+fourthBean.getFollowNum());
             textView_fourth_myfollowed.setText(""+fourthBean.getFollowedNum());
             textView_myarticle.setText(""+fourthBean.getArticleNum());
+            textView_username.setText(""+fourthBean.getUserName());
+            textView_usershow.setText(""+fourthBean.getUserShow());
 // https://blog.csdn.net/augfun/article/details/86615750
             MyImageView userimage ;
             userimage = view.findViewById(R.id.fourth_userimage);
