@@ -3,6 +3,9 @@ package com.ly.imart.bean.Fourth;
 public class FriendListBean {
 
 
+
+    public int articleId;
+
     public String imageUrl;
 
     public String name;
@@ -31,5 +34,13 @@ public class FriendListBean {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public int getArticleId() {
+        return articleId;
+    }
+
+    public void setArticleId(int articleId) {
+        this.articleId = articleId;
     }
 }

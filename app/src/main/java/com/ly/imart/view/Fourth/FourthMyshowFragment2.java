@@ -11,18 +11,28 @@ import android.widget.Toast;
 
 import com.ly.imart.R;
 import com.ly.imart.bean.Fourth.MyshowFragmentBean;
+import com.ly.imart.model.Fourth.FourthMyshowFragmentModel;
 import com.ly.imart.onerecycler.OnCreateVHListener;
 import com.ly.imart.onerecycler.OneLoadingLayout;
 import com.ly.imart.onerecycler.OneRecyclerView;
 import com.ly.imart.onerecycler.OneVH;
+import com.ly.imart.util.MyImageView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class FourthMyshowFragment2 extends Fragment {
 
     private View view;
     private OneRecyclerView mOneRecyclerView;
+
+    static String   myshow2_userName;
+
+    public static void setUserName(String userName){
+        myshow2_userName = userName;
+    }
+
 
     @Nullable
     @Override
@@ -72,6 +82,8 @@ public class FourthMyshowFragment2 extends Fragment {
                     Toast.makeText(view.getContext(),""+myshowFragment1Bean.getId(),Toast.LENGTH_SHORT).show();
                 }
             });
+            MyImageView myImageView = itemView.findViewById(R.id.myshow2_list_image);
+            myImageView.setImageURL(myshowFragment1Bean.getImageUrl());
 
         }
     }
@@ -81,7 +93,7 @@ public class FourthMyshowFragment2 extends Fragment {
             public void run() {
                 List<MyshowFragmentBean> listBeans = fetchData();
                 if (append){
-                    mOneRecyclerView.addData(listBeans);//下拉时增加的数据
+//                    mOneRecyclerView.addData(listBeans);//下拉时增加的数据
                 }
                 else {
                     mOneRecyclerView.setData(listBeans);//刷新
@@ -91,11 +103,14 @@ public class FourthMyshowFragment2 extends Fragment {
     }
 
     private List<MyshowFragmentBean> fetchData(){
-        List<MyshowFragmentBean> listBeans = new ArrayList<>();
-        for(int i=0;i<26;i++){
-            MyshowFragmentBean myshowFragment1Bean = new MyshowFragmentBean();
-            myshowFragment1Bean.setId(i);
-            listBeans.add(myshowFragment1Bean);
+        List<MyshowFragmentBean> listBeans = null;
+        FourthMyshowFragmentModel fourthMyshowFragmentModel = new FourthMyshowFragmentModel();
+        try {
+            listBeans = fourthMyshowFragmentModel.getMyshow2(myshow2_userName);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         return listBeans;
     }

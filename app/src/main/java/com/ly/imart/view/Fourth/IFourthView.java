@@ -5,5 +5,5 @@ public interface IFourthView {
     public void gotoFollowedPage();
     public void gotoFriendPage();
     public void gotoArticlePage();
-    public void gotoMyshowPage();
+    public void gotoMyshowPage(String userName);
 }

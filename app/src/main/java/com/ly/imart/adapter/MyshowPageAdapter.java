@@ -19,10 +19,11 @@ public class MyshowPageAdapter extends FragmentPagerAdapter {
 
     private int num;
     private HashMap<Integer, Fragment> mFragmentHashMap = new HashMap<>();
-
-    public MyshowPageAdapter(FragmentManager fm, int num) {
+    private String userName;
+    public MyshowPageAdapter(FragmentManager fm, int num,String userName) {
         super(fm);
         this.num = num;
+        this.userName = userName;
     }
 
     @Override
@@ -43,14 +44,17 @@ public class MyshowPageAdapter extends FragmentPagerAdapter {
             switch (pos) {
                 case 0:
                     fragment = new FourthMyshowFragment1();
+                    FourthMyshowFragment1.setUserName(userName);
                     Log.i("fragment", "fragment1");
                     break;
                 case 1:
                     fragment = new FourthMyshowFragment2();
+                    FourthMyshowFragment2.setUserName(userName);
                     Log.i("fragment", "fragment2");
                     break;
                 case 2:
                     fragment = new FourthMyshowFragment3();
+                    FourthMyshowFragment3.setUserName(userName);
                     Log.i("fragment", "fragment3");
                     break;
             }

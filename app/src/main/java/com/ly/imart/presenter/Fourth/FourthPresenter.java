@@ -36,7 +36,7 @@ public class FourthPresenter {
     }
 
     public void gotoMyshowPage(){
-        iFourthView.gotoMyshowPage();
+        iFourthView.gotoMyshowPage(SharePreferenceUtils.getInstance().getUserName());
     }
 
     public FourthBean getInfo() throws ExecutionException, InterruptedException {

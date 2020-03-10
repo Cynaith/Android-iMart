@@ -148,6 +148,7 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
     public void gotoFollowPage() {
         Intent intent = new Intent(this.getActivity(),FourthFollowlistActivity.class);
         intent.putExtra("kind",1);
+        intent.putExtra("userName",SharePreferenceUtils.getInstance().getUserName());
         startActivity(intent);
     }
 
@@ -155,6 +156,7 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
     public void gotoFollowedPage() {
         Intent intent = new Intent(this.getActivity(),FourthFollowlistActivity.class);
         intent.putExtra("kind",2);
+        intent.putExtra("userName",SharePreferenceUtils.getInstance().getUserName());
         startActivity(intent);
     }
 
@@ -165,11 +167,18 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
 
     @Override
     public void gotoArticlePage() {
-        startActivity(new Intent(this.getActivity(),FourthFollowlistActivity.class));
+        Intent intent = new Intent(this.getActivity(),FourthFollowlistActivity.class);
+        intent.putExtra("kind",3);
+        intent.putExtra("userName",SharePreferenceUtils.getInstance().getUserName());
+        startActivity(intent);
     }
 
     @Override
-    public void gotoMyshowPage() {
-        startActivity(new Intent(this.getActivity(),FourthMyshowActivity.class));
+    public void gotoMyshowPage(String userName) {
+        Intent intent = new Intent(this.getActivity(),FourthMyshowActivity.class);
+        intent.putExtra("userName",userName);
+        startActivity(intent);
+//        startActivity(new Intent(this.getActivity(),FourthMyshowActivity.class));
+
     }
 }

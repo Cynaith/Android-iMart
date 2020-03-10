@@ -3,9 +3,9 @@ package com.ly.imart.model.Fourth;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.TypeReference;
 import com.ly.imart.bean.Fourth.FriendListBean;
+import com.ly.imart.bean.Fourth.MyshowFragmentBean;
 import com.ly.imart.bean.Fourth.UserPageBean;
 import com.ly.imart.bean.Response.ResponseBean;
 import com.ly.imart.util.OkHttpRequest;
@@ -18,24 +18,26 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class FollowListModelImpl implements IFollowListModel {
-    private static final String ACTIVITY_TAG = "FollowListModelImpl";
+public class FourthMyshowFragmentModel {
 
-    private UserPageBean userPageBean;
-
-    public FollowListModelImpl() {
-        userPageBean = new UserPageBean();
-    }
-
-    @Override
-    public UserPageBean getUserInfoByUsername(String username) {
-        return userPageBean;
-    }
+    private static final String ACTIVITY_TAG = "FourthMyshowFragmentModel";
 
 
-    public List<FriendListBean> getFollowList(String username) throws ExecutionException, InterruptedException {
+    public List<MyshowFragmentBean> getMyshow1(String username) throws ExecutionException, InterruptedException {
         ExecutorService es = Executors.newSingleThreadExecutor();
-        Future<String> future = es.submit(new getResponseData(username,"follow"));
+        Future<String> future = es.submit(new getResponseData(username,"myshow1"));
+        ResponseBean responseBean = JSON.parseObject(future.get(),ResponseBean.class);
+        if (future.isDone()) {
+            es.shutdown();
+        }
+        String data = responseBean.getData().toString().replaceAll("=",":");
+        data = data.replaceAll("\"","\'");
+        List<MyshowFragmentBean> myshowFragmentBeans = JSON.parseObject(data,new TypeReference<List<MyshowFragmentBean>>(){});
+        return myshowFragmentBeans;
+    }
+    public List<MyshowFragmentBean> getMyshow2(String username) throws ExecutionException, InterruptedException {
+        ExecutorService es = Executors.newSingleThreadExecutor();
+        Future<String> future = es.submit(new getResponseData(username,"myshow1"));
         ResponseBean responseBean = JSON.parseObject(future.get(),ResponseBean.class);
         if (future.isDone()) {
 
@@ -44,13 +46,13 @@ public class FollowListModelImpl implements IFollowListModel {
         String data = responseBean.getData().toString().replaceAll("=",":");
         data = data.replaceAll("\"","\'");
 
-        List<FriendListBean> friendListBeanList = JSON.parseObject(data,new TypeReference<List<FriendListBean>>(){});
+        List<MyshowFragmentBean> myshowFragmentBeans = JSON.parseObject(data,new TypeReference<List<MyshowFragmentBean>>(){});
 
-        return friendListBeanList;
+        return myshowFragmentBeans;
     }
-    public List<FriendListBean> getFollowedList(String username) throws ExecutionException, InterruptedException {
+    public List<MyshowFragmentBean> getMyshow3(String username) throws ExecutionException, InterruptedException {
         ExecutorService es = Executors.newSingleThreadExecutor();
-        Future<String> future = es.submit(new getResponseData(username,"followed"));
+        Future<String> future = es.submit(new getResponseData(username,"myshow1"));
         ResponseBean responseBean = JSON.parseObject(future.get(),ResponseBean.class);
         if (future.isDone()) {
 
@@ -59,24 +61,9 @@ public class FollowListModelImpl implements IFollowListModel {
         String data = responseBean.getData().toString().replaceAll("=",":");
         data = data.replaceAll("\"","\'");
 
-        List<FriendListBean> friendListBeanList = JSON.parseObject(data,new TypeReference<List<FriendListBean>>(){});
+        List<MyshowFragmentBean> myshowFragmentBeans = JSON.parseObject(data,new TypeReference<List<MyshowFragmentBean>>(){});
 
-        return friendListBeanList;
-    }
-    public List<FriendListBean> getArticleList(String username) throws ExecutionException, InterruptedException {
-        ExecutorService es = Executors.newSingleThreadExecutor();
-        Future<String> future = es.submit(new getResponseData(username,"article"));
-        ResponseBean responseBean = JSON.parseObject(future.get(),ResponseBean.class);
-        if (future.isDone()) {
-
-            es.shutdown();
-        }
-        String data = responseBean.getData().toString().replaceAll("=",":");
-        data = data.replaceAll("\"","\'");
-
-        List<FriendListBean> friendListBeanList = JSON.parseObject(data,new TypeReference<List<FriendListBean>>(){});
-
-        return friendListBeanList;
+        return myshowFragmentBeans;
     }
 
 
@@ -131,4 +118,5 @@ public class FollowListModelImpl implements IFollowListModel {
             return accessToken;
         }
     }
+
 }

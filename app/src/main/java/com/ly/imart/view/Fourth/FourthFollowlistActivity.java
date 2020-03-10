@@ -33,7 +33,7 @@ public class FourthFollowlistActivity extends AppCompatActivity implements IFoll
     //    kind = 1 follow
 //    kind = 2 followed
     static int kind;
-
+    static String userName;
     FollowListPresenter followListPresenter;
 
     @Override
@@ -41,8 +41,9 @@ public class FourthFollowlistActivity extends AppCompatActivity implements IFoll
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friendlist);
         Intent intent = getIntent();
-
         kind = intent.getIntExtra("kind",1);
+        userName = intent.getStringExtra("userName");
+        System.out.println(userName);
         followListPresenter = new FollowListPresenter(this);
         mOneRecyclerView = (OneRecyclerView) findViewById(R.id.friendlist);
         mOneRecyclerView.init(
@@ -74,6 +75,15 @@ public class FourthFollowlistActivity extends AppCompatActivity implements IFoll
 
     }
 
+    @Override
+    public void gotoUserShow(String username) {
+        Intent intent = new Intent(this,FourthMyshowActivity.class);
+        intent.putExtra("userName",username);
+        startActivity(intent);
+    }
+
+    public
+
     class FriendListBeanVH extends OneVH<FriendListBean> {
         public FriendListBeanVH(ViewGroup parent) {
             super(parent, R.layout.activity_friendlist_list);
@@ -84,8 +94,14 @@ public class FourthFollowlistActivity extends AppCompatActivity implements IFoll
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    if (kind ==1 ||kind==2)
                     followListPresenter.gotoUserPage(friendListBean.getName());
-                    Toast.makeText(view.getContext(), friendListBean.getName(), Toast.LENGTH_SHORT).show();
+                    else {
+                        //gotoArticlePage
+                        Toast.makeText(view.getContext(), friendListBean.getArticleId(), Toast.LENGTH_SHORT).show();
+                    }
+
+//                    Toast.makeText(view.getContext(), friendListBean.getName(), Toast.LENGTH_SHORT).show();
                 }
             });
             TextView textView_friendlist_name = itemView.findViewById(R.id.friendlist_username);
@@ -113,11 +129,13 @@ public class FourthFollowlistActivity extends AppCompatActivity implements IFoll
 
     private List<FriendListBean> fetchData() {
         List<FriendListBean> listBeans = null;
+        System.out.println(userName);
         try {
             if (kind == 1)
-                listBeans = followListPresenter.getFriendList();
-            else
-                listBeans = followListPresenter.getFriendedList();
+                listBeans = followListPresenter.getFriendList(userName);
+            else if (kind == 2)
+                listBeans = followListPresenter.getFriendedList(userName);
+            else listBeans = followListPresenter.getArticleList(userName);
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
