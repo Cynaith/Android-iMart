@@ -14,10 +14,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.ly.imart.R;
-import com.ly.imart.maxim.MaximMainActivity;
 import com.ly.imart.view.First.FirstFragment;
 import com.ly.imart.view.Fourth.FourthFragment;
-import com.ly.imart.view.Others.AddArticleActivity;
+import com.ly.imart.view.Others.AddArticleTitle;
 import com.ly.imart.view.Second.SecondFragment;
 import com.ly.imart.view.Third.ThirdFragment;
 import com.next.easynavigation.constant.Anim;
@@ -127,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         return navigationBar;
     }
     private void gotoAddArticleActivity(){
-        startActivity(new Intent(this,AddArticleActivity.class));
+        startActivity(new Intent(this, AddArticleTitle.class));
     }
     public static void openIMart(Context context) {
         Intent intent = new Intent(context, MainActivity.class);

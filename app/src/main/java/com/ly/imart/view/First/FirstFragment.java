@@ -80,7 +80,7 @@ public class FirstFragment extends Fragment implements OnBannerListener, Adapter
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //超过每日可允许请求次数,注释掉下面
-        //sendRequestWithOKHttp();
+//        sendRequestWithOKHttp();
     }
 
     @Override
@@ -97,7 +97,7 @@ public class FirstFragment extends Fragment implements OnBannerListener, Adapter
         lvNews.setAdapter(adapter);
         lvNews.setOnItemClickListener(this);
         //超过每日可允许请求次数,注释掉下面
-        //sendRequestWithOKHttp();
+//        sendRequestWithOKHttp();
     }
 
     private void initData() {

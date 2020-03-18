@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.ly.imart.onerecycler.OneRecyclerView;
 import com.ly.imart.onerecycler.OneVH;
 import com.ly.imart.presenter.Fourth.FollowListPresenter;
 import com.ly.imart.util.CircleImageView;
+import com.ly.imart.view.Second.ArticleActivity;
 
 import org.w3c.dom.Text;
 
@@ -96,9 +98,16 @@ public class FourthFollowlistActivity extends AppCompatActivity implements IFoll
                 public void onClick(View view) {
                     if (kind ==1 ||kind==2)
                     followListPresenter.gotoUserPage(friendListBean.getName());
-                    else {
-                        //gotoArticlePage
-                        Toast.makeText(view.getContext(), friendListBean.getArticleId(), Toast.LENGTH_SHORT).show();
+                    else {//如果是文章列表
+                        try {
+                            ArticleActivity.initData(friendListBean.getArticleId());
+
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        ArticleActivity.openArticleById(FourthFollowlistActivity.this,friendListBean.getArticleId());
                     }
 
 //                    Toast.makeText(view.getContext(), friendListBean.getName(), Toast.LENGTH_SHORT).show();

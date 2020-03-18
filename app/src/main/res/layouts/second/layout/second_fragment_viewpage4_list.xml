@@ -8,14 +8,14 @@
     android:layout_marginLeft="10dp"
     android:orientation="vertical">
 
-    <ImageView
+    <com.ly.imart.util.MyImageView
         android:id="@+id/second_fragment_viewPager4_list_imageview"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="7dp"
         android:gravity="center_vertical"
-        android:src="@color/btn_filled_blue_bg_normal"
+        android:scaleType="fitXY"
         tools:ignore="ContentDescription" />
 
     <TextView

@@ -177,4 +177,6 @@
     <dimen name="scan_rect_width">240dp</dimen>
 
     <dimen name="scan_app_qr_code_logo_width">158dp</dimen>
+
+    <dimen name="edit_padding_top">0dp</dimen>
 </resources>

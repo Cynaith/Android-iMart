@@ -8,3 +8,5 @@
   - 未完成 注册时将用户名写入数据库
 
 - 全局变量 SharePreferenceUtils.getInstance().getUserName()
+- 点赞https://github.com/jd-alexander/LikeButton
+- 收藏 https://github.com/varunest/SparkButton

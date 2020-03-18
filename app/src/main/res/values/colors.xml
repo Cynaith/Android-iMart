@@ -38,4 +38,15 @@
     <color name="guide_divider">#DFDFDF</color>
 
     <color name="transparent">#00000000</color>
+
+    <color name="heart_primary_color">#da4439</color>
+    <color name="heart_secondary_color">#8a098c</color>
+    <color name="facebook_secondary_color">#3b5998</color>
+    <color name="facebook_primary_color">#dfe3ee</color>
+    <color name="twitter_primary_color">#667580</color>
+    <color name="twitter_secondary_color">#CCD6DD</color>
+    <color name="imart_primary_color">#CCD6DD</color>
+    <color name="imart_secondary_color">#FFEB3B</color>
+    <color name="imart_red_color">#F44343</color>
+
 </resources>

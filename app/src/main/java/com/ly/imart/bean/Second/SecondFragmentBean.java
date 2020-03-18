@@ -2,10 +2,19 @@ package com.ly.imart.bean.Second;
 
 public class SecondFragmentBean {
 
+    int id;
     String imageUrl;
     String name;
-    String price;
-    String fire;
+    double price;
+    int fire;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getImageUrl() {
         return imageUrl;
@@ -23,19 +32,19 @@ public class SecondFragmentBean {
         this.name = name;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public String getFire() {
+    public int getFire() {
         return fire;
     }
 
-    public void setFire(String fire) {
+    public void setFire(int fire) {
         this.fire = fire;
     }
 }

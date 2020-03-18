@@ -38,7 +38,6 @@ public class ThirdFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
     }
 
     @Nullable

@@ -67,7 +67,7 @@ public class SignModelImpl implements ISignInModel {
         public String call() throws Exception {
             String accessToken = "";
             OkHttpRequest okHttpRequest = new OkHttpRequest();
-            String accessTokenUrl = "http://10.0.2.2:8900/user/login?userPhone=" + userPhone + "&userCode=" + code;
+            String accessTokenUrl = "http://47.101.171.252:8900/user/login?userPhone=" + userPhone + "&userCode=" + code;
             try {
                 //发送请求
                 accessToken = okHttpRequest.get(accessTokenUrl);

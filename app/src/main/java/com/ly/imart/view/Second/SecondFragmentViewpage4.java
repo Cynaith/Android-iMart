@@ -1,5 +1,6 @@
 package com.ly.imart.view.Second;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,13 +16,16 @@ import android.widget.Toast;
 import com.ly.imart.R;
 import com.ly.imart.bean.Fourth.MyshowFragmentBean;
 import com.ly.imart.bean.Second.SecondFragmentBean;
+import com.ly.imart.model.Second.SecondFragmentViewPageModel;
 import com.ly.imart.onerecycler.OnCreateVHListener;
 import com.ly.imart.onerecycler.OneLoadingLayout;
 import com.ly.imart.onerecycler.OneRecyclerView;
 import com.ly.imart.onerecycler.OneVH;
+import com.ly.imart.util.MyImageView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,8 +34,8 @@ public class SecondFragmentViewpage4 extends Fragment {
     private View view;
     private OneRecyclerView mOneRecyclerView;
 
-//    @BindView(R.id.second_fragment_viewPager4_list_imageview)
-    ImageView imageView;
+    //    @BindView(R.id.second_fragment_viewPager4_list_imageview)
+    MyImageView imageView;
 
     @BindView(R.id.second_fragment_viewPager4_list_name)
     TextView textView_name;
@@ -91,45 +95,59 @@ public class SecondFragmentViewpage4 extends Fragment {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(view.getContext(),""+secondFragmentBean.getName(),Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(view.getContext(),""+secondFragmentBean.getId(),Toast.LENGTH_SHORT).show();
+                    try {
+                        ArticleActivity.initData(secondFragmentBean.getId());
+
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    ArticleActivity.openArticleById(view.getContext(), secondFragmentBean.getId());
+//                    Intent intent = new Intent(view.getContext(),ArticleActivity.class);
+//                    intent.putExtra("id",secondFragmentBean.getId());
+//                    startActivity(intent);
                 }
             });
 
-            imageView = (ImageView) itemView.findViewById(R.id.second_fragment_viewPager4_list_imageview);
+            imageView = (MyImageView) itemView.findViewById(R.id.second_fragment_viewPager4_list_imageview);
             textView_name = (TextView) itemView.findViewById(R.id.second_fragment_viewPager4_list_name);
             textView_price = (TextView) itemView.findViewById(R.id.second_fragment_viewPager4_list_price);
             textView_fire = (TextView) itemView.findViewById(R.id.second_fragment_viewPager4_list_fire);
 
-
+            imageView.setImageURL(secondFragmentBean.getImageUrl());
             textView_name.setText(secondFragmentBean.getName());
-            textView_price.setText(secondFragmentBean.getPrice());
-            textView_fire.setText(secondFragmentBean.getFire());
+            textView_price.setText("" + secondFragmentBean.getPrice());
+            textView_fire.setText("" + secondFragmentBean.getFire() * 20);
         }
     }
-    private void requestData(final boolean append){
+
+    private void requestData(final boolean append) {
         mOneRecyclerView.postDelayed(new Runnable() {
             @Override
             public void run() {
                 List<SecondFragmentBean> listBeans = fetchData();
-                if (append){
-                    mOneRecyclerView.addData(listBeans);//下拉时增加的数据
-                }
-                else {
+                if (append) {
+                    //mOneRecyclerView.addData(listBeans);//下拉时增加的数据
+                } else {
                     mOneRecyclerView.setData(listBeans);//刷新
                 }
             }
-        },1000);
+        }, 1000);
     }
 
-    private List<SecondFragmentBean> fetchData(){
-        List<SecondFragmentBean> listBeans = new ArrayList<>();
-        for(int i=0;i<26;i++){
-            SecondFragmentBean secondFragmentBean = new SecondFragmentBean();
-            secondFragmentBean.setName("name"+i);
-            secondFragmentBean.setPrice("¥"+(i+100));
-            secondFragmentBean.setFire("热度"+(1050+i));
-            listBeans.add(secondFragmentBean);
+    private List<SecondFragmentBean> fetchData() {
+        List<SecondFragmentBean> listBeans = null;
+        SecondFragmentViewPageModel secondFragmentViewPageModel = new SecondFragmentViewPageModel();
+        try {
+            listBeans = secondFragmentViewPageModel.getKindArticle(4);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         return listBeans;
     }
+
 }

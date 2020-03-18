@@ -1,0 +1,139 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/article_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#ffffff">
+
+            <TextView
+                android:id="@+id/article_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="#ff333333"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/article_username"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/article_userimg"
+                android:textColor="#ff262628"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/article_userinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="12dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="42dp"
+                android:layout_toRightOf="@id/article_userimg"
+                android:textColor="#ff768196"
+                android:textSize="10sp" />
+
+            <com.ly.imart.util.CircleImageView
+                android:id="@+id/article_userimg"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginTop="5dp" />
+        </RelativeLayout>
+
+
+
+        <org.sufficientlysecure.htmltextview.HtmlTextView
+            android:id="@+id/html_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:textAppearance="@android:style/TextAppearance.Small" />
+        <TextView
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#A0A0A0" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+            <com.varunest.sparkbutton.SparkButton
+                android:id="@+id/star_button"
+                android:layout_width="35dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="15dp"
+                app:sparkbutton_activeImage="@drawable/article_support_on"
+                app:sparkbutton_inActiveImage="@drawable/article_support_off"
+                app:sparkbutton_iconSize="30dp"
+                app:sparkbutton_primaryColor="@color/imart_primary_color"
+                app:sparkbutton_secondaryColor="@color/imart_red_color" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:text="486"
+                android:textColor="#ff2f1136"
+                android:gravity="center_vertical"
+                android:textSize="18sp">
+            </TextView>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="17dp"
+                android:background="@drawable/article_commennt"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:text="22"
+                android:textColor="#ff2f1136"
+                android:gravity="center"
+                android:textSize="18sp">
+            </TextView>
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="17dp"
+                android:background="@drawable/article_redirect"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+                <com.varunest.sparkbutton.SparkButton
+                    android:id="@+id/spark_button"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="20dp"
+                    app:sparkbutton_activeImage="@drawable/article_collection_on"
+                    app:sparkbutton_inActiveImage="@drawable/article_collection_off"
+                    app:sparkbutton_iconSize="35dp"
+                    app:sparkbutton_primaryColor="@color/imart_primary_color"
+                    app:sparkbutton_secondaryColor="@color/imart_secondary_color" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

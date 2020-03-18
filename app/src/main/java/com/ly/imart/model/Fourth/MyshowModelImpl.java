@@ -92,7 +92,7 @@ public class MyshowModelImpl implements IMyshowModel {
         public String call() throws Exception {
             String accessToken = "";
             OkHttpRequest okHttpRequest = new OkHttpRequest();
-            String accessTokenUrl = "http://10.0.2.2:8080/user/myshow?userName="+userName+"&loginName="+loginName ;
+            String accessTokenUrl = "http://47.101.171.252:8080/user/myshow?userName="+userName+"&loginName="+loginName ;
             try {
                 //发送请求
                 accessToken = okHttpRequest.get(accessTokenUrl);
