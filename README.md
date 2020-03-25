@@ -25,8 +25,9 @@
   - 后台根据 当前 Location和目标 Location 实现 BusWay
   - 后台根据 当前 Location和目标 Location 实现 CarWay
   - 集成百度地图实现POI检索 (完成)
+  - 集成高德地图实现POI检索 (今日)
   - 界面
-    - RecycleView 展示 List
-    - List -> TabLayout Walk、Bus、Car
+    - RecycleView 展示 List (今日)
+    - List -> TabLayout Walk、Bus、Car (今日)
     - List展示、百度Map
 
