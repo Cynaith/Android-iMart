@@ -23,8 +23,6 @@
             android:text="我的"
             android:textColor="#ff333333"
             android:textSize="15sp" />
-
-
     </RelativeLayout>
 
     <RelativeLayout

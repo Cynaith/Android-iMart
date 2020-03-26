@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.ly.imart.R;
 import com.ly.imart.bean.Fourth.MyshowFragmentBean;
 import com.ly.imart.model.Fourth.FourthMyshowFragmentModel;
@@ -84,7 +85,11 @@ public class FourthMyshowFragment3 extends Fragment {
                 }
             });
             MyImageView myImageView = itemView.findViewById(R.id.myshow3_list_image);
-            myImageView.setImageURL(myshowFragment1Bean.getImageUrl());
+            Glide.with(view.getContext()).load(myshowFragment1Bean.getImageUrl())
+                    .asBitmap()
+                    .error(R.drawable.loadingimg)
+                    .centerCrop()
+                    .into(myImageView);
 
         }
     }

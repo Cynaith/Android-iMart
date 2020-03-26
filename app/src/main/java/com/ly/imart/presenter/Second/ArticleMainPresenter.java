@@ -15,8 +15,4 @@ public class ArticleMainPresenter {
     }
 
 
-    public void getUserInfo(String userPhone){
-        iArticleMainView.initView(iArticleMainModel.getInfo(userPhone));;
-    }
-
 }

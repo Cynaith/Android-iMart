@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.ly.imart.R;
 import com.ly.imart.bean.Fourth.FriendListBean;
 import com.ly.imart.bean.Fourth.MyshowFragmentBean;
@@ -20,6 +21,7 @@ import com.ly.imart.onerecycler.OneRecyclerView;
 import com.ly.imart.onerecycler.OneVH;
 import com.ly.imart.util.MyImageView;
 import com.ly.imart.view.Second.ArticleActivity;
+import com.ly.imart.view.Second.ArticleMainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,19 +83,15 @@ public class FourthMyshowFragment1 extends Fragment {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    try {
-                        ArticleActivity.initData(myshowFragment1Bean.getId());
-
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    ArticleActivity.openArticleById(view.getContext(),myshowFragment1Bean.getId());
+                    ArticleMainActivity.openArticleMainById(view.getContext(),myshowFragment1Bean.getId());
                 }
             });
             MyImageView myImageView = itemView.findViewById(R.id.myshow1_list_image);
-            myImageView.setImageURL(myshowFragment1Bean.getImageUrl());
+            Glide.with(view.getContext()).load(myshowFragment1Bean.getImageUrl())
+                    .asBitmap()
+                    .error(R.drawable.loadingimg)
+                    .centerCrop()
+                    .into(myImageView);
 
 
         }

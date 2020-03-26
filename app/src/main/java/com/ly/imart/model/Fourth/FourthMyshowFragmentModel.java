@@ -37,7 +37,7 @@ public class FourthMyshowFragmentModel {
     }
     public List<MyshowFragmentBean> getMyshow2(String username) throws ExecutionException, InterruptedException {
         ExecutorService es = Executors.newSingleThreadExecutor();
-        Future<String> future = es.submit(new getResponseData(username,"myshow1"));
+        Future<String> future = es.submit(new getResponseData(username,"myshow2"));
         ResponseBean responseBean = JSON.parseObject(future.get(),ResponseBean.class);
         if (future.isDone()) {
 
@@ -52,7 +52,7 @@ public class FourthMyshowFragmentModel {
     }
     public List<MyshowFragmentBean> getMyshow3(String username) throws ExecutionException, InterruptedException {
         ExecutorService es = Executors.newSingleThreadExecutor();
-        Future<String> future = es.submit(new getResponseData(username,"myshow1"));
+        Future<String> future = es.submit(new getResponseData(username,"myshow3"));
         ResponseBean responseBean = JSON.parseObject(future.get(),ResponseBean.class);
         if (future.isDone()) {
 

@@ -15,16 +15,16 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="stateHidden|adjustResize"
         tools:replace="android:icon,android:roundIcon,android:theme">
-
         <activity
             android:name=".maxim.login.view.WelcomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Splash">
-                        <intent-filter>
-                            <action android:name="android.intent.action.MAIN" />
-                            <category android:name="android.intent.category.LAUNCHER" />
-                        </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+
         <activity android:name=".view.Login.LunchActivity">
 
         </activity>
@@ -45,32 +45,45 @@
         <activity android:name=".demo.TabLayout.TabLayoutActivity">
             <!--标签页-->
         </activity>
-
         <activity android:name=".demo.Douyin.ViewPagerLayoutManagerActivity">
             <!--抖音-->
         </activity>
 
-        <!--        富文本编辑框 新更新 下-->
         <activity android:name=".view.Others.AddArticle">
 
         </activity>
-        <!--          旧-->
-        <activity android:name=".view.Second.ArticleMainActivity"></activity>
-        <!--        文章显示主界面 新更新 下 -->
+
+        <activity android:name=".view.Second.ArticleMainActivity">
+            <!--新版文章显示-->
+
+        </activity>
         <activity android:name=".view.Second.ArticleActivity">
-
+            <!--旧版文章显示-->
         </activity>
-        <!--        添加文章标题-->
         <activity android:name=".view.Others.AddArticleTitle">
-
+            <!--        添加文章标题-->
         </activity>
-        <!--        添加文章图片-->
         <activity android:name=".view.Others.AddArticleImg">
 
+            <!--        添加文章图片-->
+        </activity>
+        <activity android:name=".view.Fourth.DiyActivity">
+
         </activity>
 
+        <activity android:name=".view.Fourth.DiyListActivity">
 
-        <!--登陆-->
+        </activity>
+
+        <activity android:name=".view.Fourth.GaodeMap.BusWay"/>
+        <activity android:name=".view.Fourth.GaodeMap.WalkWay"/>
+        <activity android:name=".view.Fourth.GaodeMap.CarWay"/>
+        <activity android:name=".view.Fourth.GaodeMap.InitWay">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
         <activity
             android:name=".maxim.login.view.LoginActivity"
             android:screenOrientation="portrait"></activity>
@@ -80,84 +93,84 @@
             android:name=".maxim.login.view.LoginByVerifyActivity"
             android:screenOrientation="portrait"></activity>
 
-        <!--注册绑定手机号-->
+        <!--登陆-->
         <activity
             android:name=".maxim.login.view.RegisterBindMobileActivity"
             android:screenOrientation="portrait"></activity>
 
-        <!--手机号 微信登录绑定用户-->
+        <!--注册绑定手机号-->
         <activity
             android:name=".maxim.login.view.LoginBindUserActivity"
             android:screenOrientation="portrait"></activity>
 
-        <!--验证密码-->
+        <!--手机号 微信登录绑定用户-->
         <activity
             android:name=".maxim.login.view.VerifyActivity"
             android:screenOrientation="portrait"></activity>
 
-        <!--绑定手机号-->
+        <!--验证密码-->
         <activity
             android:name=".maxim.login.view.BindMobileActivity"
             android:screenOrientation="portrait"></activity>
 
-        <!--注册-->
+        <!--绑定手机号-->
         <activity
             android:name=".maxim.login.view.RegisterActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
 
-        <!--用户协议-->
+        <!--注册-->
         <activity
             android:name=".maxim.login.view.ProtocolActivity"
             android:screenOrientation="portrait"></activity>
 
-        <!--多设备-->
+        <!--用户协议-->
         <activity
             android:name=".maxim.login.view.DeviceListActivity"
             android:screenOrientation="portrait" />
 
-        <!--关于我们-->
+        <!--多设备-->
         <activity
             android:name=".maxim.login.view.AboutUsActivity"
             android:screenOrientation="portrait" />
 
-        <!--账号管理-->
+        <!--关于我们-->
         <activity
             android:name=".maxim.login.view.AccountListActivity"
             android:screenOrientation="portrait" />
 
-        <!--首页-->
+        <!--账号管理-->
         <activity
             android:name=".maxim.MaximMainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Main"></activity>
 
-        <!--单聊页面-->
+        <!--首页-->
         <activity
             android:name=".maxim.message.view.ChatSingleActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
-        <!--群聊页面-->
+        <!--单聊页面-->
         <activity
             android:name=".maxim.message.view.ChatGroupActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
-        <!--消息搜索-->
+        <!--群聊页面-->
         <activity
             android:name=".maxim.message.view.MessageSearchActivity"
             android:screenOrientation="portrait" />
 
-        <!--群聊设置页面-->
+        <!--消息搜索-->
         <activity
             android:name=".maxim.message.view.ChatGroupOperateActivity"
             android:screenOrientation="portrait" />
 
-        <!--群聊成员页面-->
+        <!--群聊设置页面-->
         <activity
             android:name=".maxim.message.view.ChatGroupMemberActivity"
             android:screenOrientation="portrait" />
@@ -167,22 +180,22 @@
             android:name=".maxim.message.view.ChatGroupListMemberActivity"
             android:screenOrientation="portrait" />
 
-        <!--群聊黑名单页面-->
+        <!--群聊成员页面-->
         <activity
             android:name=".maxim.message.view.ChatGroupBlockActivity"
             android:screenOrientation="portrait" />
 
-        <!--群聊禁言页面-->
+        <!--群聊黑名单页面-->
         <activity
             android:name=".maxim.message.view.ChatGroupBannedActivity"
             android:screenOrientation="portrait" />
 
-        <!--群聊管理员页面-->
+        <!--群聊禁言页面-->
         <activity
             android:name=".maxim.message.view.ChatGroupAdminActivity"
             android:screenOrientation="portrait" />
 
-        <!--群聊转让群主页面-->
+        <!--群聊管理员页面-->
         <activity
             android:name=".maxim.message.view.ChatGroupTransActivity"
             android:screenOrientation="portrait" />
@@ -192,131 +205,132 @@
             android:name=".maxim.message.view.ChatGroupAtActivity"
             android:screenOrientation="portrait" />
 
-        <!--群共享文件-->
+        <!--群聊转让群主页面-->
         <activity
             android:name=".maxim.message.view.ChatGroupShareActivity"
             android:screenOrientation="portrait" />
 
-        <!--群公告-->
+        <!--群共享文件-->
         <activity
             android:name=".maxim.message.view.ChatGroupAnnomentActivity"
             android:screenOrientation="portrait" />
 
-        <!--群聊管理页面-->
+        <!--群公告-->
         <activity
             android:name=".maxim.message.view.ChatGroupSettingActivity"
             android:screenOrientation="portrait" />
 
-        <!--群聊二维码-->
+        <!--群聊管理页面-->
         <activity
             android:name=".maxim.group.view.GroupQrCodeActivity"
             android:screenOrientation="portrait" />
 
-        <!--加入群聊二维码-->
+        <!--群聊二维码-->
         <activity
             android:name=".maxim.group.view.GroupQrcodeDetailActivity"
             android:screenOrientation="portrait" />
 
-        <!--用户设置-->
+        <!--加入群聊二维码-->
         <activity
             android:name=".maxim.login.view.SettingUserActivity"
             android:screenOrientation="portrait" />
 
-        <!--我的二维码-->
+        <!--用户设置-->
         <activity
             android:name=".maxim.login.view.MyQrCodeActivity"
             android:screenOrientation="portrait" />
 
-        <!--搜搜-->
+        <!--我的二维码-->
         <activity
             android:name=".maxim.contact.view.ContactSearchActivity"
             android:screenOrientation="portrait" />
 
-        <!--群组-->
+        <!--搜搜-->
         <activity
             android:name=".maxim.group.view.GroupListActivity"
             android:screenOrientation="portrait" />
 
-        <!--群组搜索-->
+        <!--群组-->
         <activity
             android:name=".maxim.group.view.GroupSearchActivity"
             android:screenOrientation="portrait" />
 
-        <!--群组邀请-->
+        <!--群组搜索-->
         <activity
             android:name=".maxim.group.view.GroupInviteActivity"
             android:screenOrientation="portrait" />
 
-        <!--群组申请-->
+        <!--群组邀请-->
         <activity
             android:name=".maxim.group.view.GroupApplyActivity"
             android:screenOrientation="portrait" />
 
-        <!--申请与通知-->
+        <!--群组申请-->
         <activity
             android:name=".maxim.contact.view.RosterApplyActivity"
             android:screenOrientation="portrait" />
 
-        <!--选择联系人-->
+        <!--申请与通知-->
         <activity
             android:name=".maxim.contact.view.RosterChooseActivity"
             android:screenOrientation="portrait" />
 
-        <!--黑名单-->
+        <!--选择联系人-->
         <activity
             android:name=".maxim.contact.view.BlockListActivity"
             android:screenOrientation="portrait" />
 
-        <!--详情-->
+        <!--黑名单-->
         <activity
             android:name=".maxim.contact.view.RosterDetailActivity"
             android:screenOrientation="portrait" />
 
-        <!--选择文件-->
+        <!--详情-->
         <activity
             android:name=".maxim.message.view.ChooseFileActivity"
             android:screenOrientation="portrait" />
 
-        <!--转发联系人-->
+        <!--选择文件-->
         <activity
             android:name=".maxim.contact.view.ForwardMsgRosterActivity"
             android:screenOrientation="portrait" />
 
-        <!--转发群组-->
+        <!--转发联系人-->
         <activity
             android:name=".maxim.group.view.ForwardMsgGroupActivity"
             android:screenOrientation="portrait" />
 
-        <!--大图-->
+        <!--转发群组-->
         <activity
             android:name=".maxim.message.view.PhotoDetailActivity"
             android:screenOrientation="portrait" />
 
-        <!--视频-->
+        <!--大图-->
         <activity
             android:name=".maxim.message.view.VideoDetailActivity"
             android:screenOrientation="portrait" />
 
-        <!--视频录制-->
+        <!--视频-->
         <activity
             android:name=".maxim.common.utils.video.PhotoRecorderActivity"
             android:screenOrientation="portrait" />
 
-        <!--扫一扫-->
+        <!--视频录制-->
         <activity
             android:name=".maxim.scan.view.ScannerActivity"
             android:screenOrientation="portrait" />
 
-        <!--扫一扫结果-->
+        <!--扫一扫-->
         <activity
             android:name=".maxim.scan.view.ScanResultActivity"
             android:screenOrientation="portrait" />
 
-        <!--群未读-->
+        <!--扫一扫结果-->
         <activity
             android:name=".maxim.message.view.GroupAckActivity"
             android:screenOrientation="portrait" />
 
+        <!--群未读-->
         <activity
             android:name=".maxim.wxapi.WXEntryActivity"
             android:exported="true"
@@ -325,7 +339,6 @@
             android:taskAffinity="net.sourceforge.simcpux"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <!-- fileProvider -->
         <activity
             android:name="com.huawei.hms.activity.BridgeActivity"
             android:configChanges="orientation|locale|screenSize|layoutDirection|fontScale"
@@ -338,6 +351,14 @@
                 android:value="androidhwext:style/Theme.Emui.Translucent" />
         </activity>
 
+        <!-- fileProvider -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="L0DkBXpQdaKP7o61FFz7NgoZcEHiS2zq" >
+
+        </meta-data>
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="9ba4ba60f5345742abfc4d84304696bf">
+        </meta-data>
         <!-- 聊天push广播 -->
         <meta-data
             android:name="com.huawei.hms.client.appid"
@@ -570,7 +591,7 @@
     <uses-permission android:name="com.meizu.c2dm.permission.RECEIVE" />
     <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-<!--    <uses-permission android:name="android.permission.CAMERA" />-->
+    <!--    <uses-permission android:name="android.permission.CAMERA" />-->
+    <!--用于访问GPS定位-->
 
 </manifest>

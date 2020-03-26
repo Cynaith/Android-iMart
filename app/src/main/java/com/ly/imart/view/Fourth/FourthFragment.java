@@ -7,6 +7,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
 import com.ly.imart.R;
 import com.ly.imart.bean.Fourth.FourthBean;
 import com.ly.imart.maxim.MaximMainActivity;
@@ -21,6 +26,8 @@ import com.ly.imart.maxim.common.utils.SharePreferenceUtils;
 import com.ly.imart.presenter.Fourth.FourthPresenter;
 import com.ly.imart.util.CircleImageView;
 import com.ly.imart.util.MyImageView;
+import com.ly.imart.util.SystemInfo;
+import com.ly.imart.view.Fourth.GaodeMap.util.Utils;
 
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
@@ -28,33 +35,22 @@ import java.util.concurrent.ExecutionException;
 public class FourthFragment extends Fragment implements View.OnClickListener,IFourthView {
 
     private View view;
-
     private FourthPresenter fourthPresenter;
-
-
     CircleImageView circleImageView_mycollection;
-
     CircleImageView circleImageView_mygoods;
-
     CircleImageView circleImageView_mycart;
-
     CircleImageView circleImageView_diy;
-
     CircleImageView circleImageView_myfriends;
-
     TextView textView_fourth_myfollow;
-
     TextView textView_fourth_myfollowed;
-
     TextView textView_myarticle;
-
     TextView textView_myfriend;
-
     TextView textView_username;
-
     TextView textView_usershow;
-
     RelativeLayout relativeLayout;
+    private AMapLocationClient locationClientSingle = null;
+    private AMapLocationClient locationClientContinue = null;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -67,6 +63,8 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
         textView_myarticle = view.findViewById(R.id.fourth_myarticle);
         textView_myfriend = view.findViewById(R.id.fourth_myfriend);
         (circleImageView_myfriends = view.findViewById(R.id.fourth_more_myfriends)).setOnClickListener(this);
+        (circleImageView_diy = view.findViewById(R.id.fourth_more_diy)).setOnClickListener(this);
+        (circleImageView_mycollection =view.findViewById(R.id.fourth_more_mycollection)).setOnClickListener(this);
         relativeLayout = view.findViewById(R.id.fourth_mine);
         textView_username = view.findViewById(R.id.fourth_username);
         textView_usershow = view.findViewById(R.id.fourth_usershow);
@@ -130,6 +128,9 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
             case R.id.fourth_mine:
                 fourthPresenter.gotoMyshowPage();
                 break;
+            case R.id.fourth_more_diy:
+                gotoDiyList();
+                break;
             case R.id.fourth_more_myfriends:
 //                MaximMainActivity.openMain(this.getContext());
                 Intent intent = new Intent(this.getContext(),MaximMainActivity.class);
@@ -181,4 +182,10 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
 //        startActivity(new Intent(this.getActivity(),FourthMyshowActivity.class));
 
     }
+
+    public void gotoDiyList(){
+        Intent intent = new Intent(this.getActivity(),DiyListActivity.class);
+        startActivity(intent);
+    }
+
 }

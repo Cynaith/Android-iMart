@@ -148,8 +148,8 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
     @Override
     public void setTabLayout() {
         tabLayout.addTab(tabLayout.newTab().setText("作品"));
-        tabLayout.addTab(tabLayout.newTab().setText("动态"));
         tabLayout.addTab(tabLayout.newTab().setText("喜欢"));
+        tabLayout.addTab(tabLayout.newTab().setText("收藏"));
         final ViewPager viewPager = (ViewPager) findViewById(R.id.activity_myshow_viewPager);
         viewPager.setAdapter(new MyshowPageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(),userName));
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));

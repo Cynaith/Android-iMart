@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.ly.imart.R;
 import com.ly.imart.bean.Fourth.MyshowFragmentBean;
 import com.ly.imart.bean.Second.SecondFragmentBean;
@@ -94,23 +95,18 @@ MyImageView imageView;
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    try {
-                        ArticleActivity.initData(secondFragmentBean.getId());
-
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    ArticleActivity.openArticleById(view.getContext(),secondFragmentBean.getId());
-//                    Toast.makeText(view.getContext(),""+secondFragmentBean.getName(),Toast.LENGTH_SHORT).show();
+                    ArticleMainActivity.openArticleMainById(view.getContext(),secondFragmentBean.getId());
                 }
             });
             imageView = (MyImageView) itemView.findViewById(R.id.second_fragment_viewPager2_list_imageview);
             textView_name = (TextView) itemView.findViewById(R.id.second_fragment_viewPager2_list_name);
             textView_price = (TextView) itemView.findViewById(R.id.second_fragment_viewPager2_list_price);
             textView_fire = (TextView) itemView.findViewById(R.id.second_fragment_viewPager2_list_fire);
-            imageView.setImageURL(secondFragmentBean.getImageUrl());
+            Glide.with(view.getContext()).load(secondFragmentBean.getImageUrl())
+                    .asBitmap()
+                    .error(R.drawable.loadingimg)
+                    .centerCrop()
+                    .into(imageView);
             textView_name.setText(secondFragmentBean.getName());
             textView_price.setText(""+secondFragmentBean.getPrice());
             textView_fire.setText(""+secondFragmentBean.getFire()*20);

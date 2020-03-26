@@ -20,6 +20,7 @@ import com.ly.imart.onerecycler.OneVH;
 import com.ly.imart.presenter.Fourth.FollowListPresenter;
 import com.ly.imart.util.CircleImageView;
 import com.ly.imart.view.Second.ArticleActivity;
+import com.ly.imart.view.Second.ArticleMainActivity;
 
 import org.w3c.dom.Text;
 
@@ -84,7 +85,6 @@ public class FourthFollowlistActivity extends AppCompatActivity implements IFoll
         startActivity(intent);
     }
 
-    public
 
     class FriendListBeanVH extends OneVH<FriendListBean> {
         public FriendListBeanVH(ViewGroup parent) {
@@ -99,15 +99,7 @@ public class FourthFollowlistActivity extends AppCompatActivity implements IFoll
                     if (kind ==1 ||kind==2)
                     followListPresenter.gotoUserPage(friendListBean.getName());
                     else {//如果是文章列表
-                        try {
-                            ArticleActivity.initData(friendListBean.getArticleId());
-
-                        } catch (ExecutionException e) {
-                            e.printStackTrace();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        ArticleActivity.openArticleById(FourthFollowlistActivity.this,friendListBean.getArticleId());
+                        ArticleMainActivity.openArticleMainById(FourthFollowlistActivity.this,friendListBean.getArticleId());
                     }
 
 //                    Toast.makeText(view.getContext(), friendListBean.getName(), Toast.LENGTH_SHORT).show();

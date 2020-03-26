@@ -79,7 +79,7 @@
             android:layout_marginTop="20dp"
             android:enabled="true"
             android:clickable="true"
-            android:text="类型1"/>
+            android:text="创意生活"/>
         <RadioButton
             android:id="@+id/add_article_title_kind2"
             android:layout_width="wrap_content"
@@ -87,7 +87,7 @@
             android:layout_marginTop="20dp"
             android:enabled="true"
             android:clickable="true"
-            android:text="类型2"/>
+            android:text="办公用品"/>
         <RadioButton
             android:id="@+id/add_article_title_kind3"
             android:layout_width="wrap_content"
@@ -95,7 +95,7 @@
             android:layout_marginTop="20dp"
             android:enabled="true"
             android:clickable="true"
-            android:text="类型3"/>
+            android:text="家居设计"/>
         <RadioButton
             android:id="@+id/add_article_title_kind4"
             android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
             android:layout_marginTop="20dp"
             android:enabled="true"
             android:clickable="true"
-            android:text="类型4"/>
+            android:text="工艺美术"/>
     </RadioGroup>
     <TextView
         android:id="@+id/add_article_title_goto"

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    >
+
+
+    <com.ly.imart.util.MyImageView
+        android:id="@+id/diylist_photo"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/imart"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:id="@+id/diylist_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="@dimen/dimen_16"
+            />
+
+        <TextView
+            android:id="@+id/diylist_tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textColor="#3088CF"
+            android:textSize="@dimen/dimen_14"
+            android:clickable="true"
+            />
+        <TextView
+            android:id="@+id/diylist_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textSize="@dimen/dimen_13"
+            />
+        <TextView
+            android:id="@+id/diylist_distance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="15km"
+            android:textSize="@dimen/dimen_14"
+            />
+
+    </LinearLayout>
+</LinearLayout>

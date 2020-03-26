@@ -40,10 +40,10 @@ public class SecondFragment extends Fragment implements ISecondView{
     @Override
     public void setTablayout() {
 
-            tabLayout.addTab(tabLayout.newTab().setText("创意分类"));
-            tabLayout.addTab(tabLayout.newTab().setText("创意分类"));
-            tabLayout.addTab(tabLayout.newTab().setText("创意分类"));
-            tabLayout.addTab(tabLayout.newTab().setText("创意分类"));
+            tabLayout.addTab(tabLayout.newTab().setText("创意生活"));
+            tabLayout.addTab(tabLayout.newTab().setText("办公用品"));
+            tabLayout.addTab(tabLayout.newTab().setText("家居设计"));
+            tabLayout.addTab(tabLayout.newTab().setText("工艺美术"));
             final ViewPager viewPager = (ViewPager) view.findViewById(R.id.second_fragment_viewPager);
             viewPager.setAdapter(new SecondPageAdapter(this.getActivity().getSupportFragmentManager(), tabLayout.getTabCount()));
             viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));

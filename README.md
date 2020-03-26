@@ -14,20 +14,22 @@
 
 ---
 
-- 推荐功能
+- 推荐功能(完成)
 
-  - 后台根据定位获取相关 Shop
-    - 前台获取定位，包含Location 和City
+  - 后台根据定位获取相关 Shop(完成)
+    - 前台获取定位，包含Location 和City(完成)
     - 后台根据Location 获取 region(完成)
     - 后台根据Location 获取 Shop (完成)
   - 后台根据 当前 Location和目标 Location 实现 WalkingWay (完成)
-    - 返回List<String>
-  - 后台根据 当前 Location和目标 Location 实现 BusWay
-  - 后台根据 当前 Location和目标 Location 实现 CarWay
+    - 返回List<String>(完成)
+  - 后台根据 当前 Location和目标 Location 实现 BusWay(完成)
+  - 后台根据 当前 Location和目标 Location 实现 CarWay(完成)
   - 集成百度地图实现POI检索 (完成)
-  - 集成高德地图实现POI检索 (今日)
+  - 集成高德地图实现POI检索 (完成)
   - 界面
-    - RecycleView 展示 List (今日)
-    - List -> TabLayout Walk、Bus、Car (今日)
-    - List展示、百度Map
-
+    - RecycleView 展示 List (完成)
+    - List -> TabLayout Walk、Bus、Car (完成)
+    - List展示、百度Map(完成)
+- android切换定位
+ - https://blog.csdn.net/ppdouble/article/details/24656879?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task
+ - adb -s emulator-5554 emu geo fix 121.49612 31.24010

@@ -71,7 +71,11 @@ public class ThirdFragment extends Fragment {
 
             } else {
                 //第一次不可见执行
-                videoView.pause();
+                try{
+                    videoView.pause();
+                }catch (NullPointerException e){
+
+                }
             }
         }
 

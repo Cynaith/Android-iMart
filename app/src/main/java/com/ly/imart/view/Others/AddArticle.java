@@ -132,10 +132,9 @@ public class AddArticle extends FragmentActivity {
                 stringBuilder1.append(itemData.inputStr);
                 stringBuilder1.deleteCharAt(itemData.inputStr.length()-1);
                 stringBuilder1.deleteCharAt(0);
-                stringBuilder1.insert(0,"<h3>");
-                stringBuilder.append(stringBuilder1.toString().replaceAll(",","</h3><h3>"));
-                stringBuilder1.append("</h3>");
-                Log.d("RichEditor", "commit inputStr=" + stringBuilder1.toString().replaceAll(",","</h3><br/>"));
+                stringBuilder.append(stringBuilder1.toString().replaceAll(",","<br/>")+"<br/>");
+//                stringBuilder1.append("</h3>");
+//                Log.d("RichEditor", "commit inputStr=" + stringBuilder1.toString().replaceAll(",","</h3><br/>"));
             } else if (itemData.imagePath != null) {
                 String imgUrl = null;
                 try {
@@ -146,7 +145,7 @@ public class AddArticle extends FragmentActivity {
                     e.printStackTrace();
                 }
                 Log.d("RichEditor", "commit imgePath=" + imgUrl);
-                stringBuilder.append("<br/><img src=\""+imgUrl+"\"/><br/>");
+                stringBuilder.append("<img src=\""+imgUrl+"\"/><br/>");
 //                Log.d("RichEditor", "commit imgePath=" + itemData.imagePath);
 
             }

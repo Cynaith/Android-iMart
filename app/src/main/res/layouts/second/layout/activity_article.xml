@@ -78,9 +78,9 @@
             android:orientation="horizontal">
             <com.varunest.sparkbutton.SparkButton
                 android:id="@+id/star_button"
-                android:layout_width="35dp"
+                android:layout_width="55dp"
                 android:layout_height="60dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="5dp"
                 app:sparkbutton_activeImage="@drawable/article_support_on"
                 app:sparkbutton_inActiveImage="@drawable/article_support_off"
                 app:sparkbutton_iconSize="30dp"
@@ -89,7 +89,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="6dp"
                 android:text="486"
                 android:textColor="#ff2f1136"
                 android:gravity="center_vertical"
