@@ -145,7 +145,7 @@ public class FirstFragment extends Fragment implements OnBannerListener, Adapter
                 //开始调用的方法，启动轮播图。
                 .start();
         //超过每日可允许请求次数,注释掉下面
-//        sendRequestWithOKHttp();
+     //   sendRequestWithOKHttp();
 
     }
 

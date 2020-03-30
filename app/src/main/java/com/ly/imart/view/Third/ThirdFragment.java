@@ -180,7 +180,7 @@ public class ThirdFragment extends Fragment {
 
     class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         //private int[] imgs = {R.mipmap.img_video_1,R.mipmap.img_video_2};
-        private int[] videos = {R.raw.douyin_1, R.raw.douyin_2, R.raw.douyin_3, R.raw.douyin_4};
+//        private int[] videos = {R.raw.douyin_1, R.raw.douyin_2, R.raw.douyin_3, R.raw.douyin_4};
 
         public MyAdapter() {
         }
@@ -195,7 +195,8 @@ public class ThirdFragment extends Fragment {
         @Override
         public void onBindViewHolder(MyAdapter.ViewHolder holder, int position) {
             //holder.img_thumb.setImageResource(imgs[position%2]);
-            holder.videoView.setVideoURI(Uri.parse("android.resource://" + getContext().getPackageName() + "/" + videos[position % 4]));
+           //holder.videoView.setVideoURI(Uri.parse("android.resource://" + getContext().getPackageName() + "/" + videos[position % 4]));
+            holder.videoView.setVideoURI(Uri.parse("http://47.101.171.252:81/static/7ce4d0c3-b449-47db-bed6-b1ee392f4a5f.mp4"));
         }
 
         @Override

@@ -5,6 +5,7 @@
 
     <application
         android:name=".maxim.common.base.MaxIMApplication"
+        android:hardwareAccelerated="true"
         android:allowBackup="true"
         android:icon="@drawable/imart"
         android:label="@string/app_name"
@@ -67,6 +68,7 @@
 
             <!--        添加文章图片-->
         </activity>
+        <activity android:name=".view.Others.AddVideo"></activity>
         <activity android:name=".view.Fourth.DiyActivity">
 
         </activity>
@@ -351,6 +353,9 @@
                 android:value="androidhwext:style/Theme.Emui.Translucent" />
         </activity>
 
+        <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/provider_paths">
+        </meta-data>
         <!-- fileProvider -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"

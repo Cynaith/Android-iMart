@@ -14,7 +14,7 @@
             android:ellipsize="marquee"
             android:gravity="center"
             android:singleLine="true"
-            android:text="21km"
+            android:text="步行导航定位中"
             android:textColor="#ff333333"
             android:textSize="15sp" />
     </RelativeLayout>

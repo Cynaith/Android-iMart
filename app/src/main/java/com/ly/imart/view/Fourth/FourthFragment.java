@@ -132,9 +132,9 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
                 gotoDiyList();
                 break;
             case R.id.fourth_more_myfriends:
-//                MaximMainActivity.openMain(this.getContext());
-                Intent intent = new Intent(this.getContext(),MaximMainActivity.class);
-                this.startActivity(intent);
+                MaximMainActivity.openMain(this.getContext());
+//                Intent intent = new Intent(this.getContext(),MaximMainActivity.class);
+//                this.startActivity(intent);
                 break;
         }
     }

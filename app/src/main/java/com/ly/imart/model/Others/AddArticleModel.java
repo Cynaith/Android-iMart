@@ -76,7 +76,6 @@ public class AddArticleModel {
         public String call() throws Exception {
             OkHttpClient okHttpClient = new OkHttpClient();
             String url = "http://47.101.171.252:8890/uploadFile?username="+ SharePreferenceUtils.getInstance().getUserName();
-//            String url = "http://47.101.171.252:8890/uploadFile?username=jack";
             Log.d("imagePath", imagePath);
             File file = new File(imagePath);
             RequestBody image = RequestBody.create(MediaType.parse("image/*"), file);

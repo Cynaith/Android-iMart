@@ -17,6 +17,7 @@ import com.ly.imart.R;
 import com.ly.imart.view.First.FirstFragment;
 import com.ly.imart.view.Fourth.FourthFragment;
 import com.ly.imart.view.Others.AddArticleTitle;
+import com.ly.imart.view.Others.AddVideo;
 import com.ly.imart.view.Second.SecondFragment;
 import com.ly.imart.view.Third.ThirdFragment;
 import com.next.easynavigation.constant.Anim;
@@ -37,11 +38,11 @@ public class MainActivity extends AppCompatActivity {
 
     private EasyNavigationBar navigationBar;
 
-    private String[] tabText = {"首页", "发现","", "视频", "我的"};
+    private String[] tabText = {"首页", "发现", "", "视频", "我的"};
     //未选中icon
-    private int[] normalIcon = {R.drawable.ic_home_unselect, R.drawable.ic_kind_unselect, R.drawable.ic_addto,R.drawable.ic_video_unselect, R.drawable.ic_mine_unselect};
+    private int[] normalIcon = {R.drawable.ic_home_unselect, R.drawable.ic_kind_unselect, R.drawable.ic_addto, R.drawable.ic_video_unselect, R.drawable.ic_mine_unselect};
     //选中时icon
-    private int[] selectIcon = {R.drawable.ic_home_select, R.drawable.ic_kind_select,R.drawable.ic_addto, R.drawable.ic_video_select, R.drawable.ic_mine_select};
+    private int[] selectIcon = {R.drawable.ic_home_select, R.drawable.ic_kind_select, R.drawable.ic_addto, R.drawable.ic_video_select, R.drawable.ic_mine_select};
 
     private List<Fragment> fragments = new ArrayList<>();
 
@@ -98,11 +99,13 @@ public class MainActivity extends AppCompatActivity {
                                     .setOnItemClickListener(new PopMenuItemListener() {
                                         @Override
                                         public void onItemClick(PopMenu popMenu, int position) {
-                                            if(position==0){
+                                            if (position == 0) {
                                                 gotoAddArticleActivity();
                                             }
-
-                                            Toast.makeText(MainActivity.this, "你点击了第" + position + "个位置", Toast.LENGTH_SHORT).show();
+                                            if (position == 2) {
+                                                gotoAddVideoActivity();
+                                            }
+//                                            Toast.makeText(MainActivity.this, "你点击了第" + position + "个位置", Toast.LENGTH_SHORT).show();
 
 
                                         }
@@ -125,13 +128,18 @@ public class MainActivity extends AppCompatActivity {
     public EasyNavigationBar getNavigationBar() {
         return navigationBar;
     }
-    private void gotoAddArticleActivity(){
+
+    private void gotoAddArticleActivity() {
         startActivity(new Intent(this, AddArticleTitle.class));
+    }
+
+    private void gotoAddVideoActivity() {
+        startActivity(new Intent(this, AddVideo.class));
     }
     public static void openIMart(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
-        ((Activity)context).finish();
+        ((Activity) context).finish();
     }
 }
