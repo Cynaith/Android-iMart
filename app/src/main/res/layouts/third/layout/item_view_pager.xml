@@ -25,10 +25,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
-        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
         >
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -83,21 +83,22 @@
     <TextView
         android:id="@+id/video_username"
         android:layout_width="match_parent"
-        android:layout_height="27dp"
+        android:layout_height="25dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="15dp"
-        android:layout_marginBottom="60dp"
-        android:textSize="@dimen/dimen_19"
+        android:layout_marginBottom="40dp"
+        android:textSize="@dimen/dimen_17"
         android:textColor="@color/color_white"
+        android:textStyle="bold"
         android:text="\@admin"/>
     <TextView
         android:id="@+id/video_title"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="17dp"
         android:textColor="@color/color_white"
-        android:textSize="@dimen/dimen_20"
+        android:textSize="@dimen/dimen_15"
         android:text="title"/>
     <ImageView
         android:id="@+id/img_play"
