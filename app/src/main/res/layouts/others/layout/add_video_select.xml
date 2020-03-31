@@ -70,15 +70,15 @@
         android:gravity="center"
         android:layout_marginTop="20dp"
         android:layout_below="@id/add_video1">
-        <ImageView
-            android:id="@+id/add_article_img_show"
+        <VideoView
+            android:id="@+id/add_video_img_show"
             android:layout_width="@dimen/dimen_300"
             android:layout_height="@dimen/dimen_300"
             android:layout_gravity="center"
             android:gravity="center"
             android:scaleType="fitXY"
             >
-        </ImageView>
+        </VideoView>
     </LinearLayout>
     <TextView
         android:id="@+id/add_video_next"

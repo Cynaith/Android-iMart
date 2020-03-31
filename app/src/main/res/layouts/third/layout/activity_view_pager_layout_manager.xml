@@ -5,24 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.ly.imart.demo.Douyin.ViewPagerLayoutManagerActivity">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#ffffff">
-
-
-        <TextView
-            android:id="@+id/fourth_title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:ellipsize="marquee"
-            android:gravity="center"
-            android:singleLine="true"
-            android:text="我的"
-            android:textColor="#ff333333"
-            android:textSize="15sp" />
-
-    </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"

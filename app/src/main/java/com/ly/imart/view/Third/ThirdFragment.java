@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.ly.imart.R;
@@ -197,6 +198,8 @@ public class ThirdFragment extends Fragment {
             //holder.img_thumb.setImageResource(imgs[position%2]);
            //holder.videoView.setVideoURI(Uri.parse("android.resource://" + getContext().getPackageName() + "/" + videos[position % 4]));
             holder.videoView.setVideoURI(Uri.parse("http://47.101.171.252:81/static/7ce4d0c3-b449-47db-bed6-b1ee392f4a5f.mp4"));
+            holder.textView_username.setText("@"+"设置作者");
+            holder.textView_title.setText("设置视频标题");
         }
 
         @Override
@@ -209,13 +212,16 @@ public class ThirdFragment extends Fragment {
             VideoView videoView;
             ImageView img_play;
             RelativeLayout rootView;
-
+            TextView textView_username;
+            TextView textView_title;
             public ViewHolder(View itemView) {
                 super(itemView);
                 img_thumb = itemView.findViewById(R.id.img_thumb);
                 videoView = itemView.findViewById(R.id.video_view);
                 img_play = itemView.findViewById(R.id.img_play);
                 rootView = itemView.findViewById(R.id.root_view);
+                textView_username = itemView.findViewById(R.id.video_username);
+                textView_title = itemView.findViewById(R.id.video_title);
             }
         }
     }

@@ -1,8 +1,11 @@
 package com.ly.imart.view.Others;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,13 +16,21 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
+import com.ly.imart.BuildConfig;
 import com.ly.imart.R;
+import com.ly.imart.util.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 public class AddVideo extends FragmentActivity implements View.OnClickListener {
@@ -31,7 +42,8 @@ public class AddVideo extends FragmentActivity implements View.OnClickListener {
     TextView photoByCamera;
     TextView photoByAblum;
     TextView next;
-
+    VideoView videoView;
+    private File file = null;
     private Uri uri = null;//视频地址
 
     @Override
@@ -45,7 +57,20 @@ public class AddVideo extends FragmentActivity implements View.OnClickListener {
     private void initView() {
         photoByCamera = findViewById(R.id.add_video1);
         photoByAblum = findViewById(R.id.add_video2);
-
+        videoView = findViewById(R.id.add_video_img_show);
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setOnInfoListener(new MediaPlayer.OnInfoListener() {
+                    @Override
+                    public boolean onInfo(MediaPlayer mp, int what, int extra) {
+                        if (what == MediaPlayer.MEDIA_INFO_VIDEO_RENDERING_START)
+                            videoView.setBackgroundColor(Color.TRANSPARENT);
+                        return true;
+                    }
+                });
+            }
+        });
         next = findViewById(R.id.add_video_next);
         photoByCamera.setOnClickListener(this);
         photoByAblum.setOnClickListener(this);
@@ -64,33 +89,30 @@ public class AddVideo extends FragmentActivity implements View.OnClickListener {
         /* 使用Intent.ACTION_GET_CONTENT这个Action */
         intent.setAction(Intent.ACTION_GET_CONTENT);
         /* 取得相片后返回本画面 */
-        startActivityForResult(intent, 1);
+        startActivityForResult(intent, REQUEST_CODE_SELECT_VIDEO);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        System.out.println(requestCode);
         if (resultCode != RESULT_OK) {
             return;
         }
         // 选取图片的返回值
         if (requestCode == REQUEST_CODE_SELECT_VIDEO) {
-            Uri uri = data.getData();
-            Cursor cursor = getContentResolver().query(uri, null, null,
-                    null, null);
-            cursor.moveToFirst();
-            // String imgNo = cursor.getString(0); // 图片编号
-            String v_path = cursor.getString(1); // 图片文件路径
-            String v_size = cursor.getString(2); // 图片大小
-            String v_name = cursor.getString(3); // 图片文件名
-            System.out.println(v_path + v_name + v_name);
+            uri = data.getData();
+            System.out.println(uri.getPath());
+            videoView.setVideoURI(uri);
+            videoView.start();
 
         } else if (requestCode == REQUEST_CODE_VIDEO_MAKE) {
             Toast.makeText(this, "Video saved to:\n" +
                     data.getData(), Toast.LENGTH_LONG).show();
-            System.out.println(uri);
-//            vv_play.setVideoURI(fileUri);
-//            vv_play.requestFocus();
+//            // Video captured and saved to fileUri specified in the Intent
+            uri = data.getData();
+            System.out.println(uri.getPath());
+            videoView.setVideoURI(uri);
+            videoView.start();
+
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -101,11 +123,25 @@ public class AddVideo extends FragmentActivity implements View.OnClickListener {
             chooseVideo();
         } else if (view.getId() == R.id.add_video1) {
             Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File("/sdcard/test.mp4")));
+            Uri fileUri = null;
+            try {
+                fileUri = FileProvider.getUriForFile(AddVideo.this, "com.ly.imart.fileProvider", createMediaFile());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+//            File videoFile = null;
+//            try {
+//                videoFile = createMediaFile();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            Uri videoUri = FileUtils.getVideoContentUri(this, videoFile);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
+            intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
             startActivityForResult(intent, REQUEST_CODE_VIDEO_MAKE);
-
         }
     }
+
 
     private File createMediaFile() throws IOException {
 
@@ -133,4 +169,5 @@ public class AddVideo extends FragmentActivity implements View.OnClickListener {
         return null;
     }
 }
+
 

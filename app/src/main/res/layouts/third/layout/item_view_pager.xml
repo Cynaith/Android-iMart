@@ -11,15 +11,16 @@
         android:clickable="false"
         android:focusable="false"
         />
+
     <ImageView
         android:id="@+id/img_thumb"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
         android:clickable="false"
         android:focusable="false"
-        android:visibility="visible"
-        />
+        android:scaleType="centerCrop"
+        android:visibility="visible" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,6 +80,25 @@
             android:gravity="center"
             />
     </LinearLayout>
+    <TextView
+        android:id="@+id/video_username"
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="60dp"
+        android:textSize="@dimen/dimen_19"
+        android:textColor="@color/color_white"
+        android:text="\@admin"/>
+    <TextView
+        android:id="@+id/video_title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="17dp"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/dimen_20"
+        android:text="title"/>
     <ImageView
         android:id="@+id/img_play"
         android:layout_width="100dp"

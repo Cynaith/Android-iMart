@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
-    <external-path
-        name="maxIM"
-        path="." />
+<!--    <external-path-->
+<!--        name="maxIM"-->
+<!--        path="." />-->
     <files-path
         name="com.ly.imart.maxim"
         path="." />
+    <external-path name="com.ly.imart" path="."/>
 </paths>
