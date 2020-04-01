@@ -16,6 +16,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ import android.widget.VideoView;
 
 import com.ly.imart.BuildConfig;
 import com.ly.imart.R;
+import com.ly.imart.model.Third.VideoModel;
 import com.ly.imart.util.FileUtils;
 
 import java.io.File;
@@ -32,6 +34,7 @@ import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 public class AddVideo extends FragmentActivity implements View.OnClickListener {
 
@@ -43,6 +46,7 @@ public class AddVideo extends FragmentActivity implements View.OnClickListener {
     TextView photoByAblum;
     TextView next;
     VideoView videoView;
+    EditText editText;
     private File file = null;
     private Uri uri = null;//视频地址
 
@@ -58,6 +62,7 @@ public class AddVideo extends FragmentActivity implements View.OnClickListener {
         photoByCamera = findViewById(R.id.add_video1);
         photoByAblum = findViewById(R.id.add_video2);
         videoView = findViewById(R.id.add_video_img_show);
+        editText = findViewById(R.id.add_video_title);
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
@@ -139,6 +144,33 @@ public class AddVideo extends FragmentActivity implements View.OnClickListener {
             intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
             intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
             startActivityForResult(intent, REQUEST_CODE_VIDEO_MAKE);
+        } else if (view.getId() == R.id.add_video_next) {
+            String title = editText.getText().toString();
+            if (title == null || uri == null) {
+                Toast.makeText(this, "请添加标题或视频", Toast.LENGTH_SHORT).show();
+            } else {
+                VideoModel videoModel = new VideoModel();
+                String filePath = FileUtils.getFilePathByUri(this,uri);
+                String videoUrl = null;
+                try {
+                    videoUrl =  videoModel.uploadVideo(filePath);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                finish();
+                try {
+                    if(!videoModel.addVideo(videoUrl,title)){
+                        Toast.makeText(this,"上传成功",Toast.LENGTH_SHORT).show();
+                    }
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
         }
     }
 

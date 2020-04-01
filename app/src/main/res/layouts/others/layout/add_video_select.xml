@@ -21,6 +21,8 @@
             android:layout_height="match_parent" />
     </RelativeLayout>
 
+
+
     <TextView
         android:id="@+id/add_video1"
         android:layout_width="match_parent"
@@ -80,11 +82,27 @@
             >
         </VideoView>
     </LinearLayout>
+    <EditText
+        android:id="@+id/add_video_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_48"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/dimen_48"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:layout_marginRight="@dimen/dimen_48"
+        android:layout_below="@id/add_video_imgview"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="输入文章标题"
+        android:maxLines="1"
+        android:textColorHint="@color/color_666666"
+        android:textSize="@dimen/dimen_14" />
     <TextView
         android:id="@+id/add_video_next"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_50"
-        android:layout_below="@id/add_video_imgview"
+        android:layout_below="@id/add_video_title"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/dimen_48"
         android:layout_marginTop="@dimen/dimen_30"

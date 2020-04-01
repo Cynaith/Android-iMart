@@ -35,6 +35,7 @@
             android:layout_height="wrap_content">
 
             <com.ly.imart.util.CircleImageView
+                android:id="@+id/video_userimg"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentStart="true"
@@ -51,46 +52,60 @@
                 android:layout_marginTop="40dp"
                 />
         </RelativeLayout>
-
-        <TextView
+        <com.varunest.sparkbutton.SparkButton
+            android:id="@+id/video_support"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:drawableTop="@mipmap/heart_icon"
+            android:layout_height="40dp"
             android:layout_marginTop="16dp"
+            app:sparkbutton_activeImage="@drawable/video_support"
+            app:sparkbutton_inActiveImage="@mipmap/heart_icon"
+            app:sparkbutton_iconSize="30dp"
+            app:sparkbutton_primaryColor="@color/imart_primary_color"
+            app:sparkbutton_secondaryColor="@color/imart_red_color" />
+        <TextView
+            android:id="@+id/video_support_count"
+            android:layout_width="50dp"
+            android:layout_height="15dp"
             android:text="1.6w"
             android:textColor="@android:color/white"
             android:gravity="center"
             />
         <TextView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:drawableTop="@mipmap/msg_icon"
-            android:layout_marginTop="16dp"
-            android:text="1.6w"
-            android:textColor="@android:color/white"
-            android:gravity="center"
-            />
-        <TextView
+            android:id="@+id/video_share"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:drawableTop="@mipmap/share_icon"
             android:layout_marginTop="16dp"
-            android:text="1.6w"
             android:textColor="@android:color/white"
             android:gravity="center"
             />
+
+
     </LinearLayout>
     <TextView
         android:id="@+id/video_username"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="15dp"
         android:layout_marginBottom="40dp"
-        android:textSize="@dimen/dimen_17"
+        android:textSize="20sp"
         android:textColor="@color/color_white"
         android:textStyle="bold"
+        android:gravity="center_vertical"
         android:text="\@admin"/>
+    <TextView
+        android:id="@+id/video_time"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:textSize="17sp"
+        android:textColor="@color/twitter_primary_color"
+        android:text="2020-04-01"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:layout_toRightOf="@id/video_username"/>
     <TextView
         android:id="@+id/video_title"
         android:layout_width="match_parent"
@@ -98,7 +113,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="17dp"
         android:textColor="@color/color_white"
-        android:textSize="@dimen/dimen_15"
+        android:textSize="19sp"
         android:text="title"/>
     <ImageView
         android:id="@+id/img_play"
