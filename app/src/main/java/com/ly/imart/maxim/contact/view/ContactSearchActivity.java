@@ -122,6 +122,8 @@ public class ContactSearchActivity extends BaseTitleActivity {
      * 
      * @param search 内容
      */
+
+    // 注释 search里输入username
     private void searchRoster(String search) {
         if (TextUtils.isEmpty(search)) {
             return;
@@ -220,6 +222,7 @@ public class ContactSearchActivity extends BaseTitleActivity {
                     new CommonEditDialog.OnDialogListener() {
                         @Override
                         public void onConfirmListener(String content) {
+                // 注释 添加好友验证
                             addRoster(rosterId, content);
                         }
 

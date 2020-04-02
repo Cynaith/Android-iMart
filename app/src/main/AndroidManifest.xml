@@ -86,6 +86,9 @@
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
         </activity>
+        <activity android:name=".view.Fourth.ChatListActivity"/>
+
+
         <activity
             android:name=".maxim.login.view.LoginActivity"
             android:screenOrientation="portrait"></activity>
@@ -176,7 +179,6 @@
         <activity
             android:name=".maxim.message.view.ChatGroupMemberActivity"
             android:screenOrientation="portrait" />
-
         <!--群聊成员页面-->
         <activity
             android:name=".maxim.message.view.ChatGroupListMemberActivity"

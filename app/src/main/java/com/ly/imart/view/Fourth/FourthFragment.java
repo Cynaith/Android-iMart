@@ -23,6 +23,8 @@ import com.ly.imart.R;
 import com.ly.imart.bean.Fourth.FourthBean;
 import com.ly.imart.maxim.MaximMainActivity;
 import com.ly.imart.maxim.common.utils.SharePreferenceUtils;
+import com.ly.imart.maxim.login.view.MineFragment;
+import com.ly.imart.maxim.message.view.SessionFragment;
 import com.ly.imart.presenter.Fourth.FourthPresenter;
 import com.ly.imart.util.CircleImageView;
 import com.ly.imart.util.MyImageView;
@@ -31,6 +33,8 @@ import com.ly.imart.view.Fourth.GaodeMap.util.Utils;
 
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
+
+import im.floo.floolib.BMXUserProfile;
 
 public class FourthFragment extends Fragment implements View.OnClickListener,IFourthView {
 
@@ -65,6 +69,7 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
         (circleImageView_myfriends = view.findViewById(R.id.fourth_more_myfriends)).setOnClickListener(this);
         (circleImageView_diy = view.findViewById(R.id.fourth_more_diy)).setOnClickListener(this);
         (circleImageView_mycollection =view.findViewById(R.id.fourth_more_mycollection)).setOnClickListener(this);
+        (circleImageView_mygoods = view.findViewById(R.id.fourth_more_mygoods)).setOnClickListener(this);
         relativeLayout = view.findViewById(R.id.fourth_mine);
         textView_username = view.findViewById(R.id.fourth_username);
         textView_usershow = view.findViewById(R.id.fourth_usershow);
@@ -131,6 +136,9 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
             case R.id.fourth_more_diy:
                 gotoDiyList();
                 break;
+            case R.id.fourth_more_mygoods:
+                gotoChatList();
+                break;
             case R.id.fourth_more_myfriends:
                 MaximMainActivity.openMain(this.getContext());
 //                Intent intent = new Intent(this.getContext(),MaximMainActivity.class);
@@ -188,4 +196,8 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
         startActivity(intent);
     }
 
+    public void gotoChatList(){
+        Intent intent = new Intent(this.getActivity(), ChatListActivity.class);
+        startActivity(intent);
+    }
 }

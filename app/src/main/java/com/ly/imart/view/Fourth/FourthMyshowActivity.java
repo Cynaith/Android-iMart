@@ -123,6 +123,12 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
                 myshowPresenter.followUser("sad");
                 break;
             case R.id.activity_myshow_message:
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        IMUtils.searchRoster(userName);
+                    }
+                }).start();
                 break;
             case R.id.activity_myshow_follow:
                 Intent intent = new Intent(this,FourthFollowlistActivity.class);
@@ -142,6 +148,7 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
                 intent2.putExtra("userName",userName);
                 startActivity(intent2);
                 break;
+
         }
     }
 
