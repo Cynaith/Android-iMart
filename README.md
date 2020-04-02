@@ -34,6 +34,10 @@
  - https://blog.csdn.net/ppdouble/article/details/24656879?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task
  - adb -s emulator-5554 emu geo fix 121.49612 31.24010
 - 视频功能(完成)
+  - 上传视频
+  - 点赞
+  - 视频信息显示
+  - Button跳转
 - 邮件功能后台优化 (2020-04-02)
   - 邮箱验证
   - 邮件发送

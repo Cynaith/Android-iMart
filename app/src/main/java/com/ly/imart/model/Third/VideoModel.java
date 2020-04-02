@@ -54,7 +54,7 @@ public class VideoModel {
             String accessToken = "";
             OkHttpRequest okHttpRequest = new OkHttpRequest();
 
-            String accessTokenUrl = "http://10.0.2.2:8080/video/getVideo?username="+SharePreferenceUtils.getInstance().getUserName() ;
+            String accessTokenUrl = "http://47.101.171.252:8080/video/getVideo?username="+SharePreferenceUtils.getInstance().getUserName()+"&time="+System.currentTimeMillis();
             try {
                 //发送请求
                 accessToken = okHttpRequest.get(accessTokenUrl);
@@ -136,7 +136,7 @@ public class VideoModel {
             String accessToken = "";
             OkHttpRequest okHttpRequest = new OkHttpRequest();
 
-            String accessTokenUrl = "http://10.0.2.2:8080/video/addvideo?username="+SharePreferenceUtils.getInstance().getUserName()
+            String accessTokenUrl = "http://47.101.171.252:8080/video/addvideo?username="+SharePreferenceUtils.getInstance().getUserName()
                     +"&title="+title+"&videourl="+videoUrl ;
             try {
                 //发送请求
@@ -176,7 +176,7 @@ public class VideoModel {
             String accessToken = "";
             OkHttpRequest okHttpRequest = new OkHttpRequest();
 
-            String accessTokenUrl = "http://10.0.2.2:8080/video/supportvideo?videoid="+videoid+"&username="+SharePreferenceUtils.getInstance().getUserName();
+            String accessTokenUrl = "http://47.101.171.252:8080/video/supportvideo?videoid="+videoid+"&username="+SharePreferenceUtils.getInstance().getUserName();
             try {
                 //发送请求
                 accessToken = okHttpRequest.get(accessTokenUrl);

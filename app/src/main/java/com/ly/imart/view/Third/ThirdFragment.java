@@ -235,6 +235,7 @@ public class ThirdFragment extends Fragment {
                         if (!holder.button_support.isChecked()){ //如果没有被选中
                             holder.button_support.playAnimation(); //播放动画
                         }
+                        videoBean.setIssupport(!videoBean.isIssupport());
                         holder.button_support.setChecked(!holder.button_support.isChecked());
                     } catch (ExecutionException e) {
                         e.printStackTrace();
