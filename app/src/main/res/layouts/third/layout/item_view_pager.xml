@@ -40,7 +40,7 @@
                 android:layout_height="50dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:src="@mipmap/header_icon_2" />
+                android:src="@mipmap/waiting" />
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
