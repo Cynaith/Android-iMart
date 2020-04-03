@@ -1,4 +1,4 @@
-package com.ly.imart.view.Fourth;
+package com.ly.imart.view.Fourth.ChatView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,6 @@ import com.ly.imart.maxim.common.utils.RxBus;
 import com.ly.imart.maxim.common.utils.ScreenUtils;
 import com.ly.imart.maxim.common.utils.ToastUtil;
 import com.ly.imart.maxim.common.utils.dialog.CustomDialog;
-import com.ly.imart.maxim.message.adapter.SessionAdapter;
 import com.ly.imart.maxim.message.view.ChatBaseActivity;
 
 import java.util.ArrayList;
@@ -33,7 +31,6 @@ import java.util.Collections;
 import java.util.List;
 
 import im.floo.floolib.BMXChatServiceListener;
-import im.floo.floolib.BMXClient;
 import im.floo.floolib.BMXConversation;
 import im.floo.floolib.BMXConversationList;
 import im.floo.floolib.BMXErrorCode;
@@ -101,7 +98,7 @@ public class ChatListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_session);
+        setContentView(R.layout.activity_chatlist);
         loadSession();
         mRecyclerView = findViewById(R.id.session_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -120,13 +117,8 @@ public class ChatListActivity extends AppCompatActivity {
                 if (item == null) {
                     return;
                 }
-                BMXMessage.MessageType type = null;
-                if (item.type() == BMXConversation.Type.Single) {
-                    type = BMXMessage.MessageType.Single;
-                }
-                if (type != null) {
-                    ChatBaseActivity.startChatActivity(ChatListActivity.this, type, item.conversationId());
-                }
+                //ChatBaseActivity.startChatActivity(ChatListActivity.this, BMXMessage.MessageType.Single, item.conversationId());
+                ChatActivity.startChatActivity(ChatListActivity.this, item.conversationId());
             }
         });
 
@@ -201,7 +193,7 @@ public class ChatListActivity extends AppCompatActivity {
     }
 
     private void showEmpty(boolean empty) {
-        RecyclerView.LayoutParams params = (RecyclerView.LayoutParams)mEmptyView.getLayoutParams();
+        RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) mEmptyView.getLayoutParams();
         if (empty) {
             mEmptyView.setVisibility(View.VISIBLE);
             params.width = RecyclerView.LayoutParams.MATCH_PARENT;
@@ -234,6 +226,7 @@ public class ChatListActivity extends AppCompatActivity {
             return o1Time > o2Time ? -1 : 1;
         });
     }
+
     /**
      * 刷新roster名称 头像
      *
@@ -335,6 +328,7 @@ public class ChatListActivity extends AppCompatActivity {
                     });
         }
     }
+
     private void showOperateSession(final BMXConversation conversation, final int position) {
 
         final CustomDialog dialog = new CustomDialog();

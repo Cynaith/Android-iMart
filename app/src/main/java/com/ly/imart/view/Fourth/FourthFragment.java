@@ -2,39 +2,26 @@ package com.ly.imart.view.Fourth;
 
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
-import com.amap.api.location.AMapLocationClientOption;
-import com.amap.api.location.AMapLocationListener;
 import com.ly.imart.R;
 import com.ly.imart.bean.Fourth.FourthBean;
 import com.ly.imart.maxim.MaximMainActivity;
 import com.ly.imart.maxim.common.utils.SharePreferenceUtils;
-import com.ly.imart.maxim.login.view.MineFragment;
-import com.ly.imart.maxim.message.view.SessionFragment;
 import com.ly.imart.presenter.Fourth.FourthPresenter;
 import com.ly.imart.util.CircleImageView;
 import com.ly.imart.util.MyImageView;
-import com.ly.imart.util.SystemInfo;
-import com.ly.imart.view.Fourth.GaodeMap.util.Utils;
+import com.ly.imart.view.Fourth.ChatView.ChatListActivity;
 
-import java.net.URL;
 import java.util.concurrent.ExecutionException;
-
-import im.floo.floolib.BMXUserProfile;
 
 public class FourthFragment extends Fragment implements View.OnClickListener,IFourthView {
 

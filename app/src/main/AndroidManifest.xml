@@ -86,8 +86,9 @@
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
         </activity>
-        <activity android:name=".view.Fourth.ChatListActivity"/>
-
+        <activity android:name=".view.Fourth.ChatView.ChatListActivity"/>
+        <activity android:name=".view.Fourth.ChatView.ChatSingleActivity"/>
+        <activity android:name=".view.Fourth.ChatView.ChatActivity"/>
 
         <activity
             android:name=".maxim.login.view.LoginActivity"

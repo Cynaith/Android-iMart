@@ -1,4 +1,4 @@
-package com.ly.imart.view.Fourth;
+package com.ly.imart.view.Fourth.ChatView;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ly.imart.model.Fourth.ChatModel;
+import com.ly.imart.util.BitmapUtils;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import im.floo.floolib.BMXConversation;
@@ -29,6 +31,8 @@ import com.ly.imart.maxim.common.view.ShapeImageView;
 import com.ly.imart.maxim.common.view.recyclerview.BaseViewHolder;
 import com.ly.imart.maxim.common.view.recyclerview.RecyclerWithHFAdapter;
 import com.ly.imart.maxim.message.utils.ChatUtils;
+
+import java.util.concurrent.ExecutionException;
 
 /**
  * Description : 消息列表 Created by Mango on 2018/11/05.
@@ -68,24 +72,18 @@ public class ChatAdapter extends RecyclerWithHFAdapter<BMXConversation> {
         boolean isDisturb = false;
         BMXConversation.Type type = item == null ? null : item.type();
         String name = "";
+
+        //获取ChatList
         if (type != null && type == BMXConversation.Type.Single) {
             BMXRosterItem rosterItem = RosterFetcher.getFetcher().getRoster(item.conversationId());
-            if (rosterItem != null && !TextUtils.isEmpty(rosterItem.alias())) {
-                name = rosterItem.alias();
-            } else if (rosterItem != null && !TextUtils.isEmpty(rosterItem.nickname())) {
+            if (rosterItem != null && !TextUtils.isEmpty(rosterItem.nickname())) {
                 name = rosterItem.nickname();
             } else if (rosterItem != null) {
                 name = rosterItem.username();
             }
             ChatUtils.getInstance().showRosterAvatar(rosterItem, avatar, mConfig);
             isDisturb = rosterItem != null && rosterItem.isMuteNotification();
-        } else if (type != null && type == BMXConversation.Type.Group) {
-            BMXGroup groupItem = RosterFetcher.getFetcher().getGroup(item.conversationId());
-            name = groupItem != null ? groupItem.name() : "";
-            ChatUtils.getInstance().showGroupAvatar(groupItem, avatar, mGroupConfig);
-            isDisturb = groupItem != null && groupItem.msgMuteMode() != null
-                    && groupItem.msgMuteMode() == BMXGroup.MsgMuteMode.MuteChat;
-        } else {
+        }  else {
             ChatUtils.getInstance().showRosterAvatar(null, avatar, mConfig);
         }
         BMXMessage lastMsg = item == null ? null : item.lastMsg();
@@ -104,7 +102,18 @@ public class ChatAdapter extends RecyclerWithHFAdapter<BMXConversation> {
         }
         tvTitle.setText(TextUtils.isEmpty(name) ? "" : name);
         time.setText(lastMsg != null ? TimeUtils.millis2String(lastMsg.serverTimestamp()) : "");
-        String draft = item == null ? "" : item.editMessage();
-
+        String msgDesc = ChatUtils.getInstance().getMessageDesc(lastMsg);
+        desc.setText(!TextUtils.isEmpty(msgDesc) ? msgDesc : "");
+        String userimg = null;
+        ChatModel chatModel = new ChatModel();
+        try {
+            userimg = chatModel.getUserimg(name);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        BitmapUtils bu = new BitmapUtils();
+        avatar.setImageBitmap(bu.returnBitMap(userimg));
     }
 }

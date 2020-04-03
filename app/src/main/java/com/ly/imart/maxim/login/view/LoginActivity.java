@@ -271,6 +271,7 @@ public class LoginActivity extends BaseTitleActivity {
                     }
                     // 登陆成功消息预加载
                     WelcomeActivity.initData();
+                    UserManager.getInstance().autoSignInByName(name,pwd);
                 }
                 return bmxErrorCode;
             }
