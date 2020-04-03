@@ -1,5 +1,6 @@
 package com.ly.imart.view.Fourth;
 
+import android.content.Context;
 import android.text.TextUtils;
 
 import com.ly.imart.maxim.bmxmanager.BaseManager;
@@ -21,7 +22,7 @@ import rx.schedulers.Schedulers;
 public class IMUtils {
 
     // 注释 search里输入username 即可自动加好友
-    public static void  searchRoster(String search) {
+    public static void  searchRoster(FourthMyshowActivity fourthMyshowActivity,String search) {
         search = search.toLowerCase();
         List<BMXRosterItem> mSearchs = new ArrayList<>();
         final BMXRosterItem item = new BMXRosterItem();
@@ -63,6 +64,12 @@ public class IMUtils {
         while (mSearchs.size()==0){
             mSearchs.add(item);
         }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         long rosterId = mSearchs.get(0).rosterId();
         RosterManager.getInstance().apply(rosterId, " ");
 //        Observable.just(rosterId).map(new Func1<Long, BMXErrorCode>() {
@@ -91,6 +98,8 @@ public class IMUtils {
 //                });
 
 
+//        return rosterId;
 
+        fourthMyshowActivity.startChat(rosterId);
     }
 }

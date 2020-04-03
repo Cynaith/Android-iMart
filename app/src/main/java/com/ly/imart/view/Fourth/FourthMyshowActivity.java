@@ -1,5 +1,7 @@
 package com.ly.imart.view.Fourth;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -18,6 +20,8 @@ import com.ly.imart.adapter.MyshowPageAdapter;
 import com.ly.imart.bean.Fourth.MyshowBean;
 import com.ly.imart.demo.TabLayout.PageAdapter;
 import com.ly.imart.maxim.common.utils.SharePreferenceUtils;
+import com.ly.imart.maxim.contact.view.RosterDetailActivity;
+import com.ly.imart.maxim.message.view.ChatSingleActivity;
 import com.ly.imart.presenter.Fourth.MyshowPresenter;
 import com.ly.imart.util.CircleImageView;
 
@@ -25,6 +29,7 @@ import java.util.concurrent.ExecutionException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import im.floo.floolib.BMXMessage;
 
 public class FourthMyshowActivity extends AppCompatActivity implements IMyshowView, View.OnClickListener {
 
@@ -61,10 +66,13 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
     TabLayout tabLayout;
 
     String userName;
+
+    private FourthMyshowActivity fourthMyshowActivity ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myshow);
+        fourthMyshowActivity = this;
         Intent intent = getIntent();
         userName = intent.getStringExtra("userName");
         ButterKnife.bind(this);
@@ -126,9 +134,11 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        IMUtils.searchRoster(userName);
+                         IMUtils.searchRoster(fourthMyshowActivity,userName);
+
                     }
                 }).start();
+
                 break;
             case R.id.activity_myshow_follow:
                 Intent intent = new Intent(this,FourthFollowlistActivity.class);
@@ -178,5 +188,10 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
 
             }
         });
+    }
+
+    public void startChat(long id){
+        ChatSingleActivity.startChatActivity(this,
+                BMXMessage.MessageType.Single, id);
     }
 }
