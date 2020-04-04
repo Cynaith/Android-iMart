@@ -103,7 +103,7 @@ public abstract class ChatActivity extends AppCompatActivity
     }
     protected Header onCreateHeader(RelativeLayout headerContainer) {
         Header.Builder builder = new Header.Builder(this, headerContainer);
-        builder.setTitle(nickname);
+        builder.setTitle("与"+nickname+"的临时聊天");
         builder.setBackIcon(R.drawable.header_back_icon, new View.OnClickListener() {
             @Override
             public void onClick(View v) {

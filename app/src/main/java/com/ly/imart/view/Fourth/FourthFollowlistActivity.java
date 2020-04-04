@@ -38,6 +38,7 @@ public class FourthFollowlistActivity extends AppCompatActivity implements IFoll
     static int kind;
     static String userName;
     FollowListPresenter followListPresenter;
+    TextView listTitle=null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,7 +47,10 @@ public class FourthFollowlistActivity extends AppCompatActivity implements IFoll
         Intent intent = getIntent();
         kind = intent.getIntExtra("kind",1);
         userName = intent.getStringExtra("userName");
-        System.out.println(userName);
+        listTitle = findViewById(R.id.follow_title);
+        if (kind==1) listTitle.setText("关注列表");
+        else if (kind==2) listTitle.setText("粉丝列表");
+        else listTitle.setText("文章列表");
         followListPresenter = new FollowListPresenter(this);
         mOneRecyclerView = (OneRecyclerView) findViewById(R.id.friendlist);
         mOneRecyclerView.init(
