@@ -22,11 +22,11 @@ import rx.schedulers.Schedulers;
 public class IMUtils {
 
     // 注释 search里输入username 即可自动加好友
-    public static void  searchRoster(FourthMyshowActivity fourthMyshowActivity,String search) {
+    public static void searchRoster(FourthMyshowActivity fourthMyshowActivity, String search) {
         search = search.toLowerCase();
+
         List<BMXRosterItem> mSearchs = new ArrayList<>();
         final BMXRosterItem item = new BMXRosterItem();
-
         RosterManager.getInstance().search(search, true, item);
 
 //        Observable.just(search).map(new Func1<String, BMXErrorCode>() {
@@ -61,17 +61,22 @@ public class IMUtils {
 //                });
         mSearchs.add(item);
 //        long rosterId = item.rosterId();
-        while (mSearchs.size()==0){
+        while (mSearchs.size() == 0) {
             mSearchs.add(item);
         }
+
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         long rosterId = mSearchs.get(0).rosterId();
-        RosterManager.getInstance().apply(rosterId, " ");
+        if (mSearchs.get(0).relation().equals(BMXRosterItem.RosterRelation.Friend)) {
+        } else {
+            RosterManager.getInstance().apply(rosterId, " ");
+        }
+
 //        Observable.just(rosterId).map(new Func1<Long, BMXErrorCode>() {
 //            @Override
 //            public BMXErrorCode call(Long s) {

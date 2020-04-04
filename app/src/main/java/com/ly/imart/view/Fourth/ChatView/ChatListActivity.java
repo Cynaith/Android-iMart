@@ -117,8 +117,8 @@ public class ChatListActivity extends AppCompatActivity {
                 if (item == null) {
                     return;
                 }
-                //ChatBaseActivity.startChatActivity(ChatListActivity.this, BMXMessage.MessageType.Single, item.conversationId());
-                ChatActivity.startChatActivity(ChatListActivity.this, item.conversationId());
+//                ChatBaseActivity.startChatActivity(ChatListActivity.this, BMXMessage.MessageType.Single, item.conversationId());
+                ChatActivity.startChatActivity(ChatListActivity.this, item.conversationId(),mAdapter.getName(position+mAdapter.getItemCount()-1));
             }
         });
 
@@ -246,10 +246,6 @@ public class ChatListActivity extends AppCompatActivity {
             if (conversation.type() == BMXConversation.Type.Single) {
                 if (RosterFetcher.getFetcher().getRoster(conversation.conversationId()) == null) {
                     rosterIds.add(conversation.conversationId());
-                }
-            } else if (conversation.type() == BMXConversation.Type.Group) {
-                if (RosterFetcher.getFetcher().getGroup(conversation.conversationId()) == null) {
-                    groupIds.add(conversation.conversationId());
                 }
             }
         }

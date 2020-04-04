@@ -64,11 +64,16 @@ public abstract class ChatActivity extends AppCompatActivity
 
     private View mContentView;
 
+    protected Header mHeader;
+
     private ImmerseLinearLayout mContainer;
 
-    public static void startChatActivity(Context context, long chatId) {
+    private static String nickname;
+
+    public static void startChatActivity(Context context, long chatId,String name) {
         Intent intent = new Intent();
         intent.setClass(context, ChatSingleActivity.class);
+        nickname = name;
         intent.putExtra(MessageConfig.CHAT_ID, chatId);
         context.startActivity(intent);
     }
@@ -76,15 +81,18 @@ public abstract class ChatActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        setContentView(R.layout.base_activity);
+        setContentView(R.layout.activity_chat);
         mContainer = ((ImmerseLinearLayout)findViewById(R.id.container));
+        RelativeLayout headerContainer = (RelativeLayout)findViewById(R.id.container_header);
         initDataFromFront(getIntent());
+        mHeader = onCreateHeader(headerContainer);
         addView();
+
         super.onCreate(savedInstanceState);
     }
 
     public View onCreateView() {
-        View view = View.inflate(this, R.layout.activity_chat_base, null);
+        View view = View.inflate(this, R.layout.activity_chatbase, null);
         mChatViewGroup = view.findViewById(R.id.chat_view_group);
         mChatRecyclerView = view.findViewById(R.id.rcy_chat);
         mInputBar = view.findViewById(R.id.chat_control_bar);
@@ -93,7 +101,17 @@ public abstract class ChatActivity extends AppCompatActivity
         mChatViewHelper = new ChatViewHelper(this, mChatRecyclerView);
         return view;
     }
-
+    protected Header onCreateHeader(RelativeLayout headerContainer) {
+        Header.Builder builder = new Header.Builder(this, headerContainer);
+        builder.setTitle(nickname);
+        builder.setBackIcon(R.drawable.header_back_icon, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        return builder.build();
+    }
 
     protected void initDataFromFront(Intent intent) {
 

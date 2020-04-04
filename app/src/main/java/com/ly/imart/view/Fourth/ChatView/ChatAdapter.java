@@ -32,6 +32,8 @@ import com.ly.imart.maxim.common.view.recyclerview.BaseViewHolder;
 import com.ly.imart.maxim.common.view.recyclerview.RecyclerWithHFAdapter;
 import com.ly.imart.maxim.message.utils.ChatUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -43,6 +45,8 @@ public class ChatAdapter extends RecyclerWithHFAdapter<BMXConversation> {
 
     private ImageRequestConfig mGroupConfig;
 
+    private List<String> nickname;
+
     public ChatAdapter(Context context) {
         super(context);
         mConfig = new ImageRequestConfig.Builder().cacheInMemory(true)
@@ -51,6 +55,8 @@ public class ChatAdapter extends RecyclerWithHFAdapter<BMXConversation> {
                 .cacheOnDisk(true)
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .showImageOnLoading(R.drawable.default_avatar_icon).build();
+
+        nickname = new ArrayList<>();
     }
 
     @Override
@@ -104,6 +110,7 @@ public class ChatAdapter extends RecyclerWithHFAdapter<BMXConversation> {
         time.setText(lastMsg != null ? TimeUtils.millis2String(lastMsg.serverTimestamp()) : "");
         String msgDesc = ChatUtils.getInstance().getMessageDesc(lastMsg);
         desc.setText(!TextUtils.isEmpty(msgDesc) ? msgDesc : "");
+        //获取user头像
         String userimg = null;
         ChatModel chatModel = new ChatModel();
         try {
@@ -115,5 +122,11 @@ public class ChatAdapter extends RecyclerWithHFAdapter<BMXConversation> {
         }
         BitmapUtils bu = new BitmapUtils();
         avatar.setImageBitmap(bu.returnBitMap(userimg));
+
+        nickname.add(name);
+    }
+
+    public String getName(int position) {
+        return nickname.get(position);
     }
 }
