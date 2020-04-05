@@ -49,7 +49,7 @@ public class AddVideo extends FragmentActivity implements View.OnClickListener {
     EditText editText;
     private File file = null;
     private Uri uri = null;//视频地址
-
+    private int kind = 1; //记录视频最后一次上传的类型
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,16 +125,19 @@ public class AddVideo extends FragmentActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.add_video2) {
+            kind =1;
             chooseVideo();
         } else if (view.getId() == R.id.add_video1) {
             Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
             Uri fileUri = null;
             try {
-                fileUri = FileProvider.getUriForFile(AddVideo.this, "com.ly.imart.fileProvider", createMediaFile());
+                file = createMediaFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-//            File videoFile = null;
+            kind = 2;
+            fileUri = FileProvider.getUriForFile(AddVideo.this, "com.ly.imart.fileProvider", file);
+            //            File videoFile = null;
 //            try {
 //                videoFile = createMediaFile();
 //            } catch (IOException e) {
@@ -150,7 +153,13 @@ public class AddVideo extends FragmentActivity implements View.OnClickListener {
                 Toast.makeText(this, "请添加标题或视频", Toast.LENGTH_SHORT).show();
             } else {
                 VideoModel videoModel = new VideoModel();
-                String filePath = FileUtils.getFilePathByUri(this,uri);
+                String filePath;
+                if (kind==1){
+                    filePath = FileUtils.getFilePathByUri(this,uri);
+                }
+                else {
+                    filePath = file.getAbsolutePath();
+                }
                 String videoUrl = null;
                 try {
                     videoUrl =  videoModel.uploadVideo(filePath);
@@ -159,7 +168,6 @@ public class AddVideo extends FragmentActivity implements View.OnClickListener {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                finish();
                 try {
                     if(!videoModel.addVideo(videoUrl,title)){
                         Toast.makeText(this,"上传成功",Toast.LENGTH_SHORT).show();
@@ -169,6 +177,8 @@ public class AddVideo extends FragmentActivity implements View.OnClickListener {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                finish();
+
             }
 
         }
