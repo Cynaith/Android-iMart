@@ -15,7 +15,11 @@ import com.amap.api.location.AMapLocationClient;
 import com.ly.imart.R;
 import com.ly.imart.bean.Fourth.FourthBean;
 import com.ly.imart.maxim.MaximMainActivity;
+import com.ly.imart.maxim.bmxmanager.BaseManager;
+import com.ly.imart.maxim.bmxmanager.UserManager;
+import com.ly.imart.maxim.common.utils.CommonUtils;
 import com.ly.imart.maxim.common.utils.SharePreferenceUtils;
+import com.ly.imart.maxim.login.view.WelcomeActivity;
 import com.ly.imart.presenter.Fourth.FourthPresenter;
 import com.ly.imart.util.CircleImageView;
 import com.ly.imart.util.MyImageView;
@@ -23,7 +27,14 @@ import com.ly.imart.view.Fourth.ChatView.ChatListActivity;
 
 import java.util.concurrent.ExecutionException;
 
-public class FourthFragment extends Fragment implements View.OnClickListener,IFourthView {
+import im.floo.floolib.BMXErrorCode;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
+
+public class FourthFragment extends Fragment implements View.OnClickListener, IFourthView {
 
     private View view;
     private FourthPresenter fourthPresenter;
@@ -38,6 +49,7 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
     TextView textView_myfriend;
     TextView textView_username;
     TextView textView_usershow;
+    TextView textView_exit;
     RelativeLayout relativeLayout;
     private AMapLocationClient locationClientSingle = null;
     private AMapLocationClient locationClientContinue = null;
@@ -55,21 +67,23 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
         textView_myfriend = view.findViewById(R.id.fourth_myfriend);
         (circleImageView_myfriends = view.findViewById(R.id.fourth_more_myfriends)).setOnClickListener(this);
         (circleImageView_diy = view.findViewById(R.id.fourth_more_diy)).setOnClickListener(this);
-        (circleImageView_mycollection =view.findViewById(R.id.fourth_more_mycollection)).setOnClickListener(this);
+        (circleImageView_mycollection = view.findViewById(R.id.fourth_more_mycollection)).setOnClickListener(this);
         (circleImageView_mygoods = view.findViewById(R.id.fourth_more_mygoods)).setOnClickListener(this);
         relativeLayout = view.findViewById(R.id.fourth_mine);
         textView_username = view.findViewById(R.id.fourth_username);
         textView_usershow = view.findViewById(R.id.fourth_usershow);
+        textView_exit = view.findViewById(R.id.exit);
         textView_fourth_myfollow.setClickable(true);
         textView_fourth_myfollowed.setClickable(true);
         textView_myfriend.setClickable(true);
         textView_myarticle.setClickable(true);
         relativeLayout.setClickable(true);
+        textView_exit.setClickable(true);
         textView_fourth_myfollow.setOnClickListener(this);
         textView_fourth_myfollowed.setOnClickListener(this);
         textView_myarticle.setOnClickListener(this);
         textView_myfriend.setOnClickListener(this); //集成maxim
-
+        textView_exit.setOnClickListener(this);
         relativeLayout.setOnClickListener(this);
 //
         initData();
@@ -78,16 +92,16 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
     }
 
 
-    void initData(){
+    void initData() {
         try {
             FourthBean fourthBean = fourthPresenter.getInfo();
-            textView_fourth_myfollow.setText(""+fourthBean.getFollowNum());
-            textView_fourth_myfollowed.setText(""+fourthBean.getFollowedNum());
-            textView_myarticle.setText(""+fourthBean.getArticleNum());
-            textView_username.setText(""+fourthBean.getUserName());
-            textView_usershow.setText(""+fourthBean.getUserShow());
+            textView_fourth_myfollow.setText("" + fourthBean.getFollowNum());
+            textView_fourth_myfollowed.setText("" + fourthBean.getFollowedNum());
+            textView_myarticle.setText("" + fourthBean.getArticleNum());
+            textView_username.setText("" + fourthBean.getUserName());
+            textView_usershow.setText("" + fourthBean.getUserShow());
 // https://blog.csdn.net/augfun/article/details/86615750
-            MyImageView userimage ;
+            MyImageView userimage;
             userimage = view.findViewById(R.id.fourth_userimage);
             System.out.println(fourthBean.getImgUrl());
             userimage.setImageURL(fourthBean.getImgUrl());
@@ -101,7 +115,7 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
 //            case R.id.four_help:
 //                onClickFourHelp(view);
 //                break;
@@ -124,12 +138,16 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
                 gotoDiyList();
                 break;
             case R.id.fourth_more_mygoods:
-                gotoChatList();
+                //gotoChatList();
                 break;
             case R.id.fourth_more_myfriends:
-                MaximMainActivity.openMain(this.getContext());
+                gotoChatList();
+//            切换集成模式    MaximMainActivity.openMain(this.getContext());
 //                Intent intent = new Intent(this.getContext(),MaximMainActivity.class);
 //                this.startActivity(intent);
+                break;
+            case R.id.exit:
+                logout();
                 break;
         }
     }
@@ -142,49 +160,78 @@ public class FourthFragment extends Fragment implements View.OnClickListener,IFo
 
     @Override
     public void gotoFollowPage() {
-        Intent intent = new Intent(this.getActivity(),FourthFollowlistActivity.class);
-        intent.putExtra("kind",1);
-        intent.putExtra("userName",SharePreferenceUtils.getInstance().getUserName());
+        Intent intent = new Intent(this.getActivity(), FourthFollowlistActivity.class);
+        intent.putExtra("kind", 1);
+        intent.putExtra("userName", SharePreferenceUtils.getInstance().getUserName());
         startActivity(intent);
     }
 
     @Override
     public void gotoFollowedPage() {
-        Intent intent = new Intent(this.getActivity(),FourthFollowlistActivity.class);
-        intent.putExtra("kind",2);
-        intent.putExtra("userName",SharePreferenceUtils.getInstance().getUserName());
+        Intent intent = new Intent(this.getActivity(), FourthFollowlistActivity.class);
+        intent.putExtra("kind", 2);
+        intent.putExtra("userName", SharePreferenceUtils.getInstance().getUserName());
         startActivity(intent);
     }
 
     @Override
     public void gotoFriendPage() {
-        startActivity(new Intent(this.getActivity(),FourthFollowlistActivity.class));
+        startActivity(new Intent(this.getActivity(), FourthFollowlistActivity.class));
     }
 
     @Override
     public void gotoArticlePage() {
-        Intent intent = new Intent(this.getActivity(),FourthFollowlistActivity.class);
-        intent.putExtra("kind",3);
-        intent.putExtra("userName",SharePreferenceUtils.getInstance().getUserName());
+        Intent intent = new Intent(this.getActivity(), FourthFollowlistActivity.class);
+        intent.putExtra("kind", 3);
+        intent.putExtra("userName", SharePreferenceUtils.getInstance().getUserName());
         startActivity(intent);
     }
 
     @Override
     public void gotoMyshowPage(String userName) {
-        Intent intent = new Intent(this.getActivity(),FourthMyshowActivity.class);
-        intent.putExtra("userName",userName);
+        Intent intent = new Intent(this.getActivity(), FourthMyshowActivity.class);
+        intent.putExtra("userName", userName);
         startActivity(intent);
 //        startActivity(new Intent(this.getActivity(),FourthMyshowActivity.class));
 
     }
 
-    public void gotoDiyList(){
-        Intent intent = new Intent(this.getActivity(),DiyListActivity.class);
+    public void gotoDiyList() {
+        Intent intent = new Intent(this.getActivity(), DiyListActivity.class);
         startActivity(intent);
     }
 
-    public void gotoChatList(){
+    public void gotoChatList() {
         Intent intent = new Intent(this.getActivity(), ChatListActivity.class);
         startActivity(intent);
+    }
+
+    void logout() {
+        Observable.just("").map(new Func1<String, BMXErrorCode>() {
+            @Override
+            public BMXErrorCode call(String s) {
+                return UserManager.getInstance().signOut();
+            }
+        }).flatMap(new Func1<BMXErrorCode, Observable<BMXErrorCode>>() {
+            @Override
+            public Observable<BMXErrorCode> call(BMXErrorCode errorCode) {
+                return BaseManager.bmxFinish(errorCode, errorCode);
+            }
+        }).subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<BMXErrorCode>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                    }
+
+                    @Override
+                    public void onNext(BMXErrorCode errorCode) {
+                        CommonUtils.getInstance().logout();
+                        WelcomeActivity.openWelcome(getActivity());
+                    }
+                });
     }
 }

@@ -13,236 +13,248 @@
             android:id="@+id/fourth_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:ellipsize="marquee"
             android:gravity="center"
             android:singleLine="true"
             android:text="我的"
             android:textColor="#ff333333"
             android:textSize="15sp" />
-
+        <TextView
+            android:id="@+id/exit"
+            android:layout_alignParentRight="true"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="退出"
+            android:textSize="15sp"
+            android:textColor="#EA2C2C"
+            android:clickable="true"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/fourth_mine"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        >
-<!--        <ImageView-->
-<!--            android:id="@+id/fourth_userimage"-->
-<!--            android:layout_width="70dp"-->
-<!--            android:layout_height="70dp"-->
-<!--&lt;!&ndash;            android:background="#000"&ndash;&gt;-->
-<!--            android:layout_marginTop="25dp"-->
-<!--            android:layout_marginLeft="25dp"/>-->
-        <com.ly.imart.util.MyImageView
-            android:id="@+id/fourth_userimage"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="25dp"/>
-<!--        <com.ly.imart.util.CircleImageView-->
-<!--                    android:id="@+id/fourth_userimage"-->
-<!--                    android:layout_width="70dp"-->
-<!--                    android:layout_height="70dp"-->
-<!--                    android:layout_marginTop="25dp"-->
-<!--                    android:layout_marginLeft="25dp"-->
-<!--            android:background="@drawable/imart"-->
-<!--            />-->
+        android:layout_height="100dp">
+        <!--        <ImageView-->
+        <!--            android:id="@+id/fourth_userimage"-->
+        <!--            android:layout_width="70dp"-->
+        <!--            android:layout_height="70dp"-->
+        <!--&lt;!&ndash;            android:background="#000"&ndash;&gt;-->
+        <!--            android:layout_marginTop="25dp"-->
+        <!--            android:layout_marginLeft="25dp"/>-->
         <TextView
 
             android:id="@+id/fourth_username"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:text="用户名称"
-            android:textColor="#ff333333"
-            android:textSize="15sp"
-            android:layout_toRightOf="@id/fourth_userimage"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp"
-            />
+            android:layout_toRightOf="@id/fourth_userimage"
+            android:text="用户名称"
+            android:textColor="#ff333333"
+            android:textSize="15sp" />
+        <!--        <com.ly.imart.util.CircleImageView-->
+        <!--                    android:id="@+id/fourth_userimage"-->
+        <!--                    android:layout_width="70dp"-->
+        <!--                    android:layout_height="70dp"-->
+        <!--                    android:layout_marginTop="25dp"-->
+        <!--                    android:layout_marginLeft="25dp"-->
+        <!--            android:background="@drawable/imart"-->
+        <!--            />-->
         <TextView
             android:id="@+id/fourth_usershow"
             android:layout_width="wrap_content"
             android:layout_height="15dp"
-            android:text="用户描述描述描述"
-            android:textColor="#ff999999"
-            android:textSize="11sp"
-            android:layout_toRightOf="@id/fourth_userimage"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="60dp"
-            />
+            android:layout_toRightOf="@id/fourth_userimage"
+            android:text="用户描述描述描述"
+            android:textColor="#ff999999"
+            android:textSize="11sp" />
+
+        <com.ly.imart.util.MyImageView
+            android:id="@+id/fourth_userimage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="25dp" />
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
             android:id="@+id/fourth_myfollow"
             android:layout_width="55dp"
             android:layout_height="26dp"
-            android:text="0"
-            android:textColor="#ff333333"
-            android:textSize="20sp"
-            android:gravity="center"
             android:layout_marginLeft="39dp"
             android:layout_marginTop="20dp"
-            />
+            android:gravity="center"
+            android:text="0"
+            android:textColor="#ff333333"
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/fourth_myfollowed"
             android:layout_width="55dp"
             android:layout_height="26dp"
-            android:text="0"
-            android:textColor="#ff333333"
-            android:textSize="20sp"
-            android:gravity="center"
             android:layout_marginLeft="38dp"
             android:layout_marginTop="20dp"
             android:layout_toRightOf="@id/fourth_myfollow"
-            />
+            android:gravity="center"
+            android:text="0"
+            android:textColor="#ff333333"
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/fourth_myarticle"
             android:layout_width="55dp"
             android:layout_height="26dp"
-            android:text="0"
-            android:textColor="#ff333333"
-            android:textSize="20sp"
-            android:gravity="center"
             android:layout_marginLeft="38dp"
             android:layout_marginTop="20dp"
             android:layout_toRightOf="@id/fourth_myfollowed"
-            />
+            android:gravity="center"
+            android:text="0"
+            android:textColor="#ff333333"
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/fourth_myfriend"
             android:layout_width="55dp"
             android:layout_height="26dp"
-            android:text="0"
-            android:textColor="#ff333333"
-            android:textSize="20sp"
-            android:gravity="center"
             android:layout_marginLeft="38dp"
             android:layout_marginTop="20dp"
             android:layout_toRightOf="@id/fourth_myarticle"
-            />
+            android:gravity="center"
+            android:text="0"
+            android:textColor="#ff333333"
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/fourth_myfollow_text"
             android:layout_width="62dp"
             android:layout_height="14dp"
-            android:text="我的关注"
-            android:textColor="#ff999999"
-            android:textSize="11sp"
-            android:gravity="center"
+            android:layout_below="@id/fourth_myfollow"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/fourth_myfollow"
-            />
+            android:gravity="center"
+            android:text="我的关注"
+            android:textColor="#ff999999"
+            android:textSize="11sp" />
+
         <TextView
             android:id="@+id/fourth_myfollowed_text"
             android:layout_width="62dp"
             android:layout_height="14dp"
-            android:text="我的粉丝"
-            android:textColor="#ff999999"
-            android:textSize="11sp"
-            android:gravity="center"
+            android:layout_below="@id/fourth_myfollowed"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@id/fourth_myfollow_text"
-            android:layout_below="@id/fourth_myfollowed"
-            />
+            android:gravity="center"
+            android:text="我的粉丝"
+            android:textColor="#ff999999"
+            android:textSize="11sp" />
+
         <TextView
             android:id="@+id/fourth_myarticle_text"
             android:layout_width="62dp"
             android:layout_height="14dp"
-            android:text="我的文章"
-            android:textColor="#ff999999"
-            android:textSize="11sp"
-            android:gravity="center"
+            android:layout_below="@id/fourth_myarticle"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@id/fourth_myfollowed_text"
-            android:layout_below="@id/fourth_myarticle"
-            />
+            android:gravity="center"
+            android:text="我的文章"
+            android:textColor="#ff999999"
+            android:textSize="11sp" />
+
         <TextView
             android:id="@+id/fourth_myfriend_text"
             android:layout_width="62dp"
             android:layout_height="14dp"
-            android:text="我的好友"
-            android:textColor="#ff999999"
-            android:textSize="11sp"
-            android:gravity="center"
+            android:layout_below="@id/fourth_myfriend"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@id/fourth_myarticle_text"
-            android:layout_below="@id/fourth_myfriend"
-            />
+            android:gravity="center"
+            android:text="我的好友"
+            android:textColor="#ff999999"
+            android:textSize="11sp" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="16dp"
-        >
+        android:layout_marginTop="16dp">
 
         <TextView
             android:id="@+id/fourth_moreTitle"
             android:layout_width="80dp"
             android:layout_height="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
             android:text="更多操作"
             android:textColor="#333333"
-            android:textStyle="bold"
             android:textSize="14sp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="20dp"/>
-        
-        <com.ly.imart.util.CircleImageView
-            xmlns:circleimageview="http://schemas.android.com/apk/res-auto"
+            android:textStyle="bold" />
+
+        <com.ly.imart.util.CircleImageView xmlns:circleimageview="http://schemas.android.com/apk/res-auto"
             android:id="@+id/fourth_more_mycollection"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:scaleType="centerCrop"
             android:layout_below="@id/fourth_moreTitle"
-            android:src="@drawable/mycollection"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="25dp"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/mycollection" />
+
         <com.ly.imart.util.CircleImageView
             android:id="@+id/fourth_more_mygoods"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:scaleType="centerCrop"
             android:layout_below="@id/fourth_moreTitle"
-            android:layout_toRightOf="@id/fourth_more_mycollection"
-            android:src="@drawable/ic_goods"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="25dp"/>
+            android:layout_toRightOf="@id/fourth_more_mycollection"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_goods" />
+
         <com.ly.imart.util.CircleImageView
             android:id="@+id/fourth_more_mycart"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:scaleType="centerCrop"
             android:layout_below="@id/fourth_moreTitle"
-            android:layout_toRightOf="@id/fourth_more_mygoods"
-            android:src="@drawable/ic_mycart"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="25dp"/>
+            android:layout_toRightOf="@id/fourth_more_mygoods"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_mycart" />
+
         <com.ly.imart.util.CircleImageView
             android:id="@+id/fourth_more_diy"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:scaleType="centerCrop"
             android:layout_below="@id/fourth_moreTitle"
-            android:layout_toRightOf="@id/fourth_more_mycart"
-            android:src="@drawable/ic_diy"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="25dp"/>
+            android:layout_toRightOf="@id/fourth_more_mycart"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_diy" />
+
         <com.ly.imart.util.CircleImageView
             android:id="@+id/fourth_more_myfriends"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:scaleType="centerCrop"
             android:layout_below="@id/fourth_moreTitle"
-            android:layout_toRightOf="@id/fourth_more_diy"
-            android:src="@drawable/ic_myfriend"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="25dp"/>
+            android:layout_toRightOf="@id/fourth_more_diy"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_myfriend" />
     </RelativeLayout>
 
 
