@@ -22,8 +22,11 @@ public class MyshowPresenter {
 
     public void followUser(String username){
         //do something save to mysql
-        iMyshowModel.setFollow(!iMyshowModel.isFollow());
-        iMyshowView.changeFollowButton(!iMyshowModel.isFollow()); //要从model中取相反的boolean
+
+//        iMyshowModel.setFollow(!iMyshowModel.isFollow());
+//        iMyshowView.changeFollowButton(iMyshowModel.isFollow()); //要从model中取相反的boolean
+        iMyshowModel.followUser(username);
+
     }
 
     public MyshowBean initData(String userName) throws ExecutionException, InterruptedException {

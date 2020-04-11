@@ -6,8 +6,15 @@ public class FourthBean {
     int followNum;
     int followedNum;
     int articleNum;
+    int supportNum;
     String imgUrl;
+    public int getSupportNum() {
+        return supportNum;
+    }
 
+    public void setSupportNum(int supportNum) {
+        this.supportNum = supportNum;
+    }
     public String getImgUrl() {
         return imgUrl;
     }

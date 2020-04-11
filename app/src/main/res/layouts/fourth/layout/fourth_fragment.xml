@@ -180,7 +180,7 @@
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@id/fourth_myarticle_text"
             android:gravity="center"
-            android:text="我的好友"
+            android:text="我的获赞"
             android:textColor="#ff999999"
             android:textSize="11sp" />
 

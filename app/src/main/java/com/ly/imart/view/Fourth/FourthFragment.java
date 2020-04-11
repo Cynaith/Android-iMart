@@ -46,7 +46,7 @@ public class FourthFragment extends Fragment implements View.OnClickListener, IF
     TextView textView_fourth_myfollow;
     TextView textView_fourth_myfollowed;
     TextView textView_myarticle;
-    TextView textView_myfriend;
+    TextView textView_myfriend; //我的获赞数
     TextView textView_username;
     TextView textView_usershow;
     TextView textView_exit;
@@ -75,14 +75,14 @@ public class FourthFragment extends Fragment implements View.OnClickListener, IF
         textView_exit = view.findViewById(R.id.exit);
         textView_fourth_myfollow.setClickable(true);
         textView_fourth_myfollowed.setClickable(true);
-        textView_myfriend.setClickable(true);
+//        textView_myfriend.setClickable(true);
         textView_myarticle.setClickable(true);
         relativeLayout.setClickable(true);
         textView_exit.setClickable(true);
         textView_fourth_myfollow.setOnClickListener(this);
         textView_fourth_myfollowed.setOnClickListener(this);
         textView_myarticle.setOnClickListener(this);
-        textView_myfriend.setOnClickListener(this); //集成maxim
+//        textView_myfriend.setOnClickListener(this); //集成maxim
         textView_exit.setOnClickListener(this);
         relativeLayout.setOnClickListener(this);
 //
@@ -100,6 +100,7 @@ public class FourthFragment extends Fragment implements View.OnClickListener, IF
             textView_myarticle.setText("" + fourthBean.getArticleNum());
             textView_username.setText("" + fourthBean.getUserName());
             textView_usershow.setText("" + fourthBean.getUserShow());
+            textView_myfriend.setText(""+fourthBean.getSupportNum());
 // https://blog.csdn.net/augfun/article/details/86615750
             MyImageView userimage;
             userimage = view.findViewById(R.id.fourth_userimage);
@@ -133,6 +134,9 @@ public class FourthFragment extends Fragment implements View.OnClickListener, IF
                 break;
             case R.id.fourth_mine:
                 fourthPresenter.gotoMyshowPage();
+                break;
+            case R.id.fourth_more_mycollection:
+                gotoCollectionPage();
                 break;
             case R.id.fourth_more_diy:
                 gotoDiyList();
@@ -186,7 +190,12 @@ public class FourthFragment extends Fragment implements View.OnClickListener, IF
         intent.putExtra("userName", SharePreferenceUtils.getInstance().getUserName());
         startActivity(intent);
     }
-
+    public void gotoCollectionPage(){
+        Intent intent = new Intent(this.getActivity(), FourthFollowlistActivity.class);
+        intent.putExtra("kind", 4);
+        intent.putExtra("userName", SharePreferenceUtils.getInstance().getUserName());
+        startActivity(intent);
+    }
     @Override
     public void gotoMyshowPage(String userName) {
         Intent intent = new Intent(this.getActivity(), FourthMyshowActivity.class);
@@ -233,5 +242,11 @@ public class FourthFragment extends Fragment implements View.OnClickListener, IF
                         WelcomeActivity.openWelcome(getActivity());
                     }
                 });
+    }
+
+    @Override
+    public void onResume() {
+        initData();
+        super.onResume();
     }
 }

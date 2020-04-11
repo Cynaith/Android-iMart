@@ -128,7 +128,10 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.activity_myshow_isfollow:
-                myshowPresenter.followUser("sad");
+                myshowPresenter.followUser(userName);
+                if (button_isfollow.getText().toString().equals("已关注"))
+                    button_isfollow.setText("未关注");
+                else button_isfollow.setText("已关注");
                 break;
             case R.id.activity_myshow_message:
                 new Thread(new Runnable() {

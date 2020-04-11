@@ -8,4 +8,5 @@ public interface IMyshowModel {
     MyshowBean initData(String userName, String loginName) throws ExecutionException, InterruptedException;
     boolean isFollow();
     void setFollow(boolean follow);
+    void followUser(String userName);
 }

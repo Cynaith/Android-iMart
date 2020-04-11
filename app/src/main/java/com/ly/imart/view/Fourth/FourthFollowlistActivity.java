@@ -35,6 +35,8 @@ public class FourthFollowlistActivity extends AppCompatActivity implements IFoll
 
     //    kind = 1 follow
 //    kind = 2 followed
+    // kind = 3 myarticle
+    // kind = 4 mycollectionn
     static int kind;
     static String userName;
     FollowListPresenter followListPresenter;
@@ -50,7 +52,8 @@ public class FourthFollowlistActivity extends AppCompatActivity implements IFoll
         listTitle = findViewById(R.id.follow_title);
         if (kind==1) listTitle.setText("关注列表");
         else if (kind==2) listTitle.setText("粉丝列表");
-        else listTitle.setText("文章列表");
+        else if (kind==3)listTitle.setText("文章列表");
+        else if (kind==4)listTitle.setText("收藏列表");
         followListPresenter = new FollowListPresenter(this);
         mOneRecyclerView = (OneRecyclerView) findViewById(R.id.friendlist);
         mOneRecyclerView.init(
@@ -102,9 +105,11 @@ public class FourthFollowlistActivity extends AppCompatActivity implements IFoll
                 public void onClick(View view) {
                     if (kind ==1 ||kind==2)
                     followListPresenter.gotoUserPage(friendListBean.getName());
-                    else {//如果是文章列表
+                    else if (kind ==3||kind==4){//如果是文章列表
                         ArticleMainActivity.openArticleMainById(FourthFollowlistActivity.this,friendListBean.getArticleId());
                     }
+
+
 
 //                    Toast.makeText(view.getContext(), friendListBean.getName(), Toast.LENGTH_SHORT).show();
                 }
@@ -140,7 +145,10 @@ public class FourthFollowlistActivity extends AppCompatActivity implements IFoll
                 listBeans = followListPresenter.getFriendList(userName);
             else if (kind == 2)
                 listBeans = followListPresenter.getFriendedList(userName);
-            else listBeans = followListPresenter.getArticleList(userName);
+            else if (kind==3)
+                listBeans = followListPresenter.getArticleList(userName);
+            else if (kind ==4)
+                listBeans = followListPresenter.getCollection(userName);
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

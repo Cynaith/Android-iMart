@@ -36,5 +36,10 @@ public class FollowListPresenter {
         return followListModel.getArticleList(userName);
 
     }
+    public List<FriendListBean> getCollection(String userName) throws ExecutionException, InterruptedException {
+        return followListModel.getCollectionList(userName);
+
+    }
+
 
 }

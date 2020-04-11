@@ -78,6 +78,21 @@ public class FollowListModelImpl implements IFollowListModel {
 
         return friendListBeanList;
     }
+    public List<FriendListBean> getCollectionList(String username) throws ExecutionException, InterruptedException {
+        ExecutorService es = Executors.newSingleThreadExecutor();
+        Future<String> future = es.submit(new getResponseData(username,"collection"));
+        ResponseBean responseBean = JSON.parseObject(future.get(),ResponseBean.class);
+        if (future.isDone()) {
+
+            es.shutdown();
+        }
+        String data = responseBean.getData().toString().replaceAll("=",":");
+        data = data.replaceAll("\"","\'");
+
+        List<FriendListBean> friendListBeanList = JSON.parseObject(data,new TypeReference<List<FriendListBean>>(){});
+
+        return friendListBeanList;
+    }
 
 
 

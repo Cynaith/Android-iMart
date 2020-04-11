@@ -8,6 +8,7 @@ import com.ly.imart.bean.Fourth.FourthBean;
 import com.ly.imart.bean.Fourth.FriendListBean;
 import com.ly.imart.bean.Fourth.MyshowBean;
 import com.ly.imart.bean.Response.ResponseBean;
+import com.ly.imart.maxim.common.utils.SharePreferenceUtils;
 import com.ly.imart.util.OkHttpRequest;
 
 import java.io.IOException;
@@ -26,6 +27,8 @@ public class MyshowModelImpl implements IMyshowModel {
     public MyshowModelImpl() {
         myshowBean = new MyshowBean();
     }
+
+
 
     @Override
     public MyshowBean initData(String userName,String loginName) throws ExecutionException, InterruptedException {
@@ -46,7 +49,11 @@ public class MyshowModelImpl implements IMyshowModel {
         return myshowBean;
 
     }
-
+    @Override
+    public void followUser(String userName) {
+        ExecutorService es = Executors.newSingleThreadExecutor();
+        Future<String> future = es.submit(new followuser(userName));
+    }
     @Override
     public boolean isFollow() {
         return myshowBean.isFollow();
@@ -93,6 +100,29 @@ public class MyshowModelImpl implements IMyshowModel {
             String accessToken = "";
             OkHttpRequest okHttpRequest = new OkHttpRequest();
             String accessTokenUrl = "http://47.101.171.252:8080/user/myshow?userName="+userName+"&loginName="+loginName ;
+            try {
+                //发送请求
+                accessToken = okHttpRequest.get(accessTokenUrl);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Log.d(ACTIVITY_TAG,accessToken);
+            return accessToken;
+        }
+    }
+    class followuser implements Callable<String> {
+
+        String userName;
+
+        public followuser(String userName) {
+            this.userName = userName;
+        }
+
+        @Override
+        public String call() throws Exception {
+            String accessToken = "";
+            OkHttpRequest okHttpRequest = new OkHttpRequest();
+            String accessTokenUrl = "http://10.0.2.2:8080/user/followUser?followName="+userName+"&userName="+ SharePreferenceUtils.getInstance().getUserName();
             try {
                 //发送请求
                 accessToken = okHttpRequest.get(accessTokenUrl);
