@@ -9,7 +9,7 @@
         android:background="#ffffff"
         android:id="@+id/add_article_img_title">
         <TextView
-            android:text="个人信息"
+            android:text="个人信息修改"
             android:textSize="21sp"
             android:textColor="#ff333333"
             android:gravity="center"
@@ -19,7 +19,7 @@
             android:layout_height="match_parent" />
     </RelativeLayout>
     <com.ly.imart.util.MyImageView
-        android:id="@+id/PersonalData_updateimg"
+        android:id="@+id/user_img_update"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
@@ -28,6 +28,28 @@
         android:background="@mipmap/waiting"
         >
     </com.ly.imart.util.MyImageView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginLeft="@dimen/dimen_48"
+        android:layout_marginRight="@dimen/dimen_48"
+        android:textColor="@color/facebook_secondary_color"
+        android:text="用户姓名"/>
+    <TextView
+        android:id="@+id/user_name_update"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_48"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/dimen_48"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="@dimen/dimen_48"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="输入姓名"
+        android:maxLines="1"
+        android:textColorHint="@color/color_666666"
+        android:textSize="@dimen/dimen_14" />
 
     <View
         android:layout_width="match_parent"
@@ -44,7 +66,7 @@
         android:textColor="@color/facebook_secondary_color"
         android:text="用户简介"/>
     <EditText
-        android:id="@+id/PersonalData_inputUsershow"
+        android:id="@+id/user_show_update"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_48"
         android:layout_centerHorizontal="true"
@@ -73,7 +95,7 @@
         android:textColor="@color/facebook_secondary_color"
         android:text="年龄"/>
     <EditText
-        android:id="@+id/PersonalData_inputAge"
+        android:id="@+id/user_age_update"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_48"
         android:layout_centerHorizontal="true"
@@ -88,7 +110,7 @@
         android:textColorHint="@color/color_666666"
         android:textSize="@dimen/dimen_14" />
     <TextView
-        android:id="@+id/PersonalData_commitButton"
+        android:id="@+id/user_update_button"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_50"
         android:layout_below="@id/add_article_title_radiogroup"
