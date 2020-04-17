@@ -213,7 +213,7 @@
             android:src="@drawable/mycollection" />
 
         <com.ly.imart.util.CircleImageView
-            android:id="@+id/fourth_more_mygoods"
+            android:id="@+id/fourth_more_userinfo"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_below="@id/fourth_moreTitle"
@@ -221,18 +221,18 @@
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@id/fourth_more_mycollection"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_goods" />
+            android:src="@drawable/ic_userinfo" />
 
         <com.ly.imart.util.CircleImageView
-            android:id="@+id/fourth_more_mycart"
+            android:id="@+id/fourth_more_mail"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_below="@id/fourth_moreTitle"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="15dp"
-            android:layout_toRightOf="@id/fourth_more_mygoods"
+            android:layout_toRightOf="@id/fourth_more_userinfo"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_mycart" />
+            android:src="@drawable/ic_mail" />
 
         <com.ly.imart.util.CircleImageView
             android:id="@+id/fourth_more_diy"
@@ -241,7 +241,7 @@
             android:layout_below="@id/fourth_moreTitle"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="15dp"
-            android:layout_toRightOf="@id/fourth_more_mycart"
+            android:layout_toRightOf="@id/fourth_more_mail"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_diy" />
 

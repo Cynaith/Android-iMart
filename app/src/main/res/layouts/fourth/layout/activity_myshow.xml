@@ -30,13 +30,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
+
         <com.ly.imart.util.CircleImageView
             android:id="@+id/activity_myshow_userimg"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/classify_new"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="25dp"/>
+            android:layout_marginTop="25dp"
+            android:src="@drawable/headwaiting"
+            android:scaleType="fitXY"
+            />
     <Button
         android:id="@+id/activity_myshow_isfollow"
         android:layout_width="80dp"
