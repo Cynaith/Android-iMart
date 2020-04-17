@@ -37,6 +37,7 @@ public class InitWay extends Activity implements View.OnClickListener, RouteSear
         mStartPoint = mStartPoint1;
         mEndPoint = mEndPoint1;
         Intent intent = new Intent(context, InitWay.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 
