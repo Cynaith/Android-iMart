@@ -406,38 +406,38 @@ public class RegisterActivity extends BaseTitleActivity {
         timer.start();
     }
 
-    private void initRxBus() {
-        if (mSubscription == null) {
-            mSubscription = new CompositeSubscription();
-        }
-        Subscription wxLogin = RxBus.getInstance().toObservable(Intent.class)
-                .subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Intent>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(Intent intent) {
-                        if (intent == null || !TextUtils.equals(intent.getAction(),
-                                CommonConfig.WX_LOGIN_ACTION)) {
-                            return;
-                        }
-                        if (mSubscription != null) {
-                            mSubscription.unsubscribe();
-                        }
-                        String openId = intent.getStringExtra(CommonConfig.WX_OPEN_ID);
-                        LoginActivity.wxChatLogin(RegisterActivity.this, openId);
-                    }
-                });
-        mSubscription.add(wxLogin);
-    }
+//    private void initRxBus() {
+//        if (mSubscription == null) {
+//            mSubscription = new CompositeSubscription();
+//        }
+//        Subscription wxLogin = RxBus.getInstance().toObservable(Intent.class)
+//                .subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Subscriber<Intent>() {
+//                    @Override
+//                    public void onCompleted() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(Intent intent) {
+//                        if (intent == null || !TextUtils.equals(intent.getAction(),
+//                                CommonConfig.WX_LOGIN_ACTION)) {
+//                            return;
+//                        }
+//                        if (mSubscription != null) {
+//                            mSubscription.unsubscribe();
+//                        }
+//                        String openId = intent.getStringExtra(CommonConfig.WX_OPEN_ID);
+////                        LoginActivity.wxChatLogin(RegisterActivity.this, openId);
+//                    }
+//                });
+//        mSubscription.add(wxLogin);
+//    }
 
     @Override
     protected void onDestroy() {

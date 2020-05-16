@@ -48,7 +48,7 @@ public class RegisterBindMobileActivity extends BaseTitleActivity {
     private TextView mVerifyCountDown;
 
     /* 扫一扫 */
-    //private TextView mTvSkip;
+    private TextView mTvSkip;
 
     /* 输入监听 */
     private TextWatcher mInputWatcher;
@@ -101,7 +101,7 @@ public class RegisterBindMobileActivity extends BaseTitleActivity {
         mSendVerify = view.findViewById(R.id.tv_send_verify);
         mSendVerify.setEnabled(false);
         mVerifyCountDown = view.findViewById(R.id.tv_send_verify_count_down);
-        //mTvSkip = view.findViewById(R.id.tv_skip);
+        mTvSkip = view.findViewById(R.id.tv_skip);
         return view;
     }
 
@@ -114,7 +114,7 @@ public class RegisterBindMobileActivity extends BaseTitleActivity {
             bindMobile(name, pwd);
         });
         // 跳过
-        //mTvSkip.setOnClickListener(v -> login());
+        mTvSkip.setOnClickListener(v -> login());
         mInputWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -260,6 +260,7 @@ public class RegisterBindMobileActivity extends BaseTitleActivity {
         intent.putExtra("userPwd",userPwd);
         intent.putExtra("isLoginById",false);
         intent.putExtra("AppId",mAppId);
+        intent.putExtra("phone",mInputName.getEditableText().toString().trim());
         this.startActivity(intent);
         this.finish();
 //        LoginActivity.login(this, userName, userPwd, false, mAppId);

@@ -116,9 +116,9 @@ public class LoginActivity extends BaseTitleActivity {
 //        mIvScan = view.findViewById(R.id.iv_scan);
 //        用户切换APPId
 //        mIvChangeAppId = view.findViewById(R.id.iv_app_id);
-        mTvAppId = view.findViewById(R.id.tv_login_appid);
-        mSwitchLoginMode = view.findViewById(R.id.tv_switch_login_mode);
-        mSwitchLoginMode.setVisibility(View.GONE);
+//        mTvAppId = view.findViewById(R.id.tv_login_appid);
+//        mSwitchLoginMode = view.findViewById(R.id.tv_switch_login_mode);
+//        mSwitchLoginMode.setVisibility(View.GONE);
         // 三次点击 进入另一套环境配置
 //        ClickTimeUtils.setClickTimes(view.findViewById(R.id.tv_login_tag), 3, () -> {
 //            int newIndex = SharePreferenceUtils.getInstance().getCustomDns();
@@ -155,6 +155,7 @@ public class LoginActivity extends BaseTitleActivity {
 //        });
         // 扫一扫
 //        mIvScan.setOnClickListener(v -> ScannerActivity.openScan(this));
+        // 输入监听
         mInputWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -180,17 +181,17 @@ public class LoginActivity extends BaseTitleActivity {
         mInputName.addTextChangedListener(mInputWatcher);
         mInputPwd.addTextChangedListener(mInputWatcher);
         // 切换登陆模式
-        mSwitchLoginMode.setOnClickListener(v -> {
-            if (mLoginByUserId) {
-                // id登陆 切换为用户名
-                mInputName.setHint(R.string.login_user_name_hint);
-                mInputName.setInputType(EditorInfo.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-            } else {
-                mInputName.setHint(R.string.login_user_id_hint);
-                mInputName.setInputType(EditorInfo.TYPE_CLASS_NUMBER);
-            }
-            mLoginByUserId = !mLoginByUserId;
-        });
+//        mSwitchLoginMode.setOnClickListener(v -> {
+//            if (mLoginByUserId) {
+//                // id登陆 切换为用户名
+//                mInputName.setHint(R.string.login_user_name_hint);
+//                mInputName.setInputType(EditorInfo.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+//            } else {
+//                mInputName.setHint(R.string.login_user_id_hint);
+//                mInputName.setInputType(EditorInfo.TYPE_CLASS_NUMBER);
+//            }
+//            mLoginByUserId = !mLoginByUserId;
+//        });
 
         // 修改appId
 //        mIvChangeAppId.setOnClickListener(v -> DialogUtils.getInstance().showEditDialog(this,
@@ -210,21 +211,21 @@ public class LoginActivity extends BaseTitleActivity {
 //                }));
     }
 
-    @Override
-    protected void initDataForActivity() {
-        super.initDataForActivity();
-        // 判断当前是否是扫码登陆
-        String scanUserName = ScanConfigs.CODE_USER_NAME;
-        if (!TextUtils.isEmpty(scanUserName)) {
-            mInputName.setText(scanUserName);
-        }
-        String appId = SharePreferenceUtils.getInstance().getAppId();
-        mTvAppId.setText("iMart");
-    }
+//    @Override
+//    protected void initDataForActivity() {
+//        super.initDataForActivity();
+//        // 判断当前是否是扫码登陆
+//        String scanUserName = ScanConfigs.CODE_USER_NAME;
+//        if (!TextUtils.isEmpty(scanUserName)) {
+//            mInputName.setText(scanUserName);
+//        }
+//        String appId = SharePreferenceUtils.getInstance().getAppId();
+//        mTvAppId.setText("iMart");
+//    }
 
-    public static void login(Activity activity, String name, String pwd, boolean isLoginById) {
-        login(activity, name, pwd, isLoginById, null);
-    }
+//    public static void login(Activity activity, String name, String pwd, boolean isLoginById) {
+//        login(activity, name, pwd, isLoginById, null);
+//    }
 
     public static void login(final Activity activity, String name, final String pwd,
                              final boolean isLoginById, final String changeAppId) {
@@ -271,6 +272,7 @@ public class LoginActivity extends BaseTitleActivity {
                     }
                     // 登陆成功消息预加载
                     WelcomeActivity.initData();
+
                     UserManager.getInstance().autoSignInByName(name,pwd);
                 }
                 return bmxErrorCode;
@@ -304,79 +306,79 @@ public class LoginActivity extends BaseTitleActivity {
                 });
     }
 
-    public static void wxChatLogin(final Activity activity, String openId) {
-        if (TextUtils.isEmpty(openId)) {
-            ToastUtil.showTextViewPrompt("不能为空");
-            return;
-        }
-        if (activity instanceof BaseTitleActivity && !activity.isFinishing()) {
-            ((BaseTitleActivity) activity).showLoadingDialog(true);
-        }
-        AppManager.getInstance().weChatLogin(openId, new HttpResponseCallback<String>() {
-            @Override
-            public void onResponse(String result) {
-                if (TextUtils.isEmpty(result)) {
-                    ToastUtil.showTextViewPrompt("登陆失败");
-                    return;
-                }
-                String appId = WXUtils.getInstance().getAppId();
-                try {
-                    JSONObject jsonObject = new JSONObject(result);
-                    if (!jsonObject.has("user_id") || !jsonObject.has("password")) {
-                        String openId = jsonObject.getString("openid");
-                        // 没有userId 密码 需要跳转绑定微信页面
-                        LoginBindUserActivity.openLoginBindUser(activity, openId, appId);
-                        activity.finish();
-                        return;
-                    }
-                    // 直接登录
-                    String userId = jsonObject.getString("user_id");
-                    String pwd = jsonObject.getString("password");
-                    LoginActivity.login(activity, userId, pwd, true, appId);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
+//    public static void wxChatLogin(final Activity activity, String openId) {
+//        if (TextUtils.isEmpty(openId)) {
+//            ToastUtil.showTextViewPrompt("不能为空");
+//            return;
+//        }
+//        if (activity instanceof BaseTitleActivity && !activity.isFinishing()) {
+//            ((BaseTitleActivity) activity).showLoadingDialog(true);
+//        }
+//        AppManager.getInstance().weChatLogin(openId, new HttpResponseCallback<String>() {
+//            @Override
+//            public void onResponse(String result) {
+//                if (TextUtils.isEmpty(result)) {
+//                    ToastUtil.showTextViewPrompt("登陆失败");
+//                    return;
+//                }
+//                String appId = WXUtils.getInstance().getAppId();
+//                try {
+//                    JSONObject jsonObject = new JSONObject(result);
+//                    if (!jsonObject.has("user_id") || !jsonObject.has("password")) {
+//                        String openId = jsonObject.getString("openid");
+//                        // 没有userId 密码 需要跳转绑定微信页面
+//                        LoginBindUserActivity.openLoginBindUser(activity, openId, appId);
+//                        activity.finish();
+//                        return;
+//                    }
+//                    // 直接登录
+//                    String userId = jsonObject.getString("user_id");
+//                    String pwd = jsonObject.getString("password");
+//                    LoginActivity.login(activity, userId, pwd, true, appId);
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(int errorCode, String errorMsg, Throwable t) {
+//                ToastUtil.showTextViewPrompt("登陆失败");
+//            }
+//        });
+//    }
 
-            @Override
-            public void onFailure(int errorCode, String errorMsg, Throwable t) {
-                ToastUtil.showTextViewPrompt("登陆失败");
-            }
-        });
-    }
-
-    private void initRxBus() {
-        if (mSubscription == null) {
-            mSubscription = new CompositeSubscription();
-        }
-        Subscription wxLogin = RxBus.getInstance().toObservable(Intent.class)
-                .subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Intent>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(Intent intent) {
-                        if (intent == null || !TextUtils.equals(intent.getAction(),
-                                CommonConfig.WX_LOGIN_ACTION)) {
-                            return;
-                        }
-                        if (mSubscription != null) {
-                            mSubscription.unsubscribe();
-                        }
-                        String openId = intent.getStringExtra(CommonConfig.WX_OPEN_ID);
-                        wxChatLogin(LoginActivity.this, openId);
-                    }
-                });
-        mSubscription.add(wxLogin);
-    }
+//    private void initRxBus() {
+//        if (mSubscription == null) {
+//            mSubscription = new CompositeSubscription();
+//        }
+//        Subscription wxLogin = RxBus.getInstance().toObservable(Intent.class)
+//                .subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Subscriber<Intent>() {
+//                    @Override
+//                    public void onCompleted() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(Intent intent) {
+//                        if (intent == null || !TextUtils.equals(intent.getAction(),
+//                                CommonConfig.WX_LOGIN_ACTION)) {
+//                            return;
+//                        }
+//                        if (mSubscription != null) {
+//                            mSubscription.unsubscribe();
+//                        }
+//                        String openId = intent.getStringExtra(CommonConfig.WX_OPEN_ID);
+//                        wxChatLogin(LoginActivity.this, openId);
+//                    }
+//                });
+//        mSubscription.add(wxLogin);
+//    }
 
     @Override
     protected void onDestroy() {

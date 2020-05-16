@@ -1,6 +1,7 @@
 package com.ly.imart.view.Fourth;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -39,8 +40,8 @@ public class FourthFragment extends Fragment implements View.OnClickListener, IF
     private View view;
     private FourthPresenter fourthPresenter;
     CircleImageView circleImageView_mycollection;
-    CircleImageView circleImageView_mygoods;
-    CircleImageView circleImageView_mycart;
+    CircleImageView circleImageView_userinfo;
+    CircleImageView circleImageView_mail;
     CircleImageView circleImageView_diy;
     CircleImageView circleImageView_myfriends;
     TextView textView_fourth_myfollow;
@@ -54,6 +55,7 @@ public class FourthFragment extends Fragment implements View.OnClickListener, IF
     private AMapLocationClient locationClientSingle = null;
     private AMapLocationClient locationClientContinue = null;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -65,10 +67,10 @@ public class FourthFragment extends Fragment implements View.OnClickListener, IF
         textView_fourth_myfollowed = view.findViewById(R.id.fourth_myfollowed);
         textView_myarticle = view.findViewById(R.id.fourth_myarticle);
         textView_myfriend = view.findViewById(R.id.fourth_myfriend);
-        (circleImageView_myfriends = view.findViewById(R.id.fourth_more_myfriends)).setOnClickListener(this);
         (circleImageView_diy = view.findViewById(R.id.fourth_more_diy)).setOnClickListener(this);
         (circleImageView_mycollection = view.findViewById(R.id.fourth_more_mycollection)).setOnClickListener(this);
-        (circleImageView_mygoods = view.findViewById(R.id.fourth_more_mygoods)).setOnClickListener(this);
+        (circleImageView_userinfo = view.findViewById(R.id.fourth_more_userinfo)).setOnClickListener(this);
+        (circleImageView_mail = view.findViewById(R.id.fourth_more_mail)).setOnClickListener(this);
         relativeLayout = view.findViewById(R.id.fourth_mine);
         textView_username = view.findViewById(R.id.fourth_username);
         textView_usershow = view.findViewById(R.id.fourth_usershow);
@@ -141,25 +143,22 @@ public class FourthFragment extends Fragment implements View.OnClickListener, IF
             case R.id.fourth_more_diy:
                 gotoDiyList();
                 break;
-            case R.id.fourth_more_mygoods:
-                //gotoChatList();
+            /**
+             *
+             */
+            case R.id.fourth_more_userinfo: //设置用户信息
+                startActivity(new Intent(this.getActivity(),UpdateUserActivity.class));
                 break;
-            case R.id.fourth_more_myfriends:
-                gotoChatList();
-//            切换集成模式    MaximMainActivity.openMain(this.getContext());
-//                Intent intent = new Intent(this.getContext(),MaximMainActivity.class);
-//                this.startActivity(intent);
+            case R.id.fourth_more_mail: //点赞信息
+                startActivity(new Intent(this.getActivity(),SupportList.class));
                 break;
+
             case R.id.exit:
                 logout();
                 break;
         }
     }
 
-//    private void onClickFourHelp(View view) {
-//        Intent intent = new Intent(this.getActivity(), FourthHelpActivity.class);
-//        startActivity(intent);
-//    }
 
 
     @Override
@@ -249,4 +248,6 @@ public class FourthFragment extends Fragment implements View.OnClickListener, IF
         initData();
         super.onResume();
     }
+
+
 }

@@ -96,13 +96,13 @@
                                 android:layout_marginTop="3dp"
                                 android:textColor="#989898"/>
                         </LinearLayout>
-                        <ImageView
-                            android:id="@+id/detail_page_focus"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/icon_focus"
-                            android:layout_margin="12dp"
-                            android:padding="6dp"/>
+<!--                        <ImageView-->
+<!--                            android:id="@+id/detail_page_focus"-->
+<!--                            android:layout_width="30dp"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:src="@drawable/icon_focus"-->
+<!--                            android:layout_margin="12dp"-->
+<!--                            android:padding="6dp"/>-->
                     </LinearLayout>
 
                     <org.sufficientlysecure.htmltextview.HtmlTextView

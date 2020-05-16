@@ -7,6 +7,7 @@ public class SecondFragmentBean {
     String name;
     double price;
     int fire;
+    String username;
 
     public int getId() {
         return id;
@@ -46,5 +47,13 @@ public class SecondFragmentBean {
 
     public void setFire(int fire) {
         this.fire = fire;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

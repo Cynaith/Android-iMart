@@ -41,7 +41,7 @@ public class PersonalDataModel{
         public String call() throws Exception {
             String accessToken = "";
             OkHttpRequest okHttpRequest = new OkHttpRequest();
-            String accessTokenUrl = "http://10.0.2.2:8080/user/register?username="+ username
+            String accessTokenUrl = "http://47.101.171.252:8080/user/register?username="+ username
                     +"&usershow="+ usershow+"&imgurl="+userimg+"&age="+age+"&phone="+phone+"&password="+password;
             try {
                 //发送请求

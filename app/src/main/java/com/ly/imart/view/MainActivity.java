@@ -14,9 +14,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.ly.imart.R;
+import com.ly.imart.maxim.message.view.SessionFragment;
 import com.ly.imart.view.First.FirstFragment;
 import com.ly.imart.view.Fourth.FourthFragment;
 import com.ly.imart.view.Others.AddArticleTitle;
+import com.ly.imart.view.Others.AddQuestion;
 import com.ly.imart.view.Others.AddVideo;
 import com.ly.imart.view.Second.SecondFragment;
 import com.ly.imart.view.Third.ThirdFragment;
@@ -38,11 +40,11 @@ public class MainActivity extends AppCompatActivity {
 
     private EasyNavigationBar navigationBar;
 
-    private String[] tabText = {"首页", "发现", "", "视频", "我的"};
+    private String[] tabText = { "发现","聊天", "", "视频", "我的"};
     //未选中icon
-    private int[] normalIcon = {R.drawable.ic_home_unselect, R.drawable.ic_kind_unselect, R.drawable.ic_addto, R.drawable.ic_video_unselect, R.drawable.ic_mine_unselect};
+    private int[] normalIcon = {R.drawable.ic_kind_unselect,R.drawable.ic_chat_unselect,  R.drawable.ic_addto, R.drawable.ic_video_unselect, R.drawable.ic_mine_unselect};
     //选中时icon
-    private int[] selectIcon = {R.drawable.ic_home_select, R.drawable.ic_kind_select, R.drawable.ic_addto, R.drawable.ic_video_select, R.drawable.ic_mine_select};
+    private int[] selectIcon = {R.drawable.ic_kind_select,R.drawable.ic_chat_select,  R.drawable.ic_addto, R.drawable.ic_video_select, R.drawable.ic_mine_select};
 
     private List<Fragment> fragments = new ArrayList<>();
 
@@ -67,8 +69,10 @@ public class MainActivity extends AppCompatActivity {
 
         navigationBar = findViewById(R.id.navigationBar);
 
-        fragments.add(new FirstFragment());
+//        fragments.add(new FirstFragment());
+
         fragments.add(new SecondFragment());
+        fragments.add(new SessionFragment());
         fragments.add(new ThirdFragment());
         fragments.add(new FourthFragment());
 
@@ -94,13 +98,16 @@ public class MainActivity extends AppCompatActivity {
 
                             PopMenu mPopMenu = new PopMenu.Builder().attachToActivity(MainActivity.this)
                                     .addMenuItem(new PopMenuItem("添加文章", getResources().getDrawable(R.drawable.ic_addto_article)))
-                                    .addMenuItem(new PopMenuItem("添加商品", getResources().getDrawable(R.drawable.ic_addto_product)))
+                                    .addMenuItem(new PopMenuItem("软件反馈", getResources().getDrawable(R.drawable.ic_addto_product)))
                                     .addMenuItem(new PopMenuItem("添加视频", getResources().getDrawable(R.drawable.ic_addto_video)))
                                     .setOnItemClickListener(new PopMenuItemListener() {
                                         @Override
                                         public void onItemClick(PopMenu popMenu, int position) {
                                             if (position == 0) {
                                                 gotoAddArticleActivity();
+                                            }
+                                            if (position ==1){
+                                                gotoQuestionActivity();
                                             }
                                             if (position == 2) {
                                                 gotoAddVideoActivity();
@@ -136,10 +143,14 @@ public class MainActivity extends AppCompatActivity {
     private void gotoAddVideoActivity() {
         startActivity(new Intent(this, AddVideo.class));
     }
+    private void gotoQuestionActivity(){
+        startActivity(new Intent(this, AddQuestion.class));
+    }
     public static void openIMart(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
         ((Activity) context).finish();
     }
+
 }

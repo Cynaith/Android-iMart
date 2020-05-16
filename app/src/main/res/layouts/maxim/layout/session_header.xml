@@ -30,20 +30,20 @@
             android:layout_centerVertical="true"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/iv_session_search"
-                android:layout_width="@dimen/dimen_20"
-                android:layout_height="@dimen/dimen_20"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/icon_black_search"/>
+<!--            <ImageView-->
+<!--                android:id="@+id/iv_session_search"-->
+<!--                android:layout_width="@dimen/dimen_20"-->
+<!--                android:layout_height="@dimen/dimen_20"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:src="@drawable/icon_black_search"/>-->
 
-            <ImageView
-                android:id="@+id/iv_session_scan"
-                android:layout_width="@dimen/dimen_30"
-                android:layout_height="@dimen/dimen_30"
-                android:layout_marginLeft="@dimen/dimen_16"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/scan_icon"/>
+<!--            <ImageView-->
+<!--                android:id="@+id/iv_session_scan"-->
+<!--                android:layout_width="@dimen/dimen_30"-->
+<!--                android:layout_height="@dimen/dimen_30"-->
+<!--                android:layout_marginLeft="@dimen/dimen_16"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:src="@drawable/scan_icon"/>-->
         </LinearLayout>
 
     </RelativeLayout>

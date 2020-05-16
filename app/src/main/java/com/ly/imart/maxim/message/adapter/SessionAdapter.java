@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ly.imart.model.Fourth.ChatModel;
+import com.ly.imart.util.BitmapUtils;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import im.floo.floolib.BMXConversation;
@@ -31,6 +33,10 @@ import com.ly.imart.maxim.common.view.recyclerview.BaseViewHolder;
 import com.ly.imart.maxim.common.view.recyclerview.RecyclerWithHFAdapter;
 import com.ly.imart.maxim.message.utils.ChatUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
 /**
  * Description : 消息列表 Created by Mango on 2018/11/05.
  */
@@ -39,6 +45,8 @@ public class SessionAdapter extends RecyclerWithHFAdapter<BMXConversation> {
     private ImageRequestConfig mConfig;
 
     private ImageRequestConfig mGroupConfig;
+
+    private List<String> nickname;
 
     public SessionAdapter(Context context) {
         super(context);
@@ -55,6 +63,7 @@ public class SessionAdapter extends RecyclerWithHFAdapter<BMXConversation> {
                 .imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .showImageOnLoading(R.drawable.default_group_icon).build();
+        nickname = new ArrayList<>();
     }
 
     @Override
@@ -148,5 +157,20 @@ public class SessionAdapter extends RecyclerWithHFAdapter<BMXConversation> {
             }
             desc.setText(!TextUtils.isEmpty(msgDesc) ? msgDesc : "");
         }
+
+        //获取user头像
+        String userimg = null;
+        ChatModel chatModel = new ChatModel();
+        try {
+            userimg = chatModel.getUserimg(name);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        BitmapUtils bu = new BitmapUtils();
+        avatar.setImageBitmap(bu.returnBitMap(userimg));
+
+        nickname.add(name);
     }
 }

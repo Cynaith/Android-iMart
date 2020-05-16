@@ -1,6 +1,7 @@
 package com.ly.imart.view.Fourth;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -24,8 +25,11 @@ import com.ly.imart.maxim.contact.view.RosterDetailActivity;
 import com.ly.imart.maxim.message.view.ChatSingleActivity;
 import com.ly.imart.presenter.Fourth.MyshowPresenter;
 import com.ly.imart.util.CircleImageView;
+import com.ly.imart.view.Fourth.ChatView.ChatListActivity;
 
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -66,8 +70,10 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
     TabLayout tabLayout;
 
     String userName;
-
-    private FourthMyshowActivity fourthMyshowActivity ;
+    private ProgressDialog progDialog = null;// 搜索时进度条
+    long chatId = 0;
+    private FourthMyshowActivity fourthMyshowActivity;
+    FutureTask<Long> ft;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +92,13 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        ft = new FutureTask<>(new Callable<Long>() {
+            @Override
+            public Long call() throws Exception {
+                return IMUtils.searchRoster(userName);
+            }
+        });
+        new Thread(ft).start();
     }
 
     void initData(String userName) throws ExecutionException, InterruptedException {
@@ -94,10 +106,10 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
         circleImageView_userimg.setImageURL(myshowBean.getUserimg());
         textView_username.setText(myshowBean.getUsername());
         textView_userinfo.setText(myshowBean.getUserinfo());
-        textView_follow.setText(""+myshowBean.getFollowNum());
-        textView_followed.setText(""+myshowBean.getFollowedNum());
-        textView_article.setText(""+myshowBean.getArticleNum());
-        if(userName == SharePreferenceUtils.getInstance().getUserName()){
+        textView_follow.setText("" + myshowBean.getFollowNum());
+        textView_followed.setText("" + myshowBean.getFollowedNum());
+        textView_article.setText("" + myshowBean.getArticleNum());
+        if (userName == SharePreferenceUtils.getInstance().getUserName()) {
             button_isfollow.setBackgroundColor(Color.parseColor("#F8F8FF"));
             button_isfollow.setEnabled(false);
         }
@@ -115,10 +127,9 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
 
     @Override
     public void changeFollowButton(boolean isFollow) {
-        if (isFollow){
+        if (isFollow) {
             button_isfollow.setText("已关注");
-        }
-        else{
+        } else {
             button_isfollow.setText("未关注");
         }
 
@@ -134,31 +145,47 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
                 else button_isfollow.setText("已关注");
                 break;
             case R.id.activity_myshow_message:
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                         IMUtils.searchRoster(fourthMyshowActivity,userName);
+                showProgressDialog();
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        fourthMyshowActivity.setId(IMUtils.searchRoster(userName));
+//                    }
+//                }).start();
+//                if (chatId!=0){
+//                    startChat(chatId);
+//                }
 
+
+                showProgressDialog();
+                while (chatId == 0){
+                    try {
+                        chatId = ft.get();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
-                }).start();
-
+                }
+                dissmissProgressDialog();
+                startChat(chatId);
                 break;
             case R.id.activity_myshow_follow:
-                Intent intent = new Intent(this,FourthFollowlistActivity.class);
-                intent.putExtra("kind",1);
-                intent.putExtra("userName",userName);
+                Intent intent = new Intent(this, FourthFollowlistActivity.class);
+                intent.putExtra("kind", 1);
+                intent.putExtra("userName", userName);
                 startActivity(intent);
                 break;
             case R.id.activity_myshow_followed:
-                Intent intent1 = new Intent(this,FourthFollowlistActivity.class);
-                intent1.putExtra("kind",2);
-                intent1.putExtra("userName",userName);
+                Intent intent1 = new Intent(this, FourthFollowlistActivity.class);
+                intent1.putExtra("kind", 2);
+                intent1.putExtra("userName", userName);
                 startActivity(intent1);
                 break;
             case R.id.activity_myshow_article:
-                Intent intent2 = new Intent(this,FourthFollowlistActivity.class);
-                intent2.putExtra("kind",3);
-                intent2.putExtra("userName",userName);
+                Intent intent2 = new Intent(this, FourthFollowlistActivity.class);
+                intent2.putExtra("kind", 3);
+                intent2.putExtra("userName", userName);
                 startActivity(intent2);
                 break;
 
@@ -171,7 +198,7 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
         tabLayout.addTab(tabLayout.newTab().setText("喜欢"));
         tabLayout.addTab(tabLayout.newTab().setText("收藏"));
         final ViewPager viewPager = (ViewPager) findViewById(R.id.activity_myshow_viewPager);
-        viewPager.setAdapter(new MyshowPageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(),userName));
+        viewPager.setAdapter(new MyshowPageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), userName));
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
         //绑定tab点击事件
@@ -193,8 +220,41 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
         });
     }
 
-    public void startChat(long id){
-        ChatSingleActivity.startChatActivity(this,
+    public void setId(long id) {
+        chatId = id;
+    }
+
+    public void startChat(long id) {
+        ChatSingleActivity.startChatActivity(FourthMyshowActivity.this,
                 BMXMessage.MessageType.Single, id);
+//        ChatListActivity.openFromMessage(this, id);
+    }
+
+    /**
+     * 显示进度框
+     */
+    private void showProgressDialog() {
+        if (progDialog == null)
+            progDialog = new ProgressDialog(this);
+        progDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progDialog.setIndeterminate(false);
+        progDialog.setCancelable(true);
+        progDialog.setMessage("请稍候");
+        progDialog.show();
+    }
+
+    /**
+     * 隐藏进度框
+     */
+    private void dissmissProgressDialog() {
+        if (progDialog != null) {
+            progDialog.dismiss();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        chatId = 0;
+        super.onResume();
     }
 }

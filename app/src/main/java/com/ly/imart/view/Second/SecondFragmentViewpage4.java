@@ -120,8 +120,8 @@ public class SecondFragmentViewpage4 extends Fragment {
                     .centerCrop()
                     .into(imageView);
             textView_name.setText(secondFragmentBean.getName());
-            textView_price.setText("" + secondFragmentBean.getPrice());
-            textView_fire.setText("" + secondFragmentBean.getFire() * 20);
+            textView_price.setText("热度: "+secondFragmentBean.getFire()*20);
+            textView_fire.setText(secondFragmentBean.getUsername());
         }
     }
 

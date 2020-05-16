@@ -6,6 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layout_marginTop="15dp"
         android:background="#ffffff">
 
 
@@ -207,7 +208,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_below="@id/fourth_moreTitle"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="55dp"
             android:layout_marginTop="15dp"
             android:scaleType="centerCrop"
             android:src="@drawable/mycollection" />
@@ -217,7 +218,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_below="@id/fourth_moreTitle"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@id/fourth_more_mycollection"
             android:scaleType="centerCrop"
@@ -228,7 +229,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_below="@id/fourth_moreTitle"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@id/fourth_more_userinfo"
             android:scaleType="centerCrop"
@@ -239,22 +240,42 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_below="@id/fourth_moreTitle"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@id/fourth_more_mail"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_diy" />
-
-        <com.ly.imart.util.CircleImageView
-            android:id="@+id/fourth_more_myfriends"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_below="@id/fourth_moreTitle"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="15dp"
-            android:layout_toRightOf="@id/fourth_more_diy"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_myfriend" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fourth_more_mycollection"
+            android:layout_marginLeft="51dp"
+            android:layout_marginTop="10dp"
+            android:text="我的收藏"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fourth_more_userinfo"
+            android:layout_toRightOf="@id/fourth_more_mycollection"
+            android:layout_marginLeft="31dp"
+            android:layout_marginTop="10dp"
+            android:text="修改信息"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fourth_more_userinfo"
+            android:layout_toRightOf="@id/fourth_more_userinfo"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="10dp"
+            android:text="我的动态"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fourth_more_userinfo"
+            android:layout_toRightOf="@id/fourth_more_mail"
+            android:layout_marginLeft="33dp"
+            android:layout_marginTop="10dp"
+            android:text="DIY门店"/>
     </RelativeLayout>
 
 

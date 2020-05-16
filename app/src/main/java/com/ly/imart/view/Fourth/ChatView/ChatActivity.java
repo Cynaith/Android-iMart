@@ -475,6 +475,8 @@ public abstract class ChatActivity extends AppCompatActivity
         if (mPresenter != null) {
             mPresenter.onDestroyPresenter();
         }
+        nickname=null;
+        mPresenter=null;
         super.onDestroy();
     }
     /**

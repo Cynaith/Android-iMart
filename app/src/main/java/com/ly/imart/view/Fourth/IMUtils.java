@@ -22,7 +22,7 @@ import rx.schedulers.Schedulers;
 public class IMUtils {
 
     // 注释 search里输入username 即可自动加好友
-    public static void searchRoster(FourthMyshowActivity fourthMyshowActivity, String search) {
+    public static long searchRoster(String search) {
         search = search.toLowerCase();
 
         List<BMXRosterItem> mSearchs = new ArrayList<>();
@@ -104,7 +104,7 @@ public class IMUtils {
 
 
 //        return rosterId;
-
-        fourthMyshowActivity.startChat(rosterId);
+        return rosterId;
+//        fourthMyshowActivity.startChat(rosterId);
     }
 }

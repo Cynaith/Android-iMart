@@ -22,6 +22,7 @@ import im.floo.floolib.BMXMessage;
 import im.floo.floolib.BMXMessageConfig;
 import im.floo.floolib.BMXRosterItem;
 import im.floo.floolib.ListOfLongLong;
+
 import com.ly.imart.R;
 import com.ly.imart.maxim.common.utils.RosterFetcher;
 import com.ly.imart.maxim.common.utils.SharePreferenceUtils;
@@ -89,44 +90,75 @@ public class ChatAdapter extends RecyclerWithHFAdapter<BMXConversation> {
             }
             ChatUtils.getInstance().showRosterAvatar(rosterItem, avatar, mConfig);
             isDisturb = rosterItem != null && rosterItem.isMuteNotification();
-        }  else {
+        } else {
             ChatUtils.getInstance().showRosterAvatar(null, avatar, mConfig);
         }
-        BMXMessage lastMsg = item == null ? null : item.lastMsg();
-        int unReadCount = item == null ? 0 : item.unreadNumber();
-        if (isDisturb) {
-            tvUnReadCount.setVisibility(View.GONE);
-            ivDisturb.setVisibility(unReadCount > 0 ? View.VISIBLE : View.GONE);
-        } else {
-            ivDisturb.setVisibility(View.GONE);
-            if (unReadCount > 0) {
-                tvUnReadCount.setVisibility(View.VISIBLE);
-                tvUnReadCount.setText(String.valueOf(unReadCount));
-            } else {
-                tvUnReadCount.setVisibility(View.GONE);
-            }
-        }
-        tvTitle.setText(TextUtils.isEmpty(name) ? "" : name);
-        time.setText(lastMsg != null ? TimeUtils.millis2String(lastMsg.serverTimestamp()) : "");
-        String msgDesc = ChatUtils.getInstance().getMessageDesc(lastMsg);
-        desc.setText(!TextUtils.isEmpty(msgDesc) ? msgDesc : "");
-        //获取user头像
-        String userimg = null;
-        ChatModel chatModel = new ChatModel();
-        try {
-            userimg = chatModel.getUserimg(name);
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        BitmapUtils bu = new BitmapUtils();
-        avatar.setImageBitmap(bu.returnBitMap(userimg));
 
-        nickname.add(name);
+        if (!name.equals("")) {
+            BMXMessage lastMsg = item == null ? null : item.lastMsg();
+            int unReadCount = item == null ? 0 : item.unreadNumber();
+            if (isDisturb) {
+                tvUnReadCount.setVisibility(View.GONE);
+                ivDisturb.setVisibility(unReadCount > 0 ? View.VISIBLE : View.GONE);
+            } else {
+                ivDisturb.setVisibility(View.GONE);
+                if (unReadCount > 0) {
+                    tvUnReadCount.setVisibility(View.VISIBLE);
+                    tvUnReadCount.setText(String.valueOf(unReadCount));
+                } else {
+                    tvUnReadCount.setVisibility(View.GONE);
+                }
+            }
+            tvTitle.setText(TextUtils.isEmpty(name) ? "" : name);
+            time.setText(lastMsg != null ? TimeUtils.millis2String(lastMsg.serverTimestamp()) : "");
+            String msgDesc = ChatUtils.getInstance().getMessageDesc(lastMsg);
+            desc.setText(!TextUtils.isEmpty(msgDesc) ? msgDesc : "");
+            //获取user头像
+            String userimg = null;
+            ChatModel chatModel = new ChatModel();
+            try {
+                userimg = chatModel.getUserimg(name);
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            BitmapUtils bu = new BitmapUtils();
+            avatar.setImageBitmap(bu.returnBitMap(userimg));
+
+            nickname.add(name);
+        }
+
     }
 
     public String getName(int position) {
+
         return nickname.get(position);
+    }
+
+    public int getNickCount() {
+        return nickname.size();
+    }
+
+    public int getPeopleCount() {
+        List<String> filter = new ArrayList<>();
+        for (int i = 0; i < getNickCount(); i++) {
+            if (i == 1) {
+                filter.add(nickname.get(i));
+                continue;
+            }
+            for (int j = 0; j < filter.size(); j++) {
+                if (filter.get(j).equals(nickname.get(i))) {
+                    break;
+                } else if (j + 1 == filter.size()) {
+                    filter.add(nickname.get(i));
+                }
+            }
+        }
+        return filter.size();
+    }
+
+    public List<String> getNickname() {
+        return nickname;
     }
 }

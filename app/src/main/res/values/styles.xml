@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light">
@@ -23,6 +23,7 @@
         <!--<item name="statusBarColor">@color/customBackgroung</item>&lt;!&ndash;效果和colorPrimary一样&ndash;&gt;-->
         <!--<item name="windowLightStatusBar">true</item>&lt;!&ndash;设置StatusBar上Icon高亮&ndash;&gt;-->
         <!--<item name="windowTranslucentNavigation">false</item>-->
+
     </style>
 
     <style name="Theme.MyApp" parent="Theme.MaterialComponents.Light">
@@ -63,8 +64,10 @@
 
     <style name="ActivityAnimation" parent="@style/AppTheme">
         <item name="android:windowAnimationStyle">@style/activity_animation</item>
-        <item name="windowActionBar">false</item>
+        <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
+<!--        <item name="android:windowTranslucentNavigation" tools:targetApi="kitkat">true</item>-->
+<!--        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>-->
     </style>
 
     <style name="Transparent" parent="@style/ActivityAnimation">

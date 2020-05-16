@@ -89,7 +89,9 @@
         <activity android:name=".view.Fourth.ChatView.ChatListActivity"/>
         <activity android:name=".view.Fourth.ChatView.ChatSingleActivity"/>
         <activity android:name=".view.Fourth.ChatView.ChatActivity"/>
-<activity android:name=".view.Fourth.UpdateUserActivity"/>
+        <activity android:name=".view.Fourth.UpdateUserActivity"/>
+        <activity android:name=".view.Others.AddQuestion"/>
+        <activity android:name=".view.Fourth.SupportList"/>
         <activity
             android:name=".maxim.login.view.LoginActivity"
             android:screenOrientation="portrait"></activity>

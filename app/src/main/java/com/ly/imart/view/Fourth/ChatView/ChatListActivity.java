@@ -1,11 +1,15 @@
 package com.ly.imart.view.Fourth.ChatView;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.LongDef;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,10 +29,15 @@ import com.ly.imart.maxim.common.utils.ScreenUtils;
 import com.ly.imart.maxim.common.utils.ToastUtil;
 import com.ly.imart.maxim.common.utils.dialog.CustomDialog;
 import com.ly.imart.maxim.message.view.ChatBaseActivity;
+import com.ly.imart.maxim.message.view.ChatSingleActivity;
+import com.ly.imart.view.Fourth.IMUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 import im.floo.floolib.BMXChatServiceListener;
 import im.floo.floolib.BMXConversation;
@@ -50,6 +59,10 @@ public class ChatListActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ChatAdapter mAdapter;
     private View mEmptyView;
+    private ChatListActivity chatListActivity;
+    long chatId = 0;
+    volatile boolean isIn = false;
+    private ProgressDialog progDialog = null;// 搜索时进度条
     private BMXChatServiceListener mListener = new BMXChatServiceListener() {
 
         @Override
@@ -95,10 +108,23 @@ public class ChatListActivity extends AppCompatActivity {
         }
     };
 
+    public static void openFromMessage(Context context, long id) {
+        Intent intent = new Intent();
+        intent.setClass(context, ChatListActivity.class);
+        intent.putExtra("id", id);
+        context.startActivity(intent);
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatlist);
+        chatListActivity = this;
+        Intent intent = getIntent();
+        chatId = intent.getLongExtra("id", 0);
+        if (chatId != 0) {
+            startChat(chatId);
+        }
         loadSession();
         mRecyclerView = findViewById(R.id.session_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -118,7 +144,39 @@ public class ChatListActivity extends AppCompatActivity {
                     return;
                 }
 //                ChatBaseActivity.startChatActivity(ChatListActivity.this, BMXMessage.MessageType.Single, item.conversationId());
-                ChatActivity.startChatActivity(ChatListActivity.this, item.conversationId(),mAdapter.getName(position+mAdapter.getItemCount()-1));
+//                ChatActivity.startChatActivity(ChatListActivity.this, item.conversationId(),mAdapter.getName(position));
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+////                        int people = mAdapter.getPeopleCount();
+////                        int nicknum = mAdapter.getNickCount();
+////                        Log.d("聊天",mAdapter.getNickname().toString());
+////                        String username = mAdapter.getName((position-mAdapter.getPeopleCount()) + mAdapter.getNickCount() );
+////                        chatListActivity.setId(IMUtils.searchRoster(mAdapter.getName((position-mAdapter.getPeopleCount()) + mAdapter.getNickCount())));
+//                        chatListActivity.setId(IMUtils.searchRoster(mAdapter.getName(position)));
+//                    }
+//                }).start();
+
+//                FutureTask<Long> ft = new FutureTask<>(new Callable<Long>() {
+//                    @Override
+//                    public Long call() throws Exception {
+//                        return IMUtils.searchRoster(mAdapter.getName(position));
+//                    }
+//                });
+//                new Thread(ft).start();
+//                showProgressDialog();
+//                while (chatId == 0){
+//                    try {
+//                        chatId = ft.get();
+//                    } catch (ExecutionException e) {
+//                        e.printStackTrace();
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+                dissmissProgressDialog();
+//                startChat(chatId);
+                ChatBaseActivity.startChatActivity(ChatListActivity.this, BMXMessage.MessageType.Single, item.conversationId());
             }
         });
 
@@ -429,5 +487,57 @@ public class ChatListActivity extends AppCompatActivity {
 
         dialog.setCustomView(ll);
         dialog.showDialog(this);
+    }
+
+    public void setId(long id) {
+        isIn = true;
+        chatId = id;
+    }
+
+    public void startChat(long id) {
+
+        ChatSingleActivity.startChatActivity(this,
+                BMXMessage.MessageType.Single, id);
+
+    }
+
+    /**
+     * 显示进度框
+     */
+    private void showProgressDialog() {
+        if (progDialog == null)
+            progDialog = new ProgressDialog(this);
+        progDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progDialog.setIndeterminate(false);
+        progDialog.setCancelable(true);
+        progDialog.setMessage("请稍候");
+        progDialog.show();
+    }
+
+    /**
+     * 隐藏进度框
+     */
+    private void dissmissProgressDialog() {
+        if (progDialog != null) {
+            progDialog.dismiss();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        isIn = false;
+    }
+
+    @Override
+    protected void onResume() {
+        chatId = 0;
+        super.onResume();
     }
 }

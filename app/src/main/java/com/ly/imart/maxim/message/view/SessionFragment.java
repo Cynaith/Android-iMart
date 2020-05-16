@@ -134,10 +134,10 @@ public class SessionFragment extends BaseTitleFragment implements SessionContrac
      */
     private void buildContactHeaderView() {
         View headerView = View.inflate(getActivity(), R.layout.session_header, null);
-        headerView.findViewById(R.id.iv_session_search)
-                .setOnClickListener(v -> MessageSearchActivity.openMessageSearch(getActivity()));
-        headerView.findViewById(R.id.iv_session_scan)
-                .setOnClickListener(v -> ScannerActivity.openScan(getActivity()));
+//        headerView.findViewById(R.id.iv_session_search)
+//                .setOnClickListener(v -> MessageSearchActivity.openMessageSearch(getActivity()));
+//        headerView.findViewById(R.id.iv_session_scan)
+//                .setOnClickListener(v -> ScannerActivity.openScan(getActivity()));
         mAdapter.addHeaderView(headerView);
     }
 

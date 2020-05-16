@@ -250,12 +250,12 @@ public class ThirdFragment extends Fragment {
                     gotoUserShow(videoBean.getUsername());
                 }
             });
-            holder.userimg.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    gotoUserShow(videoBean.getUsername());
-                }
-            });
+//            holder.userimg.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    gotoUserShow(videoBean.getUsername());
+//                }
+//            });
 
         }
 

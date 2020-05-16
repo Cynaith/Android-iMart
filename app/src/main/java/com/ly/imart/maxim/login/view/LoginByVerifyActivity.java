@@ -259,17 +259,17 @@ public class LoginByVerifyActivity extends BaseTitleActivity {
         timer.start();
     }
 
-    @Override
-    protected void initDataForActivity() {
-        super.initDataForActivity();
-        // 判断当前是否是扫码登陆
-        String scanUserName = ScanConfigs.CODE_USER_NAME;
-        if (!TextUtils.isEmpty(scanUserName)) {
-            mInputName.setText(scanUserName);
-        }
-        String appId = SharePreferenceUtils.getInstance().getAppId();
-        mTvAppId.setText("iMart");
-    }
+//    @Override
+//    protected void initDataForActivity() {
+//        super.initDataForActivity();
+//        // 判断当前是否是扫码登陆
+//        String scanUserName = ScanConfigs.CODE_USER_NAME;
+//        if (!TextUtils.isEmpty(scanUserName)) {
+//            mInputName.setText(scanUserName);
+//        }
+//        String appId = SharePreferenceUtils.getInstance().getAppId();
+//        mTvAppId.setText("iMart");
+//    }
 
     private void loginByCaptcha(String mobile, String captcha) {
         showLoadingDialog(true);
@@ -309,38 +309,38 @@ public class LoginByVerifyActivity extends BaseTitleActivity {
                 });
     }
 
-    private void initRxBus() {
-        if (mSubscription == null) {
-            mSubscription = new CompositeSubscription();
-        }
-        Subscription wxLogin = RxBus.getInstance().toObservable(Intent.class)
-                .subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Intent>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(Intent intent) {
-                        if (intent == null || !TextUtils.equals(intent.getAction(),
-                                CommonConfig.WX_LOGIN_ACTION)) {
-                            return;
-                        }
-                        if (mSubscription != null) {
-                            mSubscription.unsubscribe();
-                        }
-                        String openId = intent.getStringExtra(CommonConfig.WX_OPEN_ID);
-                        LoginActivity.wxChatLogin(LoginByVerifyActivity.this, openId);
-                    }
-                });
-        mSubscription.add(wxLogin);
-    }
+//    private void initRxBus() {
+//        if (mSubscription == null) {
+//            mSubscription = new CompositeSubscription();
+//        }
+//        Subscription wxLogin = RxBus.getInstance().toObservable(Intent.class)
+//                .subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Subscriber<Intent>() {
+//                    @Override
+//                    public void onCompleted() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(Intent intent) {
+//                        if (intent == null || !TextUtils.equals(intent.getAction(),
+//                                CommonConfig.WX_LOGIN_ACTION)) {
+//                            return;
+//                        }
+//                        if (mSubscription != null) {
+//                            mSubscription.unsubscribe();
+//                        }
+////                        String openId = intent.getStringExtra(CommonConfig.WX_OPEN_ID);
+////                        LoginActivity.wxChatLogin(LoginByVerifyActivity.this, openId);
+//                    }
+//                });
+//        mSubscription.add(wxLogin);
+//    }
 
     @Override
     protected void onDestroy() {

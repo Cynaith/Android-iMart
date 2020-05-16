@@ -59,9 +59,9 @@ public class MaxIMApplication extends Application {
         AppContextUtils.initApp(this);
         initImageLoader();
         // push
-        PushClientMgr.initManager(this);
-        PushUtils.getInstance().registerActivityListener(this);
-        BuglyTask.get().init(this);
+//        PushClientMgr.initManager(this);
+//        PushUtils.getInstance().registerActivityListener(this);
+//        BuglyTask.get().init(this);
     }
 
     /**
