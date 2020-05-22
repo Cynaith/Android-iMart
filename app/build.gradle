@@ -153,6 +153,6 @@ dependencies {
     implementation 'org.sufficientlysecure:html-textview:3.9'
     implementation 'com.github.varunest:sparkbutton:1.0.6'
     implementation 'de.hdodenhof:circleimageview:2.1.0'
-    implementation files('libs/BaiduLBS_Android.jar')
+//    implementation files('libs/BaiduLBS_Android.jar')
     implementation files('libs/AMap3DMap_5.8.0_AMapNavi_5.6.0_AMapSearch_6.9.2_AMapLocation_4.7.2_20191014.jar')
 }

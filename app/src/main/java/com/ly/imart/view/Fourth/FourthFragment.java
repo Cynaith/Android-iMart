@@ -1,6 +1,7 @@
 package com.ly.imart.view.Fourth;
 
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import com.ly.imart.maxim.bmxmanager.BaseManager;
 import com.ly.imart.maxim.bmxmanager.UserManager;
 import com.ly.imart.maxim.common.utils.CommonUtils;
 import com.ly.imart.maxim.common.utils.SharePreferenceUtils;
+import com.ly.imart.maxim.login.view.LoginActivity;
 import com.ly.imart.maxim.login.view.WelcomeActivity;
 import com.ly.imart.presenter.Fourth.FourthPresenter;
 import com.ly.imart.util.CircleImageView;
@@ -55,6 +57,11 @@ public class FourthFragment extends Fragment implements View.OnClickListener, IF
     private AMapLocationClient locationClientSingle = null;
     private AMapLocationClient locationClientContinue = null;
 
+    Activity main;
+
+    public void setMainContent(Activity main){
+        this.main = main;
+    }
 
     @Nullable
     @Override
@@ -241,6 +248,8 @@ public class FourthFragment extends Fragment implements View.OnClickListener, IF
                         WelcomeActivity.openWelcome(getActivity());
                     }
                 });
+        startActivity(new Intent(main, LoginActivity.class));
+        main.finish();
     }
 
     @Override

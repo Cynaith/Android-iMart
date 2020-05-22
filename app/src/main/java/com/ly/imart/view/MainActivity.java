@@ -74,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
         fragments.add(new SecondFragment());
         fragments.add(new SessionFragment());
         fragments.add(new ThirdFragment());
-        fragments.add(new FourthFragment());
+        Fragment fourthFragment = new FourthFragment();
+        fragments.add(fourthFragment);
+        ((FourthFragment) fourthFragment).setMainContent(this);
 
         navigationBar.titleItems(tabText)
                 .normalIconItems(normalIcon)

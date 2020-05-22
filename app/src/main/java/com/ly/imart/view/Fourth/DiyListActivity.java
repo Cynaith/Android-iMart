@@ -184,7 +184,7 @@ public class DiyListActivity extends AppCompatActivity implements View.OnClickLi
                     showDialog(diyListBean.getTel());
                 }
             });
-            TextView diydistance = itemView.findViewById(R.id.diylist_distance);
+//            TextView diydistance = itemView.findViewById(R.id.diylist_distance);
             TextView diyAddress = itemView.findViewById(R.id.diylist_address);
             Glide.with(itemView.getContext()).load(diyListBean.getPhoto())
                     .asBitmap()

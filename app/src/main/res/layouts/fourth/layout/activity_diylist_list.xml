@@ -46,14 +46,14 @@
             android:layout_marginTop="3dp"
             android:textSize="@dimen/dimen_13"
             />
-        <TextView
-            android:id="@+id/diylist_distance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="15km"
-            android:textSize="@dimen/dimen_14"
-            />
+<!--        <TextView-->
+<!--            android:id="@+id/diylist_distance"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="right"-->
+<!--            android:text="15km"-->
+<!--            android:textSize="@dimen/dimen_14"-->
+<!--            />-->
 
     </LinearLayout>
 </LinearLayout>

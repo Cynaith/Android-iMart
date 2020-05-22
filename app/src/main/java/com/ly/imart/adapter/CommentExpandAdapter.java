@@ -108,18 +108,18 @@ public class CommentExpandAdapter extends BaseExpandableListAdapter {
         groupHolder.tv_name.setText(commentBeanList.get(groupPosition).getNickName());
         groupHolder.tv_time.setText(commentBeanList.get(groupPosition).getCreateDate());
         groupHolder.tv_content.setText(commentBeanList.get(groupPosition).getContent());
-        groupHolder.iv_like.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(isLike){
-                    isLike = false;
-                    groupHolder.iv_like.setColorFilter(Color.parseColor("#aaaaaa"));
-                }else {
-                    isLike = true;
-                    groupHolder.iv_like.setColorFilter(Color.parseColor("#FF5C5C"));
-                }
-            }
-        });
+//        groupHolder.iv_like.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(isLike){
+//                    isLike = false;
+//                    groupHolder.iv_like.setColorFilter(Color.parseColor("#aaaaaa"));
+//                }else {
+//                    isLike = true;
+//                    groupHolder.iv_like.setColorFilter(Color.parseColor("#FF5C5C"));
+//                }
+//            }
+//        });
 
         return convertView;
     }
@@ -162,7 +162,7 @@ public class CommentExpandAdapter extends BaseExpandableListAdapter {
             tv_content = (TextView) view.findViewById(R.id.comment_item_content);
             tv_name = (TextView) view.findViewById(R.id.comment_item_userName);
             tv_time = (TextView) view.findViewById(R.id.comment_item_time);
-            iv_like = (ImageView) view.findViewById(R.id.comment_item_like);
+//            iv_like = (ImageView) view.findViewById(R.id.comment_item_like);
         }
     }
 
