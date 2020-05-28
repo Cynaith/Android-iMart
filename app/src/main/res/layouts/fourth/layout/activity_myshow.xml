@@ -73,10 +73,10 @@
         <TextView
             android:id="@+id/activity_myshow_userinfo"
             android:layout_width="wrap_content"
-            android:layout_height="10dp"
+            android:layout_height="15dp"
             android:text="A Designer From The U.S"
             android:textColor="#ff606266"
-            android:textSize="9sp"
+            android:textSize="12sp"
             android:layout_below="@id/activity_myshow_username"
             android:layout_marginLeft="45dp"
             android:layout_marginTop="3dp"
@@ -93,7 +93,7 @@
             android:textColor="#ff606266"
             android:textSize="12sp"
             android:gravity="center"
-            android:layout_marginTop="27dp"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="65dp"/>
         <TextView
             android:id="@+id/activity_myshow_followedtext"
@@ -103,7 +103,7 @@
             android:textColor="#ff606266"
             android:textSize="12sp"
             android:gravity="center"
-            android:layout_marginTop="27dp"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="50dp"
             android:layout_toRightOf="@id/activity_myshow_followtext"/>
         <TextView
@@ -114,7 +114,7 @@
             android:textColor="#ff606266"
             android:textSize="12sp"
             android:gravity="center"
-            android:layout_marginTop="27dp"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="50dp"
             android:layout_toRightOf="@id/activity_myshow_followedtext"/>
         <TextView

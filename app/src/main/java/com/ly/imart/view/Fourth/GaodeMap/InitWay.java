@@ -81,7 +81,7 @@ public class InitWay extends Activity implements View.OnClickListener, RouteSear
         final RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(
                 mStartPoint, mEndPoint);
         RouteSearch.BusRouteQuery query = new RouteSearch.BusRouteQuery(fromAndTo, RouteSearch.BusDefault,
-                "哈尔滨", 0);// 第一个参数表示路径规划的起点和终点，第二个参数表示公交查询模式，第三个参数表示公交查询城市区号，第四个参数表示是否计算夜班车，0表示不计算
+                "上海", 1);// 第一个参数表示路径规划的起点和终点，第二个参数表示公交查询模式，第三个参数表示公交查询城市区号，第四个参数表示是否计算夜班车，0表示不计算
         mRouteSearch.calculateBusRouteAsyn(query);
     }
 
@@ -96,7 +96,9 @@ public class InitWay extends Activity implements View.OnClickListener, RouteSear
                     intent.putExtra("bus_path", busRouteResult.getPaths().get(0));
                     intent.putExtra("bus_result", busRouteResult);
                     System.out.println(busRouteResult);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     mContext.startActivity(intent);
+
                 } else if (busRouteResult != null && busRouteResult.getPaths() == null) {
                     ToastUtil.show(mContext, "对不起没有搜索到相关数据");
                 }

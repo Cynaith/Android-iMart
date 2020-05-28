@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ly.imart.R;
 import com.ly.imart.adapter.MyshowPageAdapter;
@@ -74,6 +76,7 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
     long chatId = 0;
     private FourthMyshowActivity fourthMyshowActivity;
     FutureTask<Long> ft;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,17 +112,21 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
         textView_follow.setText("" + myshowBean.getFollowNum());
         textView_followed.setText("" + myshowBean.getFollowedNum());
         textView_article.setText("" + myshowBean.getArticleNum());
-        if (userName == SharePreferenceUtils.getInstance().getUserName()) {
+        if (userName.equals( SharePreferenceUtils.getInstance().getUserName())) {
             button_isfollow.setBackgroundColor(Color.parseColor("#F8F8FF"));
             button_isfollow.setEnabled(false);
+            button_message.setBackgroundColor(Color.parseColor("#F8F8FF"));
+            button_message.setEnabled(false);
         }
         changeFollowButton(myshowBean.isFollow());
     }
 
     @Override
     public void setOnclickListener() {
+
         button_isfollow.setOnClickListener(this);
         button_message.setOnClickListener(this);
+
         textView_follow.setOnClickListener(this);
         textView_followed.setOnClickListener(this);
         textView_article.setOnClickListener(this);
@@ -139,10 +146,16 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.activity_myshow_isfollow:
-                myshowPresenter.followUser(userName);
-                if (button_isfollow.getText().toString().equals("已关注"))
-                    button_isfollow.setText("未关注");
-                else button_isfollow.setText("已关注");
+                String username = SharePreferenceUtils.getInstance().getUserName();
+                if (!userName.equals(userName)){
+                    myshowPresenter.followUser(userName);
+                    if (button_isfollow.getText().toString().equals("已关注"))
+                        button_isfollow.setText("未关注");
+                    else button_isfollow.setText("已关注");
+                }else {
+                    Toast.makeText(this, "自己不能关注自己哦！", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
             case R.id.activity_myshow_message:
                 showProgressDialog();
@@ -158,7 +171,7 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
 
 
                 showProgressDialog();
-                while (chatId == 0){
+                while (chatId == 0) {
                     try {
                         chatId = ft.get();
                     } catch (ExecutionException e) {
