@@ -147,7 +147,7 @@ public class FourthMyshowActivity extends AppCompatActivity implements IMyshowVi
         switch (view.getId()) {
             case R.id.activity_myshow_isfollow:
                 String username = SharePreferenceUtils.getInstance().getUserName();
-                if (!userName.equals(userName)){
+                if (!userName.equals(username)){
                     myshowPresenter.followUser(userName);
                     if (button_isfollow.getText().toString().equals("已关注"))
                         button_isfollow.setText("未关注");

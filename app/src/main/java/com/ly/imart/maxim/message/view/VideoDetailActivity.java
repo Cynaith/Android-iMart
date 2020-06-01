@@ -101,7 +101,7 @@ public class VideoDetailActivity extends BaseTitleActivity {
 
     /**
      * 设置全屏
-     * 
+     *
      * @param decorView
      */
     private void doFullScreen(View decorView) {

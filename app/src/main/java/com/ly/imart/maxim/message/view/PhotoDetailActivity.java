@@ -134,7 +134,7 @@ public class PhotoDetailActivity extends BaseTitleActivity {
 
     /**
      * 设置全屏
-     * 
+     *
      * @param decorView
      */
     private void doFullScreen(View decorView) {
@@ -163,7 +163,7 @@ public class PhotoDetailActivity extends BaseTitleActivity {
             int index = mViewPager.getCurrentItem();
             if (index == (Integer)view.getTag()) {
                 return POSITION_NONE;
-            } else { 
+            } else {
                 return POSITION_UNCHANGED;
             }
         }

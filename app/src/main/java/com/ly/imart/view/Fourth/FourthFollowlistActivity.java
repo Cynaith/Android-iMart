@@ -19,7 +19,7 @@ import com.ly.imart.onerecycler.OneRecyclerView;
 import com.ly.imart.onerecycler.OneVH;
 import com.ly.imart.presenter.Fourth.FollowListPresenter;
 import com.ly.imart.util.CircleImageView;
-import com.ly.imart.view.Second.ArticleActivity;
+//import com.ly.imart.view.Second.ArticleActivity;
 import com.ly.imart.view.Second.ArticleMainActivity;
 
 import org.w3c.dom.Text;

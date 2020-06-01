@@ -20,7 +20,7 @@ import com.ly.imart.onerecycler.OneLoadingLayout;
 import com.ly.imart.onerecycler.OneRecyclerView;
 import com.ly.imart.onerecycler.OneVH;
 import com.ly.imart.util.MyImageView;
-import com.ly.imart.view.Second.ArticleActivity;
+//import com.ly.imart.view.Second.ArticleActivity;
 import com.ly.imart.view.Second.ArticleMainActivity;
 
 import java.util.ArrayList;
